@@ -58,9 +58,9 @@ WSGI_APPLICATION = 'news_portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'admin',
-        'USER': 'admin',
-        'PASSWORD': 'Dravid',
+        'NAME': 'NewsExplorer',
+        'USER': 'root',
+        'PASSWORD':'123',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
