@@ -2,22 +2,33 @@ __author__ = 'hjdesai2'
 import mysql.connector
 
 try:
-    def insertFileDetails(filename, pathfile, date,cursor):
-        name = filename
-        path = pathfile
-        publisheddate = date
-        add_employee = ("INSERT INTO FILE"
-                    "(filename, pathfile, publisheddate)"
-                    "VALUES (%s, %s, %s)")
-        details_file = (name, path, publisheddate)
-        cursor.execute(add_employee, details_file)
-        file_id = cursor.lastrowid
-        return file_id
-
-    def insert_entity(tablename, fileid, entityname, entitycount, cursor):
-        add_entity = "INSERT INTO "+tablename+" (FILEID, "+tablename+"NAME, "+tablename+"COUNT) VALUES (%s, %s, %s)"
-        data_entity = (fileid, entityname, entitycount)
+    def insert_file(filename, pathfile, filesource, publisheddate, publishedlocation, cursor):
+        add_entity = "INSERT INTO FILE (FILENAME, PATHFILE, FILESOURCE, PUBLISHEDDATE, PUBLISHEDLOCATION) VALUES (%s, %s, %s, %s, %s)"
+        data_entity = (filename, pathfile, filesource, publisheddate, publishedlocation)
         cursor.execute(add_entity, data_entity)
+        return cursor.lastrowid
+
+
+    def insert_article(fileid, articleheadline, articlenumber, articlecontent, cursor):
+        add_entity = "INSERT INTO ARTICLE (FILEID, ARTICLEHEADLINE, ARTICLENUMBER, ARTICLECONTENT) VALUES (%s, %s, %s, %s)"
+        data_entity = (fileid, articleheadline, articlenumber, articlecontent)
+        cursor.execute(add_entity, data_entity)
+        return cursor.lastrowid
+
+
+    def insert_entity(tablename, articleid, entityname, entitycount, cursor):
+        add_entity = "INSERT INTO " + tablename + " (ARTICLEID, " + tablename + "NAME, " + tablename + "COUNT) VALUES (%s, %s, %s)"
+        data_entity = (articleid, entityname, entitycount)
+        cursor.execute(add_entity, data_entity)
+
+    def select_data(NewsCategorizationCursor):
+        select_entity = "Select * from test"
+        NewsCategorizationCursor.execute(select_entity)
+        rows = NewsCategorizationCursor.fetchall()
+        return rows
+
+
+
 except:
     print(SystemError)
 
