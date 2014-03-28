@@ -1,26 +1,36 @@
 from django.db import models
 
-# Create your models here
-class Location(models.Model):
-    id = models.AutoField(primary_key=True)
-    file_id = models.IntegerField(default=0)
-    name = models.CharField(max_length=200)
-    count = models.IntegerField(default=0)
+# create your models here
 
-class Person(models.Model):
-     id = models.AutoField(primary_key=True)
-     file_id = models.IntegerField(default=0)
-     name = models.CharField(max_length=200)
-     count = models.IntegerField(default=0)
+class Location(models.model):
+    id = models.integerfield(default=0)
+    article_id = models.integerfield(default=0)
+    name = models.charfield(max_length=200)
+    count = models.integerfield(default=0)
 
-class Organization(models.Model):
-     id = models.AutoField(primary_key=True)
-     file_id = models.IntegerField(default=0)
-     name = models.CharField(max_length=200)
-     count = models.IntegerField(default=0)
+class Person(models.model):
+     id = models.integerfield(default=0)
+     article_id = models.integerfield(default=0)
+     name = models.charfield(max_length=200)
+     count = models.integerfield(default=0)
 
-class File(models.Model):
-      id = models.IntegerField(default=0, primary_key=True)
-      name = models.CharField(max_length=200)
-      path = models.CharField(max_length=200)
-      published_date = models.CharField(max_length=200)
+class Organization(models.model):
+     id = models.integerfield(default=0)
+     article_id = models.integerfield(default=0)
+     name = models.integerfield(default=0)
+     count = models.integerfield(default=0)
+
+class File(models.model):
+      id = models.integerfield(default=0)
+      name = models.charfield(max_length=200)
+      path_file = models.charfield(max_length=200)
+      published_date= models.charfield(max_length=200)
+      source= models.charfield(max_length=200)
+      published_location = models.charfield(max_length=20)
+
+class Article(models.model):
+      id=models.integerfield(default=0)
+      file_id=models.integerfield(default=0)
+      headline=models.charfield(max_length=300)
+      content=models.textfield(max_length=10000,widget=forms.textarea)
+      number=models.integerfield(default=0)
