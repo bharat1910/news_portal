@@ -21,10 +21,11 @@ try:
         data_entity = (articleid, entityname, entitycount)
         cursor.execute(add_entity, data_entity)
 
-    def select_data(NewsCategorizationCursor):
-        select_entity = "Select * from test"
-        NewsCategorizationCursor.execute(select_entity)
-        rows = NewsCategorizationCursor.fetchall()
+    def select_data(file,NewsJsonCursor):
+        select_entity = "Select * from  news_explorer_"+ file +""
+        #select_entity = "Select * from "+file+""
+        NewsJsonCursor.execute(select_entity)
+        rows = NewsJsonCursor.fetchall()
         return rows
 
 
