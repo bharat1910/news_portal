@@ -16,7 +16,7 @@ class Person(models.Model):
 
 class Organization(models.Model):
      id = models.IntegerField(primary_key=True,default=0)
-     article_id = models.Integerfield(default=0)
+     article_id = models.IntegerField(default=0)
      name = models.IntegerField(default=0)
      count = models.IntegerField(default=0)
 
