@@ -2,23 +2,23 @@ from django.db import models
 
 # create your models here
 
-class Location(models.model):
-    id = models.integerfield(default=0)
-    article_id = models.integerfield(default=0)
-    name = models.charfield(max_length=200)
-    count = models.integerfield(default=0)
+class Location(models.Model):
+    id = models.IntegerField(primary_key=True,default=0)
+    article_id = models.IntegerField(default=0)
+    name = models.CharField(max_length=200)
+    count = models.IntegerField(default=0)
 
-class Person(models.model):
-     id = models.integerfield(default=0)
-     article_id = models.integerfield(default=0)
-     name = models.charfield(max_length=200)
-     count = models.integerfield(default=0)
+class Person(models.Model):
+     id = models.IntegerField(primary_key=True,default=0)
+     article_id = models.IntegerField(default=0)
+     name = models.CharField(max_length=200)
+     count = models.IntegerField(default=0)
 
-class Organization(models.model):
-     id = models.integerfield(default=0)
-     article_id = models.integerfield(default=0)
-     name = models.integerfield(default=0)
-     count = models.integerfield(default=0)
+class Organization(models.Model):
+     id = models.IntegerField(primary_key=True,default=0)
+     article_id = models.Integerfield(default=0)
+     name = models.IntegerField(default=0)
+     count = models.IntegerField(default=0)
 
 class File(models.Model):
       id = models.IntegerField(primary_key=True, default=0)
