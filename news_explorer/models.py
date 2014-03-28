@@ -32,5 +32,5 @@ class Article(models.Model):
       id = models.IntegerField(primary_key=True, default=0)
       file_id = models.IntegerField(default=0)
       headline = models.CharField(max_length=300)
-      content = models.TextField(max_length=10000,widget=forms.textarea)
+      content = models.CharField(max_length=10000)
       number = models.IntegerField(default=0)
