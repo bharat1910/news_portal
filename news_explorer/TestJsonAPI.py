@@ -5,7 +5,7 @@ import MysqlConnectors
 import simplejson as json
 
 try:
-    a = NewsJsonAPI.getJson('ARTICLE')
+    a = NewsJsonAPI.getJson('article')
     print a
 
 
