@@ -20,17 +20,17 @@ class Organization(models.model):
      name = models.integerfield(default=0)
      count = models.integerfield(default=0)
 
-class File(models.model):
-      id = models.integerfield(default=0)
-      name = models.charfield(max_length=200)
-      path_file = models.charfield(max_length=200)
-      published_date= models.charfield(max_length=200)
-      source= models.charfield(max_length=200)
-      published_location = models.charfield(max_length=20)
+class File(models.Model):
+      id = models.IntegerField(primary_key=True, default=0)
+      name = models.CharField(max_length=200)
+      path_file = models.CharField(max_length=200)
+      published_date= models.CharField(max_length=200)
+      source= models.CharField(max_length=200)
+      published_location = models.CharField(max_length=20)
 
-class Article(models.model):
-      id=models.integerfield(default=0)
-      file_id=models.integerfield(default=0)
-      headline=models.charfield(max_length=300)
-      content=models.textfield(max_length=10000,widget=forms.textarea)
-      number=models.integerfield(default=0)
+class Article(models.Model):
+      id = models.IntegerField(primary_key=True, default=0)
+      file_id = models.IntegerField(default=0)
+      headline = models.CharField(max_length=300)
+      content = models.TextField(max_length=10000,widget=forms.textarea)
+      number = models.IntegerField(default=0)
