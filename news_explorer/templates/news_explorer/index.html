@@ -1,1 +1,232 @@
-NIRVANAAAAAAAAAAAAAAA!
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>SlickGrid</title>
+  <link rel="stylesheet" href="../../../lib/SlickGrid-master/slick.grid.css" type="text/css"/>
+  <link rel="stylesheet" href="../../../lib/SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
+  <link rel="stylesheet" href="../../../lib/SlickGrid-master/examples/examples.css" type="text/css"/>
+  <style>
+    .cell-title {
+      font-weight: bold;
+    }
+
+    .cell-effort-driven {
+      text-align: center;
+    }
+
+    .toggle {
+      height: 9px;
+      width: 9px;
+      display: inline-block;
+    }
+
+    .toggle.expand {
+      background: url(../../../lib/SlickGrid-master/images/expand.gif) no-repeat center center;
+    }
+
+    .toggle.collapse {
+      background: url(../../../lib/SlickGrid-master/images/collapse.gif) no-repeat center center;
+    }
+
+  </style>
+</head>
+<body>
+<table width="100%">
+  <tr>
+    <td valign="top" width="50%">
+          <div id="myGrid" style="width:400px;height:500px;"></div>
+    </td>
+     </tr>
+</table>
+
+<script src="../../../lib/SlickGrid-master/lib/firebugx.js"></script>
+
+<script src="../../../lib/SlickGrid-master/lib/jquery-1.7.min.js"></script>
+<script src="../../../lib/SlickGrid-master/lib/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="../../../lib/SlickGrid-master/lib/jquery.event.drag-2.2.js"></script>
+
+<script src="../../../lib/SlickGrid-master/slick.core.js"></script>
+<script src="../../../lib/SlickGrid-master/slick.formatters.js"></script>
+<script src="../../../lib/SlickGrid-master/slick.editors.js"></script>
+<script src="../../../lib/SlickGrid-master/slick.grid.js"></script>
+<script src="../../../lib/SlickGrid-master/slick.dataview.js"></script>
+
+<script>
+
+
+var TaskNameFormatter = function (row, cell, value, columnDef, dataContext) {
+  value = value.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  var spacer = "<span style='display:inline-block;height:1px;width:" + (15 * dataContext["indent"]) + "px'></span>";
+  var idx = dataView.getIdxById(dataContext.id);
+  if (data[idx + 1] && data[idx + 1].indent > data[idx].indent) {
+    if (dataContext._collapsed) {
+      return spacer + " <span class='toggle expand'></span>&nbsp;" + value;
+    } else {
+      return spacer + " <span class='toggle collapse'></span>&nbsp;" + value;
+    }
+  } else {
+    return spacer + " <span class='toggle'></span>&nbsp;" + value;
+  }
+};
+
+var dataView;
+var grid;
+var data = [];
+
+var jsondata = [
+                            {id: "1", title: "article1", content: "content1"},
+                            {id: "2", title: "article2", content: "content2"},
+                            {id: "3", title: "article3", content: "content3"},
+                            {id: "4", title: "article4", content: "content4"},
+                            {id: "5", title: "article5", content: "content5"},
+                            {id: "6", title: "article6", content: "content6"},
+                            {id: "7", title: "article7", content: "content7"},
+                            {id: "8", title: "article8", content: "content8"}
+];
+
+var columns = [
+  {id: "article_no", name: "Article No.", field: "article_no", width: 60},
+  {id: "title", name: "Title", field: "title", width: 340, cssClass: "cell-title", formatter: TaskNameFormatter},
+   ];
+
+var options = {
+  editable: false,
+  enableAddRow: false,
+  enableCellNavigation: true,
+  asyncEditorLoading: false
+  
+};
+
+
+var searchString = "";
+
+function myFilter(item) {
+  
+  if (searchString != "") {
+    return false;
+  }
+
+  if (item.parent != null) {
+    var parent = data[item.parent];
+
+    while (parent) {
+      if (parent._collapsed || searchString != "") {
+        return false;
+      }
+
+      parent = data[parent.parent];
+    }
+  }
+
+  return true;
+}
+
+$(function () {
+	
+  var indent = 0;
+  var parents = [];
+  var array = [];
+  var count = 0;
+  var j = 0;
+  $.each(jsondata, function() {
+	  //alert(this.id + " " + this.title+ " " + this.content);
+	  array[j]=this.title;
+	  array[j+1]=this.content;
+	  j=j+2;
+	  count++;
+  });
+     // prepare the data
+     j=0;
+  for (var i = 0; i < count*2; i++) {
+    var d = (data[i] = {});
+    var parent;
+    //for articles = each parent(article) will have one child(content)
+    
+    if(i==0 || i%2!=0)
+    	{
+    indent++;
+    parents.push(i - 1);
+    if (parents.length > 0) {
+        parent = parents[parents.length - 1];
+      } else {
+        parent = null;
+      }
+    
+    d["id"] = "id_" + i;
+    d["indent"] = indent;
+    d["parent"] = parent;
+    if(i==0)
+    {	
+    	d["article_no"] = jsondata[j].id;
+    j++;
+    }
+    else
+    d["article_no"] = "";
+    //if(i==0)
+    //d["title"] = array[i];//jsondata[i].title;
+    //else
+    //d["title"] = array[i];//jsondata[i].content;*/
+      d["title"] = array[i];
+           	}
+    else
+    	{
+    	indent--;
+    	parents.pop();
+    	if (parents.length > 0) {
+            parent = parents[parents.length - 1];
+          } else {
+            parent = null;
+          }
+    	
+    	d["id"] = "id_" + i;
+        d["indent"] = indent;
+        d["parent"] = parent;
+        d["article_no"] = jsondata[j].id;
+        //d["title"] = jsondata[i].title;
+        d["title"] = array[i];
+        j++;
+    	}
+      }
+
+  // initialize the model
+  dataView = new Slick.Data.DataView({ inlineFilters: true });
+  dataView.beginUpdate();
+  dataView.setItems(data);
+  dataView.setFilter(myFilter);
+  dataView.endUpdate();
+
+  // initialize the grid
+  grid = new Slick.Grid("#myGrid", dataView, columns, options);
+    
+  grid.onCellChange.subscribe(function (e, args) {
+    dataView.updateItem(args.item.id, args.item);
+  });
+
+  grid.onClick.subscribe(function (e, args) {
+    if ($(e.target).hasClass("toggle")) {
+      var item = dataView.getItem(args.row);
+      if (item) {
+        if (!item._collapsed) {
+          item._collapsed = true;
+        } else {
+          item._collapsed = false;
+        }
+
+        dataView.updateItem(item.id, item);
+      }
+      e.stopImmediatePropagation();
+    }
+  });
+
+  // wire up model events to drive the grid
+ 
+  dataView.onRowsChanged.subscribe(function (e, args) {
+    grid.invalidateRows(args.rows);
+    grid.render();
+  });
+
+})
+</script>
+</body>
+</html>
