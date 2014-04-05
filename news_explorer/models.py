@@ -15,19 +15,16 @@ class Article(models.Model):
       number = models.IntegerField(default=0)
 
 class Location(models.Model):
-    id = models.IntegerField(primary_key=True, default=0)
     article = models.ForeignKey(Article)
     name = models.CharField(max_length=200)
     count = models.IntegerField(default=0)
 
 class Person(models.Model):
-     id = models.IntegerField(primary_key=True, default=0)
      article = models.ForeignKey(Article)
      name = models.CharField(max_length=200)
      count = models.IntegerField(default=0)
 
 class Organization(models.Model):
-    id = models.IntegerField(primary_key=True, default=0)
     article = models.ForeignKey(Article)
     name = models.CharField(max_length=200)
     count = models.IntegerField(default=0)
