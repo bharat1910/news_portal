@@ -11,6 +11,10 @@ def index(request):
     context = {}
     return render(request, 'news_explorer/index.html', context)
 
+def new(request):
+    context = {}
+    return render(request, 'news_explorer/new.html', context)
+
 def jdefault(o):
     if isinstance(o, set):
         return list(o)
