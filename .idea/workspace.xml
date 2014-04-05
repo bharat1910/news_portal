@@ -2,30 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/static/img/glyphicons-halflings-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/static/img/glyphicons-halflings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/static/css/bootstrap-responsive.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/static/css/bootstrap-responsive.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/static/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/static/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/static/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/static/js/bootstrap.min.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-theme.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-theme.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/static/news_explorer/js/bootstrap.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/templates/news_explorer/new.html" afterPath="$PROJECT_DIR$/news_explorer/templates/news_explorer/new.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/static/css/bootstrap-responsive.css" afterPath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-responsive.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/static/css/bootstrap-responsive.min.css" afterPath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-responsive.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/static/css/bootstrap.css" afterPath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/static/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/static/css/starter-template.css" afterPath="$PROJECT_DIR$/news_explorer/static/news_explorer/css/starter-template.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/static/img/glyphicons-halflings-white.png" afterPath="$PROJECT_DIR$/news_explorer/static/news_explorer/img/glyphicons-halflings-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/static/img/glyphicons-halflings.png" afterPath="$PROJECT_DIR$/news_explorer/static/news_explorer/img/glyphicons-halflings.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/static/js/bootstrap.js" afterPath="$PROJECT_DIR$/news_explorer/static/news_explorer/js/bootstrap.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/static/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/news_explorer/static/news_explorer/js/bootstrap.min.js" />
     </list>
     <ignored path="news_portal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,14 +36,14 @@
       <file leaf-file-name="new.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/new.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="42" selection-start="596" selection-end="596" vertical-scroll-proportion="11.666667" vertical-offset="535" max-vertical-offset="1125">
+            <state line="17" column="42" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="535" max-vertical-offset="1125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="starter-template.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/news_explorer/static/css/starter-template.css">
+        <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/starter-template.css">
           <provider selected="true" editor-type-id="text-editor">
             <state line="6" column="1" selection-start="95" selection-end="95" vertical-scroll-proportion="0.14376996" vertical-offset="0" max-vertical-offset="626">
               <folding />
@@ -67,7 +52,7 @@
         </entry>
       </file>
       <file leaf-file-name="bootstrap-responsive.min.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news_explorer/static/css/bootstrap-responsive.min.css">
+        <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-responsive.min.css">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
               <folding />
@@ -76,7 +61,7 @@
         </entry>
       </file>
       <file leaf-file-name="bootstrap-responsive.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news_explorer/static/css/bootstrap-responsive.css">
+        <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-responsive.css">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16725">
               <folding />
@@ -138,7 +123,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -189,30 +173,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -225,6 +188,9 @@
       <recent name="$PROJECT_DIR$/news_explorer/static/news_explorer" />
       <recent name="$PROJECT_DIR$/news_explorer/templates/news_explorer/lib" />
       <recent name="$PROJECT_DIR$/news_explorer/templates/news_explorer" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/news_explorer/static/news_explorer" />
     </key>
   </component>
   <component name="RunManager">
@@ -422,6 +388,34 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/new.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="42" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/starter-template.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="1" selection-start="95" selection-end="95" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-responsive.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-responsive.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16725">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/new.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="41" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="480">
           <folding />
         </state>
@@ -500,26 +494,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/new.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="42" selection-start="596" selection-end="596" vertical-scroll-proportion="11.666667" vertical-offset="535" max-vertical-offset="1125">
+        <state line="17" column="42" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="535" max-vertical-offset="1125">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/static/css/bootstrap-responsive.min.css">
+    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-responsive.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/static/css/bootstrap-responsive.css">
+    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap-responsive.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16725">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/static/css/starter-template.css">
+    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/starter-template.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="1" selection-start="95" selection-end="95" vertical-scroll-proportion="0.14376996" vertical-offset="0" max-vertical-offset="626">
           <folding />
