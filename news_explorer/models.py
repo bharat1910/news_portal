@@ -17,29 +17,29 @@ class Article(models.Model):
 class Location(models.Model):
     #article = models.ForeignKey(Article)
     name = models.CharField(max_length=200)
-    count = models.IntegerField(default=0)
-
+    
 class Person(models.Model):
      #article = models.ForeignKey(Article)
      name = models.CharField(max_length=200)
-     count = models.IntegerField(default=0)
 
 class Organization(models.Model):
     #article = models.ForeignKey(Article)
     name = models.CharField(max_length=200)
-    count = models.IntegerField(default=0)
 
 class ArticlebyLocation(models.Model):
     location = models.ForeignKey(Location)
     article = models.ForeignKey(Article)
+    count = models.IntegerField(default=0)
 
 class ArticlebyPerson(models.Model):
     person = models.ForeignKey(Person)
     article = models.ForeignKey(Article)
+    count = models.IntegerField(default=0)
 
 class ArticlebyOrganization(models.Model):
     organization = models.ForeignKey(Organization)
     article = models.ForeignKey(Article)
+    count = models.IntegerField(default=0)
 
 
 
