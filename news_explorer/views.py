@@ -23,17 +23,17 @@ def jdefault(o):
 def initiate_chosen(request, reqtype):
 	if request.method == 'GET':
 		if reqtype == "location":
-		       	L = Location.objects.values('name').distinct()
-            		response = HttpResponse(Json.dumps(str(L).replace(": u",": "), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+		       	L = Location.objects.values('name')
+            		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
 			return HttpResponse(response)
 		elif reqtype == "organization":
-			L = Organization.objects.values('name').distinct()
-            		response1 = HttpResponse(Json.dumps(str(L).replace(": u",": "), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-			return HttpResponse(response1)
+			L = Organization.objects.values('name')
+            		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+			return HttpResponse(response)
 		elif reqtype == "person":
-			L = Person.objects.values('name').distinct()
-            		response2 = HttpResponse(Json.dumps(str(L).replace(": u",": "), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-			return HttpResponse(response2)
+			L = Person.objects.values('name')
+            		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+			return HttpResponse(response)
 
 def getJson(request):
     if request.method == 'GET':
