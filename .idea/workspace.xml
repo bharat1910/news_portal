@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" afterPath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="news_portal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,9 +29,11 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="60" selection-start="1728" selection-end="1728" vertical-scroll-proportion="0.12790698" vertical-offset="523" max-vertical-offset="2145">
+            <state line="82" column="104" selection-start="3881" selection-end="3881" vertical-scroll-proportion="0.5481728" vertical-offset="900" max-vertical-offset="1860">
               <folding>
-                <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -459,7 +462,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="35" selection-start="470" selection-end="493" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1425">
           <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -551,9 +556,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="60" selection-start="1728" selection-end="1728" vertical-scroll-proportion="0.12790698" vertical-offset="523" max-vertical-offset="2145">
+        <state line="82" column="104" selection-start="3881" selection-end="3881" vertical-scroll-proportion="0.5481728" vertical-offset="900" max-vertical-offset="1860">
           <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
