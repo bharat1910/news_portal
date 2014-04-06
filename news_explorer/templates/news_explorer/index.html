@@ -75,7 +75,7 @@
         </p>
       </div>
 
-      <div id="news_articles_by_selection_div">
+      <div id="news_articles_by_selection_div" style="display:none">
           <select class="chzn-select" style="width:200px;" id="location" data-placeholder="Choose a country..."></select>
 
           <select class="chzn-select" style="width:200px;" id="organization" data-placeholder="Choose an organization..."></select>
@@ -95,9 +95,12 @@
     <link rel="stylesheet" href="http://harvesthq.github.com/chosen/chosen.css">
 
     <script>
+
         $("#news_articles_by_selection").bind('click', function() {
             $("#default").hide();
             $("#news_articles_by_selection_div").show();
+
+            showSelectOptions();
         });
 
         $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
@@ -111,9 +114,45 @@
             return false;
         });
 
-        $(function(){
-            $(".chzn-select").chosen();
-        });
+        function showSelectOptions()
+        {
+            $.get("person", function( data ) {
+                data = eval("[" + data.replace(/: u/g, ':').replace(/}{/g, '},{') + "]");
+                for (var i=0; i<data.length; i++) {
+                    $('#person')
+                        .append($("<option></option>")
+                        .attr("value",data[i].name)
+                        .text(data[i].name));
+                }
+                $("#person").trigger("chosen:updated");
+            });
+
+            $.get("location", function( data ) {
+                data = eval("[" + data.replace(/: u/g, ':').replace(/}{/g, '},{') + "]");
+                for (var i=0; i<data.length; i++) {
+                    $('#location')
+                        .append($("<option></option>")
+                        .attr("value",data[i].name)
+                        .text(data[i].name));
+                }
+                $("#location").trigger("chosen:updated");
+            });
+
+            $.get("organization", function( data ) {
+                data = eval("[" + data.replace(/: u/g, ':').replace(/}{/g, '},{') + "]");
+                for (var i=0; i<data.length; i++) {
+                    $('#organization')
+                        .append($("<option></option>")
+                        .attr("value",data[i].name)
+                        .text(data[i].name));
+                }
+                $("#organization").trigger("chosen:updated");
+            });
+
+            $(function(){
+                $(".chzn-select").chosen();
+            });
+        }
     </script>
   </body>
 </html>
