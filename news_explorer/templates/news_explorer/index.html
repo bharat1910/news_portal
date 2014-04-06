@@ -76,9 +76,36 @@
       </div>
 
       <div id="news_articles_by_selection_div" style="display:none" class="row-fluid">
-        <select id="location"></select>
-        <select id="organization"></select>
-        <select id="person"></select>
+          <div class="btn-group btn-input clearfix">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                <span data-bind="label">Select a location</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" id="location_list">
+
+            </ul>
+          </div>
+
+          &nbsp;
+
+          <div class="btn-group btn-input clearfix">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                <span data-bind="label">Select a person</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" id="person_list">
+
+            </ul>
+          </div>
+
+          &nbsp;
+
+          <div class="btn-group btn-input clearfix">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                <span data-bind="label">Select an organization</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" id="organization_list">
+
+            </ul>
+          </div>
       </div>
 
     </div> <!-- /container -->
@@ -94,6 +121,17 @@
         $("#news_articles_by_selection").bind('click', function() {
             $("#default").hide();
             $("#news_articles_by_selection_div").show();
+        });
+
+        $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
+            var $target = $( event.currentTarget );
+
+            $target.closest( '.btn-group' )
+                .find( '[data-bind="label"]' ).text( $target.text() )
+                .end()
+            .children( '.dropdown-toggle' ).dropdown( 'toggle' );
+
+            return false;
         });
     </script>
   </body>
