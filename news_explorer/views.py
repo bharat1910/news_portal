@@ -23,15 +23,15 @@ def jdefault(o):
 def initiate_chosen(request, reqtype):
 	if request.method == 'GET':
 		if reqtype == "location":
-		       	L = Location.objects.values('name')
+		       	L = Location.objects.values('id','name')
             		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
 			return HttpResponse(response)
 		elif reqtype == "organization":
-			L = Organization.objects.values('name')
+			L = Organization.objects.values('id','name')
             		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
 			return HttpResponse(response)
 		elif reqtype == "person":
-			L = Person.objects.values('name')
+			L = Person.objects.values('id','name')
             		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
 			return HttpResponse(response)
 
