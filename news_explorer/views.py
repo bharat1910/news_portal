@@ -20,23 +20,20 @@ def jdefault(o):
         return list(o)
     return o.__dict__
 
-def initiate(request):
-    if request.method == 'GET':
-        if request.GET["location"]:
-            L = Location.objects.values('name').distinct()
-            response = HttpResponse(Json.dumps(str(L), default=jdefault, indent=4), content_type="application/json",
-                                    mimetype="application/json").content
-            return response
-        if request.GET["person"]:
-            P = Person.objects.values('name').distinct()
-            response = HttpResponse(Json.dumps(str(P), default=jdefault, indent=4), content_type="application/json",
-                                    mimetype="application/json").content
-            return response
-        if request.GET["organization"]:
-            O = Organization.objects.values('name').distinct()
-            response = HttpResponse(Json.dumps(str(O), default=jdefault, indent=4), content_type="application/json",
-                                    mimetype="application/json").content
-            return response
+def initiate_chosen(request, number):
+	if request.method == 'GET':
+		if number == '1':
+		       	L = Location.objects.values('name').distinct()
+            		response = HttpResponse(Json.dumps(str(L).replace(": u",": "), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+			return HttpResponse(response)
+		elif number == '2':
+			L = Organization.objects.values('name').distinct()
+            		response1 = HttpResponse(Json.dumps(str(L).replace(": u",": "), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+			return HttpResponse(response1)
+		elif number == '3':
+			L = Person.objects.values('name').distinct()
+            		response2 = HttpResponse(Json.dumps(str(L).replace(": u",": "), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+			return HttpResponse(response2)
 
 def getJson(request):
     if request.method == 'GET':
