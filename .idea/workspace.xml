@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" afterPath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="news_portal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +28,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="16" selection-start="4349" selection-end="4349" vertical-scroll-proportion="-0.12126246" vertical-offset="1543" max-vertical-offset="2145">
+            <state line="40" column="60" selection-start="1728" selection-end="1728" vertical-scroll-proportion="0.12790698" vertical-offset="523" max-vertical-offset="2145">
               <folding>
                 <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -40,7 +39,7 @@
       <file leaf-file-name="news_articles_by_selection.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/news_articles_by_selection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="504" selection-end="722" vertical-scroll-proportion="-2.7" vertical-offset="0" max-vertical-offset="5505">
+            <state line="351" column="1" selection-start="9790" selection-end="9790" vertical-scroll-proportion="-105.3" vertical-offset="0" max-vertical-offset="5505">
               <folding>
                 <element signature="n#style#0;n#select#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#p#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -540,7 +539,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/news_articles_by_selection.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="504" selection-end="722" vertical-scroll-proportion="-2.7" vertical-offset="0" max-vertical-offset="5505">
+        <state line="351" column="1" selection-start="9790" selection-end="9790" vertical-scroll-proportion="-105.3" vertical-offset="0" max-vertical-offset="5505">
           <folding>
             <element signature="n#style#0;n#select#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#p#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -552,7 +551,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="16" selection-start="4349" selection-end="4349" vertical-scroll-proportion="-0.12126246" vertical-offset="1543" max-vertical-offset="2145">
+        <state line="40" column="60" selection-start="1728" selection-end="1728" vertical-scroll-proportion="0.12790698" vertical-offset="523" max-vertical-offset="2145">
           <folding>
             <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
