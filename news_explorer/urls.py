@@ -4,5 +4,5 @@ from news_explorer import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
-    url(r'^new$', views.new, name='new')
+    url(r'^news_articles_by_selection$', views.news_articles_by_selection, name='news_articles_by_selection')
 )
