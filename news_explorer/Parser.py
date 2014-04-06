@@ -2,7 +2,7 @@ import os
 import re
 import mysql.connector
 import Mysql
-from news_explorer.models import File, Person, Organization, Location, Article
+from news_explorer.models import File, Person, Organization, Location, Article, ArticlebyLocation, ArticlebyPerson, ArticlebyOrganization
 
 try:
     def insertFileDetails():
@@ -24,7 +24,11 @@ try:
         data = cursor.fetchone()
         print("Database version : %s " % data)
 
-        for root, dirs, files in os.walk("news_explorer/NewsData_NER", topdown=True):
+	PERSONDICT = {}
+	ORGANIZATIONDICT = {}
+	LOCATIONDICT = {}
+
+        for root, dirs, files in os.walk("/home/me/NewsData_NER", topdown=True):
             for name in files:
                 print name
                 LBTLIST = []
@@ -88,16 +92,28 @@ try:
                                         for word in b[4:]:
                                             c = word.split('=')
                                             if c[0] == LOCATION:
+						if c[1] not in LOCATIONDICT:
+						    l = Location(name = c[1])
+				                    l.save()
+						    LOCATIONDICT[c[1]] = Location.objects.latest('id').id					
                                                 if c[1] in LOCATIONLIST:
                                                     LOCATIONLIST[c[1]] += 1
                                                 else:
                                                     LOCATIONLIST[c[1]] = 1
                                             if c[0] == PERSON:
+						if c[1] not in PERSONDICT:
+						    p = Person(name = c[1])
+				                    p.save()
+						    PERSONDICT[c[1]] = Person.objects.latest('id').id					
                                                 if c[1] in PERSONLIST:
                                                     PERSONLIST[c[1]] += 1
                                                 else:
                                                     PERSONLIST[c[1]] = 1
                                             if c[0] == ORGANIZATION:
+						if c[1] not in ORGANIZATIONDICT:
+						    o = Organization(name = c[1])
+				                    o.save()
+						    ORGANIZATIONDICT[c[1]] = Organization.objects.latest('id').id					
                                                 if c[1] in ORGANIZATIONLIST:
                                                     ORGANIZATIONLIST[c[1]] += 1
                                                 else:
@@ -111,13 +127,13 @@ try:
                                     a.save()
                                     articleid = Article.objects.latest('id').id
                                     for person in PERSONLIST:
-                                        p = Person(name = person, count = PERSONLIST[person], article_id=articleid)
+                                        p = ArticlebyPerson(person_id = PERSONDICT[person], count = PERSONLIST[person], article_id=articleid)
                                         p.save()
                                     for location in LOCATIONLIST:
-                                        l = Location(name = location, count = LOCATIONLIST[location], article_id=articleid)
+                                        l = ArticlebyLocation(location_id = LOCATIONDICT[location], count = LOCATIONLIST[location], article_id=articleid)
                                         l.save()
                                     for organization in ORGANIZATIONLIST:
-                                        o = Organization(name = organization, count = ORGANIZATIONLIST[organization], article_id=articleid)
+                                        o = ArticlebyOrganization(organization_id = ORGANIZATIONDICT[organization], count = ORGANIZATIONLIST[organization], article_id=articleid)
                                         o.save()
                                     break
                                 elif STORYSOURCE in line:
@@ -126,13 +142,13 @@ try:
                                     a.save()
                                     articleid = Article.objects.latest('id').id
                                     for person in PERSONLIST:
-                                        p = Person(name = person, count = PERSONLIST[person], article_id=articleid)
+                                        p = ArticlebyPerson(person_id = PERSONDICT[person], count = PERSONLIST[person], article_id=articleid)
                                         p.save()
                                     for location in LOCATIONLIST:
-                                        l = Location(name = location, count = LOCATIONLIST[location], article_id=articleid)
+                                        l = ArticlebyLocation(location_id = LOCATIONDICT[location], count = LOCATIONLIST[location], article_id=articleid)
                                         l.save()
                                     for organization in ORGANIZATIONLIST:
-                                        o = Organization(name = organization, count = ORGANIZATIONLIST[organization], article_id=articleid)
+                                        o = ArticlebyOrganization(organization_id = ORGANIZATIONDICT[organization], count = ORGANIZATIONLIST[organization], article_id=articleid)
                                         o.save()
                                     break
                                 else:
@@ -142,16 +158,28 @@ try:
                                         for word in b[4:]:
                                             c = word.split('=')
                                             if c[0] == LOCATION:
+						if c[1] not in LOCATIONDICT:
+						    l = Location(name = c[1])
+				                    l.save()
+						    LOCATIONDICT[c[1]] = Location.objects.latest('id').id
                                                 if c[1] in LOCATIONLIST:
                                                     LOCATIONLIST[c[1]] += 1
                                                 else:
                                                     LOCATIONLIST[c[1]] = 1
                                             if c[0] == PERSON:
+						if c[1] not in PERSONDICT:
+						    p = Person(name = c[1])
+				                    p.save()
+						    PERSONDICT[c[1]] = Person.objects.latest('id').id
                                                 if c[1] in PERSONLIST:
                                                     PERSONLIST[c[1]] += 1
                                                 else:
                                                     PERSONLIST[c[1]] = 1
                                             if c[0] == ORGANIZATION:
+						if c[1] not in ORGANIZATIONDICT:
+						    o = Organization(name = c[1])
+				                    o.save()
+						    ORGANIZATIONDICT[c[1]] = Organization.objects.latest('id').id
                                                 if c[1] in ORGANIZATIONLIST:
                                                     ORGANIZATIONLIST[c[1]] += 1
                                                 else:
@@ -160,6 +188,7 @@ try:
                             flag = False
 
                 fileobject.closed
+
         cursor.close()
         cnx.commit()
         cnx.close()
