@@ -92,32 +92,32 @@ try:
                                         for word in b[4:]:
                                             c = word.split('=')
                                             if c[0] == LOCATION:
-						if c[1] not in LOCATIONDICT:
+						if c[1].lower() not in LOCATIONDICT:
 						    l = Location(name = c[1])
 				                    l.save()
-						    LOCATIONDICT[c[1]] = Location.objects.latest('id').id					
-                                                if c[1] in LOCATIONLIST:
-                                                    LOCATIONLIST[c[1]] += 1
+						    LOCATIONDICT[c[1].lower()] = Location.objects.latest('id').id					
+                                                if c[1].lower() in LOCATIONLIST:
+                                                    LOCATIONLIST[c[1].lower()] += 1
                                                 else:
-                                                    LOCATIONLIST[c[1]] = 1
+                                                    LOCATIONLIST[c[1].lower()] = 1
                                             if c[0] == PERSON:
-						if c[1] not in PERSONDICT:
+						if c[1].lower() not in PERSONDICT:
 						    p = Person(name = c[1])
 				                    p.save()
-						    PERSONDICT[c[1]] = Person.objects.latest('id').id					
-                                                if c[1] in PERSONLIST:
-                                                    PERSONLIST[c[1]] += 1
+						    PERSONDICT[c[1].lower()] = Person.objects.latest('id').id					
+                                                if c[1].lower() in PERSONLIST:
+                                                    PERSONLIST[c[1].lower()] += 1
                                                 else:
-                                                    PERSONLIST[c[1]] = 1
+                                                    PERSONLIST[c[1].lower()] = 1
                                             if c[0] == ORGANIZATION:
-						if c[1] not in ORGANIZATIONDICT:
+						if c[1].lower() not in ORGANIZATIONDICT:
 						    o = Organization(name = c[1])
 				                    o.save()
-						    ORGANIZATIONDICT[c[1]] = Organization.objects.latest('id').id					
-                                                if c[1] in ORGANIZATIONLIST:
-                                                    ORGANIZATIONLIST[c[1]] += 1
+						    ORGANIZATIONDICT[c[1].lower()] = Organization.objects.latest('id').id					
+                                                if c[1].lower() in ORGANIZATIONLIST:
+                                                    ORGANIZATIONLIST[c[1].lower()] += 1
                                                 else:
-                                                    ORGANIZATIONLIST[c[1]] = 1
+                                                    ORGANIZATIONLIST[c[1].lower()] = 1
 
                             while 1:
                                 line = fileobject.readline()
@@ -158,32 +158,32 @@ try:
                                         for word in b[4:]:
                                             c = word.split('=')
                                             if c[0] == LOCATION:
-						if c[1] not in LOCATIONDICT:
+						if c[1].lower() not in LOCATIONDICT:
 						    l = Location(name = c[1])
 				                    l.save()
-						    LOCATIONDICT[c[1]] = Location.objects.latest('id').id
-                                                if c[1] in LOCATIONLIST:
-                                                    LOCATIONLIST[c[1]] += 1
+						    LOCATIONDICT[c[1].lower()] = Location.objects.latest('id').id					
+                                                if c[1].lower() in LOCATIONLIST:
+                                                    LOCATIONLIST[c[1].lower()] += 1
                                                 else:
-                                                    LOCATIONLIST[c[1]] = 1
+                                                    LOCATIONLIST[c[1].lower()] = 1
                                             if c[0] == PERSON:
-						if c[1] not in PERSONDICT:
+						if c[1].lower() not in PERSONDICT:
 						    p = Person(name = c[1])
 				                    p.save()
-						    PERSONDICT[c[1]] = Person.objects.latest('id').id
-                                                if c[1] in PERSONLIST:
-                                                    PERSONLIST[c[1]] += 1
+						    PERSONDICT[c[1].lower()] = Person.objects.latest('id').id					
+                                                if c[1].lower() in PERSONLIST:
+                                                    PERSONLIST[c[1].lower()] += 1
                                                 else:
-                                                    PERSONLIST[c[1]] = 1
+                                                    PERSONLIST[c[1].lower()] = 1
                                             if c[0] == ORGANIZATION:
-						if c[1] not in ORGANIZATIONDICT:
+						if c[1].lower() not in ORGANIZATIONDICT:
 						    o = Organization(name = c[1])
 				                    o.save()
-						    ORGANIZATIONDICT[c[1]] = Organization.objects.latest('id').id
-                                                if c[1] in ORGANIZATIONLIST:
-                                                    ORGANIZATIONLIST[c[1]] += 1
+						    ORGANIZATIONDICT[c[1].lower()] = Organization.objects.latest('id').id					
+                                                if c[1].lower() in ORGANIZATIONLIST:
+                                                    ORGANIZATIONLIST[c[1].lower()] += 1
                                                 else:
-                                                    ORGANIZATIONLIST[c[1]] = 1
+                                                    ORGANIZATIONLIST[c[1].lower()] = 1
                         elif STORYSOURCE in line:
                             flag = False
 
@@ -191,6 +191,7 @@ try:
 
         cursor.close()
         cnx.commit()
-        cnx.close()
+	cnx.close()
+    	
 except:
     print(SystemError)

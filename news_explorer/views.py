@@ -11,9 +11,9 @@ def index(request):
     context = {}
     return render(request, 'news_explorer/index.html', context)
 
-def new(request):
+def news_articles_by_selection(request):
     context = {}
-    return render(request, 'news_explorer/new.html', context)
+    return render(request, 'news_explorer/news_articles_by_selection.html', context)
 
 def jdefault(o):
     if isinstance(o, set):
