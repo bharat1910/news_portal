@@ -75,39 +75,13 @@
         </p>
       </div>
 
-      <div id="news_articles_by_selection_div" style="display:none" class="row-fluid">
-          <div class="btn-group btn-input clearfix">
-            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                <span data-bind="label">Select a location</span> <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" id="location_list">
+      <div id="news_articles_by_selection_div" style="display:none">
+          <select class="chzn-select" style="width:200px;" id="location" data-placeholder="Choose a country..."></select>
 
-            </ul>
-          </div>
+          <select class="chzn-select" style="width:200px;" id="organization" data-placeholder="Choose an organization..."></select>
 
-          &nbsp;
-
-          <div class="btn-group btn-input clearfix">
-            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                <span data-bind="label">Select a person</span> <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" id="person_list">
-
-            </ul>
-          </div>
-
-          &nbsp;
-
-          <div class="btn-group btn-input clearfix">
-            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                <span data-bind="label">Select an organization</span> <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" id="organization_list">
-
-            </ul>
-          </div>
+          <select class="chzn-select" style="width:200px;" id="person" data-placeholder="Choose a person..."></select>
       </div>
-
     </div> <!-- /container -->
 
 
@@ -117,10 +91,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="{{ STATIC_URL}}news_explorer/js/bootstrap.min.js"></script>
 
+    <script src="http://harvesthq.github.com/chosen/chosen.jquery.js"></script>
+    <link rel="stylesheet" href="http://harvesthq.github.com/chosen/chosen.css">
+
     <script>
+
         $("#news_articles_by_selection").bind('click', function() {
             $("#default").hide();
             $("#news_articles_by_selection_div").show();
+
+            showSelectOptions();
         });
 
         $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
@@ -133,6 +113,46 @@
 
             return false;
         });
+
+        function showSelectOptions()
+        {
+            $.get("person", function( data ) {
+                data = eval("[" + data.replace(/: u/g, ':').replace(/}{/g, '},{').replace(/L,/g, ',') + "]");
+                for (var i=0; i<data.length; i++) {
+                    $('#person')
+                        .append($("<option></option>")
+                        .attr("value",data[i].name)
+                        .text(data[i].name));
+                }
+                $("#person").trigger("chosen:updated");
+            });
+
+            $.get("location", function( data ) {
+                data = eval("[" + data.replace(/: u/g, ':').replace(/}{/g, '},{').replace(/L,/g, ',') + "]");
+                for (var i=0; i<data.length; i++) {
+                    $('#location')
+                        .append($("<option></option>")
+                        .attr("value",data[i].name)
+                        .text(data[i].name));
+                }
+                $("#location").trigger("chosen:updated");
+            });
+
+            $.get("organization", function( data ) {
+                data = eval("[" + data.replace(/: u/g, ':').replace(/}{/g, '},{').replace(/L,/g, ',') + "]");
+                for (var i=0; i<data.length; i++) {
+                    $('#organization')
+                        .append($("<option></option>")
+                        .attr("value",data[i].name)
+                        .text(data[i].name));
+                }
+                $("#organization").trigger("chosen:updated");
+            });
+
+            $(function(){
+                $(".chzn-select").chosen();
+            });
+        }
     </script>
   </body>
 </html>

@@ -28,7 +28,7 @@ try:
 	ORGANIZATIONDICT = {}
 	LOCATIONDICT = {}
 
-        for root, dirs, files in os.walk("/home/me/NewsData_NER", topdown=True):
+        for root, dirs, files in os.walk("news_explorer/NewsData_NER", topdown=True):
             for name in files:
                 print name
                 LBTLIST = []
