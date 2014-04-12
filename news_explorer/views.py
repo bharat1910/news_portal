@@ -24,16 +24,19 @@ def jdefault(o):
 def initiate_chosen(request, reqtype):
     if request.method == 'GET':
         if reqtype == "location":
-            L = Location.objects.values('id','name')
-            response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+            L = Location.objects.uniqueLocation()
+            print L
+            response = HttpResponse(Json.dumps(convertSelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
+
         elif reqtype == "organization":
-            L = Organization.objects.values('id','name')
-            response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+            L = Organization.objects.uniqueOrganization()
+            response = HttpResponse(Json.dumps(convertSelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
+
         elif reqtype == "person":
-            L = Person.objects.values('id', 'name')
-            response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+            L = Person.objects.uniquePerson()
+            response = HttpResponse(Json.dumps(convertSelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
 
 def getJson(request):
@@ -131,3 +134,15 @@ def convertEachListToMap(list):
     result['clicks'] = list[2]
     result['published_date'] = list[3]
     return result
+
+def convertSelectAttributesToMap(lists):
+    result1 = []
+    for list in lists:
+        result1.append(convertToMap(list))
+    return result1
+
+def convertToMap(list):
+    result1 = {}
+    result1['id'] = list[0]
+    result1['name'] = list[1]
+    return result1

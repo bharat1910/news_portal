@@ -1,5 +1,26 @@
 from django.db import models, connection
 # create your models here
+class PersonLookup(models.Manager):
+    def uniquePerson(self):
+        cursor = connection.cursor()
+        cursor.execute("select id,name from news_explorer_person")
+        rows = cursor.fetchall()
+        return rows
+
+class LocationLookup(models.Manager):
+    def uniqueLocation(self):
+        cursor = connection.cursor()
+        cursor.execute("select id,name from news_explorer_location")
+        rows = cursor.fetchall()
+        return rows
+
+class OrganizationLookup(models.Manager):
+    def uniqueOrganization(self):
+        cursor = connection.cursor()
+        cursor.execute("select id,name from news_explorer_organization")
+        rows = cursor.fetchall()
+        return rows
+
 class PersonManager(models.Manager):
     def articlesbyperson(self, personid, pid):
         cursor = connection.cursor()
@@ -102,14 +123,17 @@ class Article(models.Model):
 class Location(models.Model):
     #article = models.ForeignKey(Article)
     name = models.CharField(max_length=200)
+    objects = LocationLookup()
 
 class Person(models.Model):
     #article = models.ForeignKey(Article)
     name = models.CharField(max_length=200)
+    objects = PersonLookup()
 
 class Organization(models.Model):
     #article = models.ForeignKey(Article)
     name = models.CharField(max_length=200)
+    objects = OrganizationLookup()
 
 class ArticlebyLocation(models.Model):
     location = models.ForeignKey(Location)
