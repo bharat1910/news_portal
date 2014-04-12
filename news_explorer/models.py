@@ -1,54 +1,86 @@
 from django.db import models, connection
 # create your models here
 class PersonManager(models.Manager):
-    def articlesbyperson(self, personid):
+    def articlesbyperson(self, personid, pid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline, clicks from news_explorer_article where id in "
-                       "(select article_id from news_explorer_articlebyperson where person_id = %s) order by clicks", [personid])
+        if pid == '1':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select article_id from news_explorer_articlebyperson where person_id = %s) order by clicks;", [personid])
+        else:
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select article_id from news_explorer_articlebyperson where person_id = %s) order by published_date;", [personid])
         rows = cursor.fetchall()
         return rows
 
 class LocationManager(models.Manager):
-    def articlesbylocation(self, locationid):
+    def articlesbylocation(self, locationid, pid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline, clicks from news_explorer_article where id in "
-                       "(select article_id from news_explorer_articlebylocation where location_id = %s) order by clicks", [locationid])
+        if pid == '1':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select article_id from news_explorer_articlebylocation where location_id = %s) order by clicks;", [locationid])
+        else:
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                   " (select article_id from news_explorer_articlebylocation where location_id = %s) order by published_date;", [locationid])
         rows = cursor.fetchall()
         return rows
 
 class OrganizationManager(models.Manager):
-    def articlebyorganization(self,organizationid):
+    def articlebyorganization(self,organizationid,pid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline, clicks from news_explorer_article where id in "
-                       "(select article_id from news_explorer_articlebyorganization where organization_id = %s) order by clicks", [organizationid])
+        if pid == '1':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select article_id from news_explorer_articlebyorganization where organization_id = %s) order by clicks;", [organizationid])
+        else:
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                   "(select article_id from news_explorer_articlebyorganization where organization_id = %s) order by published_date;", [organizationid])
         rows = cursor.fetchall()
         return rows
 
 class PersonLocationManager(models.Manager):
-    def articlesbypersonlocation(self,personid,locationid):
+    def articlesbypersonlocation(self,personid,locationid,pid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline, clicks from news_explorer_article where id in (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l where person_id = %s and location_id = %s and p.article_id = l.article_id) order by clicks", [personid, locationid])
+        if pid == '1':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l where person_id = %s and location_id = %s and p.article_id = l.article_id) order by clicks;", [personid, locationid])
+        else:
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                   "(select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l where person_id = %s and location_id = %s and p.article_id = l.article_id) order by published_date;", [personid, locationid])
         rows = cursor.fetchall()
         return rows
 
 class PersonOrganizationManager(models.Manager):
-    def articlesbypersonorganization(self,personid,organizationid):
+    def articlesbypersonorganization(self,personid,organizationid,pid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline, clicks from news_explorer_article where id in (select p.article_id from news_explorer_articlebyperson p, news_explorer_articlebyorganization o where person_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks", [personid, organizationid])
+        if pid == '1':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select p.article_id from news_explorer_articlebyperson p, news_explorer_articlebyorganization o where person_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks;", [personid,organizationid])
+        else:
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                   "(select p.article_id from news_explorer_articlebyperson p, news_explorer_articlebyorganization o where person_id = %s and organization_id = %s and p.article_id = o.article_id) order by published_date;", [personid,organizationid])
         rows = cursor.fetchall()
         return rows
 
 class LocationOrganizationManager(models.Manager):
-    def articlesbylocationorganization(self, locationid, organizationid):
+    def articlesbylocationorganization(self, locationid, organizationid,pid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline, clicks from news_explorer_article where id in (select p.article_id from news_explorer_articlebylocation p,news_explorer_articlebyorganization o where location_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks", [locationid, organizationid])
+        if pid == '1':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select p.article_id from news_explorer_articlebylocation p,news_explorer_articlebyorganization o where location_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks;", [locationid,organizationid])
+        else:
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                   "(select p.article_id from news_explorer_articlebylocation p,news_explorer_articlebyorganization o where location_id = %s and organization_id = %s and p.article_id = o.article_id) order by published_date;", [locationid, organizationid])
         rows = cursor.fetchall()
         return rows
 
 class PersonLocationOrganizationManager(models.Manager):
-    def articlesbypersonlocationorganization(self,personid,locationid,organizationid):
+    def articlesbypersonlocationorganization(self,personid,locationid,organizationid,pid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline, clicks from news_explorer_article where id in (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l, news_explorer_articlebyorganization o where person_id = %s and location_id = %s and organization_id = %s and p.article_id = l.article_id = o.article_id) order by clicks", [personid, locationid, organizationid])
+        if pid == '1':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l, news_explorer_articlebyorganization o where person_id = %s and location_id = %s and organization_id = %s and p.article_id = l.article_id = o.article_id) order by clicks;", [personid,locationid,organizationid])
+        else:
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                   "(select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l, news_explorer_articlebyorganization o where person_id = %s and location_id = %s and organization_id = %s and p.article_id = l.article_id = o.article_id) order by published_date;", [personid, locationid, organizationid])
         rows = cursor.fetchall()
         return rows
 
@@ -60,20 +92,20 @@ class File(models.Model):
     published_location = models.CharField(max_length=20)
 
 class Article(models.Model):
-      file = models.ForeignKey(File)
-      headline = models.CharField(max_length=300)
-      content = models.CharField(max_length=10000)
-      number = models.IntegerField(default=0)
-      clicks = models.IntegerField(default=0)
-      objects = PersonLocationOrganizationManager()
+    file = models.ForeignKey(File)
+    headline = models.CharField(max_length=300)
+    content = models.CharField(max_length=10000)
+    number = models.IntegerField(default=0)
+    clicks = models.IntegerField(default=0)
+    objects = PersonLocationOrganizationManager()
 
 class Location(models.Model):
     #article = models.ForeignKey(Article)
     name = models.CharField(max_length=200)
-    
+
 class Person(models.Model):
-     #article = models.ForeignKey(Article)
-     name = models.CharField(max_length=200)
+    #article = models.ForeignKey(Article)
+    name = models.CharField(max_length=200)
 
 class Organization(models.Model):
     #article = models.ForeignKey(Article)
