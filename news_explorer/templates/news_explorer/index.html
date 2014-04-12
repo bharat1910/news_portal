@@ -167,24 +167,21 @@
         $("#search_button").bind('click', function() {
             $.get("articles",  {location_id : $("#location").val()},
                 function( data ) {
-                    data = data.substring(0, data.length - 1).substring(1);
-                    articles = data.replace(/u"/g, '"').split(")(");
-
                     $("#search_results").empty();
+                    data = eval(data);
 
-                    for (var i=0; i<articles.length; i++) {
-                        var headline = articles[i].substring(articles[i].indexOf(',')+1).trim();
-                        headline = headline.substring(0, headline.length - 1).substring(1);
+                    for (var i=0; i<data.length; i++) {
+                        var headline = data[i].headline;
 
                         $("#search_results").append('<div class="panel panel-default">' +
                                                     '<div class="panel-heading">' +
                                                         '<h4 class="panel-title">' +
-                                                            '<a data-toggle="collapse" data-parent="#search_results" class="collapsed" article_id=' + articles[i].substring(0, articles[i].indexOf(',')).replace(/L/g, '') + ' href="#' + articles[i].substring(0, articles[i].indexOf(',')).replace(/L/g, '') + '">' +
+                                                            '<a data-toggle="collapse" data-parent="#search_results" class="collapsed" article_id=' + data[i].id + ' href="#' + data[i].id + '">' +
                                                                  headline +
                                                             '</a>' +
                                                         '</h4>' +
                                                     '</div>' +
-                                                    '<div id=' + articles[i].substring(0, articles[i].indexOf(',')).replace(/L/g, '') + ' class="panel-collapse collapse" style="height:0px">' +
+                                                    '<div id=' + data[i].id + ' class="panel-collapse collapse" style="height:0px">' +
                                                         '<div class="panel-body">' +
                                                         '</div>' +
                                                     '</div>' +
