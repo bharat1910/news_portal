@@ -25,6 +25,9 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+
+    </style>
   </head>
 
   <body>
@@ -75,13 +78,15 @@
         </p>
       </div>
 
-      <div id="news_articles_by_selection_div" style="display:none">
+      <form class="well form-search" id="news_articles_by_selection_div" style="display:none">
           <select class="chzn-select" style="width:200px;" id="location" data-placeholder="Choose a country..."></select>
 
           <select class="chzn-select" style="width:200px;" id="organization" data-placeholder="Choose an organization..."></select>
 
           <select class="chzn-select" style="width:200px;" id="person" data-placeholder="Choose a person..."></select>
-      </div>
+
+          <button class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
+      </form>
     </div> <!-- /container -->
 
 
