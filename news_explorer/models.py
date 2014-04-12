@@ -90,12 +90,12 @@ class ArticlebyPerson(models.Model):
     person = models.ForeignKey(Person)
     article = models.ForeignKey(Article)
     count = models.IntegerField(default=0)
-    objects = PersonManager()
+    object = PersonManager()
     objects = PersonLocationManager()
 
 class ArticlebyOrganization(models.Model):
     organization = models.ForeignKey(Organization)
     article = models.ForeignKey(Article)
     count = models.IntegerField(default=0)
-    objects = OrganizationManager()
+    object = OrganizationManager()
     objects = PersonOrganizationManager()

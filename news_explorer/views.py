@@ -56,52 +56,70 @@ def initiate_chosen(request, reqtype):
             return HttpResponse(response)
 
 def getJson(request):
-    if request.method == 'GET':
-        if request.GET["location_id"]:
-            location = request.GET.get('location_id', '')
-            L = ArticlebyLocation.object.articlesbylocation(location)
-            response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
-            return HttpResponse(response)
+    try:
+        if request.method == 'GET':
+            if 'location_id' in request.GET and 'person_id' in request.GET and 'organization_id'in request.GET:
+                person = request.GET.get('person_id', '')
+                location = request.GET.get('location_id', '')
+                organization = request.GET.get('organization_id', '')
+                f = Article.objects.articlesbypersonlocationorganization(person, location, organization)
+                response = HttpResponse(f, content_type="application/json", mimetype="application/json").content
+                return HttpResponse(response)
 
-        elif request.GET["person"]:
-            P = ArticlebyPerson.objects.articlesbyperson(person).values()
-            response = HttpResponse(P, content_type="application/json", mimetype="application/json").content
-            return HttpResponse(response)
+            elif 'person_id' in request.GET and 'location_id' in request.GET:
+                person = request.GET.get('person_id', '')
+                location = request.GET.get('location_id', '')
+                PL = ArticlebyPerson.objects.articlesbypersonlocation(person, location)
+                response = HttpResponse(PL, content_type="application/json", mimetype="application/json").content
+                return HttpResponse(response)
 
-        elif request.GET["organization"]:
-            O = ArticlebyOrganization.objects.articlebyorganization(organization).values()
-            response = HttpResponse(O, content_type="application/json", mimetype="application/json").content
-            return HttpResponse(response)
+            elif 'organization_id' in request.GET and 'location_id' in request.GET:
+                organization = request.GET.get('organization_id', '')
+                location = request.GET.get('location_id', '')
+                OL = ArticlebyLocation.objects.articlesbylocationorganization(location,organization).values()
+                response = HttpResponse(OL, content_type="application/json", mimetype="application/json").content
+                return HttpResponse(response)
 
-    if request.GET["location"] and request.GET["person"] and request.GET["organization"]:
-        f = Article.objects.articlesbypersonlocationorganization(person, location, organization).values()
-        response = HttpResponse(f, content_type="application/json", mimetype="application/json").content
-        return HttpResponse(response)
+            elif 'organization_id' in request.GET and 'person_id' in request.GET:
+                person = request.GET.get('person_id', '')
+                organization = request.GET.get('organization_id', '')
+                OP = ArticlebyOrganization.objects.articlesbypersonorganization(person,organization)
+                response = HttpResponse(OP, content_type="application/json", mimetype="application/json").content
+                return HttpResponse(response)
 
-    elif request.GET["person"] and request.GET["location"]:
-        PL = ArticlebyPerson.objects.articlesbypersonlocation(person,location).values()
-        response = HttpResponse(PL, content_type="application/json", mimetype="application/json").content
-        return HttpResponse(response)
+            elif 'location_id' in request.GET:
+                location = request.GET.get('location_id', '')
+                L = ArticlebyLocation.object.articlesbylocation(location)
+                response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+                return HttpResponse(response)
 
-    elif request.GET["organization"] and request.GET["location"]:
-        OL = ArticlebyLocation.objects.articlesbylocationorganization(location,organization).values()
-        response = HttpResponse(OL, content_type="application/json", mimetype="application/json").content
-        return HttpResponse(response)
+            elif 'person_id' in request.GET:
+                person = request.GET.get('person_id', '')
+                P = ArticlebyPerson.object.articlesbyperson(person)
+                response = HttpResponse(P, content_type="application/json", mimetype="application/json").content
+                return HttpResponse(response)
 
-    elif request.GET["organization"] and request.GET["person"]:
-        OP = ArticlebyOrganization.objects.articlesbypersonorganization(person,organization)
-        response = HttpResponse(OP, content_type="application/json", mimetype="application/json").content
-        return HttpResponse(response)
-    else:
-        A = Article.objects.values('id', 'headline')
-        response = HttpResponse(A, content_type="application/json", mimetype="application/json").content
-        return HttpResponse(response)
+            elif 'organization_id' in request.GET:
+                organization = request.GET.get('organization_id', '')
+                O = ArticlebyOrganization.object.articlebyorganization(organization)
+                response = HttpResponse(O, content_type="application/json", mimetype="application/json").content
+                return HttpResponse(response)
+
+            else:
+                A = Article.objects.values('id', 'headline')
+                response = HttpResponse(A, content_type="application/json", mimetype="application/json").content
+                return HttpResponse(response)
+
+    except:
+        print "Error"
+
+
 
 def click_article(request):
-	if request.method == 'GET':
-		articleid = request.GET['articleid']
-        	article = Article.objects.get(id = articleid)
-        	if article:
-	                article.clicks = article.clicks + 1
-	        	article.save()
-			return HttpResponse(article.clicks)
+    if request.method == 'GET':
+        articleid = request.GET['articleid']
+        article = Article.objects.get(id = articleid)
+        if article:
+            article.clicks = article.clicks + 1
+            article.save()
+            return HttpResponse(article.clicks)
