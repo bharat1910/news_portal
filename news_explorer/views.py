@@ -97,3 +97,11 @@ def getJson(request):
         response = HttpResponse(A, content_type="application/json", mimetype="application/json").content
         return HttpResponse(response)
 
+def click_article(request):
+	if request.method == 'GET':
+		articleid = request.GET['articleid']
+        	article = Article.objects.get(id = articleid)
+        	if article:
+	                article.clicks = article.clicks + 1
+	        	article.save()
+			return HttpResponse(article.clicks)
