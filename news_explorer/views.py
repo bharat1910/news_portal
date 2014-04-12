@@ -6,7 +6,7 @@ from django.utils import simplejson as Json
 from django.conf import settings
 from django.utils.importlib import import_module
 from news_explorer.models import File, Person, Organization, Location, Article, ArticlebyLocation, ArticlebyPerson\
-    ,ArticlebyOrganization, PersonManager,OrganizationManager,LocationManager
+    , ArticlebyOrganization, PersonManager,OrganizationManager,LocationManager
 
 def index(request):
     context = {}
@@ -76,7 +76,7 @@ def getJson(request):
             elif 'organization_id' in request.GET and 'location_id' in request.GET:
                 organization = request.GET.get('organization_id', '')
                 location = request.GET.get('location_id', '')
-                OL = ArticlebyLocation.objects.articlesbylocationorganization(location,organization).values()
+                OL = ArticlebyLocation.objects.articlesbylocationorganization(location,organization)
                 response = HttpResponse(OL, content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
@@ -104,7 +104,6 @@ def getJson(request):
                 O = ArticlebyOrganization.object.articlebyorganization(organization)
                 response = HttpResponse(O, content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
-
             else:
                 A = Article.objects.values('id', 'headline')
                 response = HttpResponse(A, content_type="application/json", mimetype="application/json").content
@@ -112,8 +111,6 @@ def getJson(request):
 
     except:
         print "Error"
-
-
 
 def click_article(request):
     if request.method == 'GET':
