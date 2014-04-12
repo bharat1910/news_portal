@@ -21,12 +21,12 @@ def jdefault(o):
         return list(o)
     return o.__dict__
 
-<<<<<<< HEAD
 '''def initiate(request,location,person,organization):
     if request.method == 'GET':
         if request.GET["location"]:
             L = Location.objects.values('name').distinct()
-            response = HttpResponse(Json.dumps(str(L), default=jdefault, indent=4), content_type="application/json",
+            response = HttpResponse(Json.dum
+            ps(str(L), default=jdefault, indent=4), content_type="application/json",
                                     mimetype="application/json").content
             return response
         if request.GET["person"]:
@@ -39,22 +39,21 @@ def jdefault(o):
             response = HttpResponse(Json.dumps(str(O), default=jdefault, indent=4), content_type="application/json",
                                     mimetype="application/json").content
             return response'''
-=======
+
 def initiate_chosen(request, reqtype):
-	if request.method == 'GET':
-		if reqtype == "location":
-		       	L = Location.objects.values('id','name')
-            		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
-			return HttpResponse(response)
-		elif reqtype == "organization":
-			L = Organization.objects.values('id','name')
-            		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
-			return HttpResponse(response)
-		elif reqtype == "person":
-			L = Person.objects.values('id','name')
-            		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
-			return HttpResponse(response)
->>>>>>> 17ec95293522d03fd082dfeba1faba3307f8031a
+    if request.method == 'GET':
+        if reqtype == "location":
+            L = Location.objects.values('id','name')
+            response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+            return HttpResponse(response)
+        elif reqtype == "organization":
+            L = Organization.objects.values('id','name')
+            response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+            return HttpResponse(response)
+        elif reqtype == "person":
+            L = Person.objects.values('id', 'name')
+            response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+            return HttpResponse(response)
 
 def getJson(request, location, person, organization):
     if request.method == 'GET':
@@ -91,7 +90,6 @@ def getJson(request, location, person, organization):
                                 mimetype="application/json").content
         return response
     elif request.GET["organization"] and request.GET["person"]:
-<<<<<<< HEAD
         OP = ArticlebyOrganization.objects.articlesbypersonorganization(person,organization)
         response = HttpResponse(Json.dumps(str(OP), default=jdefault, indent=4), content_type="application/json",
                                 mimetype="application/json").content
@@ -102,6 +100,3 @@ def getJson(request, location, person, organization):
                                 mimetype="application/json").content
         return response
 
-=======
-        return response'''
->>>>>>> 17ec95293522d03fd082dfeba1faba3307f8031a
