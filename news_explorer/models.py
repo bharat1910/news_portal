@@ -1,10 +1,10 @@
-from django.db import models, connection, connections
+from django.db import models, connection
 # create your models here
 class PersonManager(models.Manager):
     def articlesbyperson(self, personid):
         cursor = connection.cursor()
         cursor.execute("select id,headline from news_explorer_article where id in "
-                       "(select article_id from news_explorer_articlebyperson where person_id = %s)", [personid])
+                       "(select article_id from news_explorer_articlebyperson where person_id = %s) order by clicks", [personid])
         rows = cursor.fetchall()
         return rows
 
@@ -12,7 +12,7 @@ class LocationManager(models.Manager):
     def articlesbylocation(self, locationid):
         cursor = connection.cursor()
         cursor.execute("select id,headline from news_explorer_article where id in "
-                       "(select article_id from news_explorer_articlebylocation where location_id = %s)", [locationid])
+                       "(select article_id from news_explorer_articlebylocation where location_id = %s) order by clicks", [locationid])
         rows = cursor.fetchall()
         return rows
 
@@ -20,35 +20,35 @@ class OrganizationManager(models.Manager):
     def articlebyorganization(self,organizationid):
         cursor = connection.cursor()
         cursor.execute("select id,headline from news_explorer_article where id in "
-                       "(select article_id from news_explorer_articlebyorganization where organization_id = %s)", [organizationid])
+                       "(select article_id from news_explorer_articlebyorganization where organization_id = %s) order by clicks", [organizationid])
         rows = cursor.fetchall()
         return rows
 
 class PersonLocationManager(models.Manager):
     def articlesbypersonlocation(self,personid,locationid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline from news_explorer_article where id in (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l where person_id = %s and location_id = %s and p.article_id = l.article_id)", [personid, locationid])
+        cursor.execute("select id,headline from news_explorer_article where id in (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l where person_id = %s and location_id = %s and p.article_id = l.article_id) order by clicks", [personid, locationid])
         rows = cursor.fetchall()
         return rows
 
 class PersonOrganizationManager(models.Manager):
     def articlesbypersonorganization(self,personid,organizationid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline from news_explorer_article where id in (select p.article_id from news_explorer_articlebyperson p, news_explorer_articlebyorganization o where person_id = %s and organization_id = %s and p.article_id = o.article_id)", [personid, organizationid])
+        cursor.execute("select id,headline from news_explorer_article where id in (select p.article_id from news_explorer_articlebyperson p, news_explorer_articlebyorganization o where person_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks", [personid, organizationid])
         rows = cursor.fetchall()
         return rows
 
 class LocationOrganizationManager(models.Manager):
     def articlesbylocationorganization(self, locationid, organizationid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline from news_explorer_article where id in (select p.article_id from news_explorer_articlebylocation p,news_explorer_articlebyorganization o where location_id = %s and organization_id = %s and p.article_id = o.article_id)", [locationid, organizationid])
+        cursor.execute("select id,headline from news_explorer_article where id in (select p.article_id from news_explorer_articlebylocation p,news_explorer_articlebyorganization o where location_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks", [locationid, organizationid])
         rows = cursor.fetchall()
         return rows
 
 class PersonLocationOrganizationManager(models.Manager):
     def articlesbypersonlocationorganization(self,personid,locationid,organizationid):
         cursor = connection.cursor()
-        cursor.execute("select id,headline from news_explorer_article where id in (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l, news_explorer_articlebyorganization o where person_id = %s and location_id = %s and organization_id = %s and p.article_id = l.article_id = o.article_id)", [personid, locationid, organizationid])
+        cursor.execute("select id,headline from news_explorer_article where id in (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l, news_explorer_articlebyorganization o where person_id = %s and location_id = %s and organization_id = %s and p.article_id = l.article_id = o.article_id) order by clicks", [personid, locationid, organizationid])
         rows = cursor.fetchall()
         return rows
 
