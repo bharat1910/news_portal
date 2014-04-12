@@ -39,7 +39,7 @@ def initiate_chosen(request, reqtype):
 def getJson(request):
     try:
         if request.method == 'GET':
-            if 'location_id' in request.GET and 'person_id' in request.GET and 'organization_id'in request.GET and 'pid' in request.GET:
+            if 'location_id' in request.GET and 'person_id' in request.GET and 'organization_id'in request.GET or 'pid' in request.GET:
                 person = request.GET.get('person_id', '')
                 location = request.GET.get('location_id', '')
                 organization = request.GET.get('organization_id', '')
@@ -48,7 +48,7 @@ def getJson(request):
                 response = HttpResponse(f, content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
-            elif 'person_id' in request.GET and 'location_id' in request.GET and 'pid' in request.GET:
+            elif 'person_id' in request.GET and 'location_id' in request.GET or 'pid' in request.GET:
                 person = request.GET.get('person_id', '')
                 location = request.GET.get('location_id', '')
                 pid = request.GET.get('pid', '')
@@ -56,7 +56,7 @@ def getJson(request):
                 response = HttpResponse(PL, content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
-            elif 'organization_id' in request.GET and 'location_id' in request.GET and 'pid' in request.GET:
+            elif 'organization_id' in request.GET and 'location_id' in request.GET or 'pid' in request.GET:
                 organization = request.GET.get('organization_id', '')
                 location = request.GET.get('location_id', '')
                 pid =  request.GET.get('pid', '')
@@ -64,7 +64,7 @@ def getJson(request):
                 response = HttpResponse(OL, content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
-            elif 'organization_id' in request.GET and 'person_id' in request.GET and 'pid' in request.GET:
+            elif 'organization_id' in request.GET and 'person_id' in request.GET or 'pid' in request.GET:
                 person = request.GET.get('person_id', '')
                 organization = request.GET.get('organization_id', '')
                 pid = request.GET.get('pid', '')
@@ -72,21 +72,21 @@ def getJson(request):
                 response = HttpResponse(OP, content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
-            elif 'location_id' in request.GET and 'pid' in request.GET:
+            elif 'location_id' in request.GET or 'pid' in request.GET:
                 location = request.GET.get('location_id', '')
                 pid = request.GET.get('pid', '')
                 L = ArticlebyLocation.object.articlesbylocation(location, pid)
                 response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
-            elif 'person_id' in request.GET and 'pid' in request.GET:
+            elif 'person_id' in request.GET or 'pid' in request.GET:
                 person = request.GET.get('person_id', '')
                 pid = request.GET.get('pid', '')
                 P = ArticlebyPerson.object.articlesbyperson(person,pid)
                 response = HttpResponse(P, content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
-            elif 'organization_id' in request.GET and 'pid' in request.GET:
+            elif 'organization_id' in request.GET or 'pid' in request.GET:
                 organization = request.GET.get('organization_id', '')
                 pid = request.GET.get('pid', '')
                 O = ArticlebyOrganization.object.articlebyorganization(organization, pid)
