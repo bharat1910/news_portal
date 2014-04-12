@@ -117,9 +117,18 @@ def getJson(request):
 
 def click_article(request):
     if request.method == 'GET':
-        articleid = request.GET['articleid']
+        articleid = request.GET['article_id']
         article = Article.objects.get(id = articleid)
         if article:
             article.clicks = article.clicks + 1
             article.save()
-            return HttpResponse(article.clicks)
+	    response = HttpResponse(article.clicks).content
+            return HttpResponse(response)
+
+def article_content(request):
+    if request.method == 'GET':
+        articleid = request.GET['article_id']
+        article = Article.objects.get(id = articleid)
+        if article:
+	    response = HttpResponse(article.content).content
+            return HttpResponse(response)
