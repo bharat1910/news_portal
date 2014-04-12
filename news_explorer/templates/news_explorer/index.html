@@ -127,7 +127,7 @@
         function showSelectOptions()
         {
             $.get("person", function( data ) {
-                data = eval("[" + data.replace(/: u/g, ':').replace(/}{/g, '},{').replace(/L,/g, ',') + "]");
+                data = eval(data);
                 for (var i=0; i<data.length; i++) {
                     $('#person')
                         .append($("<option></option>")
@@ -138,7 +138,7 @@
             });
 
             $.get("location", function( data ) {
-                data = eval("[" + data.replace(/: u/g, ':').replace(/}{/g, '},{').replace(/L,/g, ',') + "]");
+                data = eval(data);
                 for (var i=0; i<data.length; i++) {
                     $('#location')
                         .append($("<option></option>")
@@ -149,7 +149,7 @@
             });
 
             $.get("organization", function( data ) {
-                data = eval("[" + data.replace(/: u/g, ':').replace(/}{/g, '},{').replace(/L,/g, ',') + "]");
+                data = eval(data);
                 for (var i=0; i<data.length; i++) {
                     $('#organization')
                         .append($("<option></option>")

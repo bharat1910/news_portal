@@ -29,7 +29,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="55" selection-start="7259" selection-end="7259" vertical-scroll-proportion="0.25222024" vertical-offset="2438" max-vertical-offset="3225">
+            <state line="151" column="32" selection-start="6291" selection-end="6291" vertical-scroll-proportion="0.5737122" vertical-offset="1942" max-vertical-offset="3300">
               <folding>
                 <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -43,7 +43,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="2070">
+            <state line="19" column="0" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2310">
               <folding />
             </state>
           </provider>
@@ -548,14 +548,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1875">
+        <state line="19" column="0" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2310">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="55" selection-start="7259" selection-end="7259" vertical-scroll-proportion="0.25222024" vertical-offset="2438" max-vertical-offset="3225">
+        <state line="151" column="32" selection-start="6291" selection-end="6291" vertical-scroll-proportion="0.5737122" vertical-offset="1942" max-vertical-offset="3300">
           <folding>
             <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
