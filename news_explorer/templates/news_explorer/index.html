@@ -192,12 +192,18 @@
                     }
 
                     $(".collapsed").bind('click', function() {
+                        if(this.getAttribute('class') != "collapsed") {
+                            return;
+                        }
+
                         article_id = this.getAttribute('article_id');
                         $.get("article_content", {article_id : article_id},
                             function(data) {
                                 $($("#" + article_id).find('.panel-body')[0]).html(data);
                             }
                         );
+
+                        $.get("click_article", {article_id : article_id});
                     });
                 }
             );
