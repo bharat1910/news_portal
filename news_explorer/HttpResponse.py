@@ -13,12 +13,23 @@ def jdefault(o):
         return list(o)
     return o.__dict__
 
-def initiate():
-    L = Location.objects.values()
-    response = HttpResponse(Json.dumps(str(L), default=jdefault, indent=4),content_type="application/json",
-                            mimetype="application/json").content
-    return response
-
+def initiate(request):
+    if request.method == 'GET':
+        if request.GET["location"]:
+            L = Location.objects.values('name').distinct()
+            response = HttpResponse(Json.dumps(str(L), default=jdefault, indent=4), content_type="application/json",
+                                    mimetype="application/json").content
+            return response
+        if request.GET["person"]:
+            P = Person.objects.values('name').distinct()
+            response = HttpResponse(Json.dumps(str(P), default=jdefault, indent=4), content_type="application/json",
+                                    mimetype="application/json").content
+            return response
+        if request.GET["organization"]:
+            O = Organization.objects.values('name').distinct()
+            response = HttpResponse(Json.dumps(str(O), default=jdefault, indent=4), content_type="application/json",
+                                    mimetype="application/json").content
+            return response
 
 def getJson(request):
     if request.method == 'GET':

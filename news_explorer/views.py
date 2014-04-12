@@ -5,8 +5,7 @@ from django.http import HttpResponse, HttpRequest
 from django.utils import simplejson as Json
 from django.conf import settings
 from django.utils.importlib import import_module
-from news_explorer.models import File, Person, Organization, Location, Article, ArticlebyLocation, ArticlebyPerson\
-    ,ArticlebyOrganization, PersonManager,OrganizationManager,LocationManager
+from news_explorer.models import File, Person, Organization, Location, Article
 
 def index(request):
     context = {}
@@ -21,25 +20,6 @@ def jdefault(o):
         return list(o)
     return o.__dict__
 
-<<<<<<< HEAD
-'''def initiate(request,location,person,organization):
-    if request.method == 'GET':
-        if request.GET["location"]:
-            L = Location.objects.values('name').distinct()
-            response = HttpResponse(Json.dumps(str(L), default=jdefault, indent=4), content_type="application/json",
-                                    mimetype="application/json").content
-            return response
-        if request.GET["person"]:
-            P = Person.objects.values('name').distinct()
-            response = HttpResponse(Json.dumps(str(P), default=jdefault, indent=4), content_type="application/json",
-                                    mimetype="application/json").content
-            return response
-        if request.GET["organization"]:
-            O = Organization.objects.values('name').distinct()
-            response = HttpResponse(Json.dumps(str(O), default=jdefault, indent=4), content_type="application/json",
-                                    mimetype="application/json").content
-            return response'''
-=======
 def initiate_chosen(request, reqtype):
 	if request.method == 'GET':
 		if reqtype == "location":
@@ -54,54 +34,38 @@ def initiate_chosen(request, reqtype):
 			L = Person.objects.values('id','name')
             		response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
 			return HttpResponse(response)
->>>>>>> 17ec95293522d03fd082dfeba1faba3307f8031a
 
-def getJson(request, location, person, organization):
+def getJson(request):
     if request.method == 'GET':
         if request.GET["location"]:
-            L = ArticlebyLocation.objects.articlesbylocation(location).values()
+            name = request.GET.get('location', '')
+            L = Location.objects.extra(where=['name=%s'], params=[name]).values()
             response = HttpResponse(Json.dumps(str(L), default=jdefault, indent=4), content_type="application/json",
                                     mimetype="application/json").content
             return response
         elif request.GET["person"]:
-            P = ArticlebyPerson.objects.articlesbyperson(person).values()
+            name = request.GET.get('person', '')
+            P = Person.objects.extra(where=['name=%s'], params=[name]).values()
             response = HttpResponse(Json.dumps(str(P), default=jdefault, indent=4), content_type="application/json",
                                     mimetype="application/json").content
             return response
         elif request.GET["organization"]:
-            O = ArticlebyOrganization.objects.articlebyorganization(organization).values()
+            name = request.GET.get('organization', '')
+            O = Organization.objects.extra(where=['name=%s'], params=[name]).values()
             response = HttpResponse(Json.dumps(str(O), default=jdefault, indent=4), content_type="application/json",
                                     mimetype="application/json").content
             return response
 
-    if request.GET["location"] and request.GET["person"] and request.GET["organization"]:
-        f = Article.objects.articlesbypersonlocationorganization(person, location, organization).values()
+    '''if request.GET["location"] and request.GET["person"] and request.GET["organization"]:
+        f = File.objects.values()
+        response_data = f
         response = HttpResponse(Json.dumps(str(f), default=jdefault, indent=4), content_type="application/json",
-                                mimetype="application/json").content
+                                mimetype="application/json")
         return response
 
     elif request.GET["person"] and request.GET["location"]:
-        PL = ArticlebyPerson.objects.articlesbypersonlocation(person,location).values()
-        response = HttpResponse(Json.dumps(str(PL), default=jdefault, indent=4), content_type="application/json",
-                                mimetype="application/json").content
         return response
     elif request.GET["organization"] and request.GET["location"]:
-        OL = ArticlebyLocation.objects.articlesbylocationorganization(location,organization).values()
-        response = HttpResponse(Json.dumps(str(OL), default=jdefault, indent=4), content_type="application/json",
-                                mimetype="application/json").content
         return response
     elif request.GET["organization"] and request.GET["person"]:
-<<<<<<< HEAD
-        OP = ArticlebyOrganization.objects.articlesbypersonorganization(person,organization)
-        response = HttpResponse(Json.dumps(str(OP), default=jdefault, indent=4), content_type="application/json",
-                                mimetype="application/json").content
-        return response
-    else:
-        A = Article.objects.values('id', 'headline')
-        response = HttpResponse(Json.dumps(str(A), default=jdefault, indent=4), content_type="application/json",
-                                mimetype="application/json").content
-        return response
-
-=======
         return response'''
->>>>>>> 17ec95293522d03fd082dfeba1faba3307f8031a
