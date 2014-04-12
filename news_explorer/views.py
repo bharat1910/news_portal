@@ -45,7 +45,7 @@ def getJson(request):
                 organization = request.GET.get('organization_id', '')
                 pid = request.GET.get('pid', '')
                 f = Article.objects.articlesbypersonlocationorganization(person, location, organization, pid)
-                response = HttpResponse(f, content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(f), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
             elif 'person_id' in request.GET and 'location_id' in request.GET or 'pid' in request.GET:
@@ -53,7 +53,7 @@ def getJson(request):
                 location = request.GET.get('location_id', '')
                 pid = request.GET.get('pid', '')
                 PL = ArticlebyPerson.objects.articlesbypersonlocation(person, location, pid)
-                response = HttpResponse(PL, content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(PL), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
             elif 'organization_id' in request.GET and 'location_id' in request.GET or 'pid' in request.GET:
@@ -61,7 +61,7 @@ def getJson(request):
                 location = request.GET.get('location_id', '')
                 pid =  request.GET.get('pid', '')
                 OL = ArticlebyLocation.objects.articlesbylocationorganization(location,organization,pid)
-                response = HttpResponse(OL, content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(OL), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
             elif 'organization_id' in request.GET and 'person_id' in request.GET or 'pid' in request.GET:
@@ -69,32 +69,32 @@ def getJson(request):
                 organization = request.GET.get('organization_id', '')
                 pid = request.GET.get('pid', '')
                 OP = ArticlebyOrganization.objects.articlesbypersonorganization(person,organization,pid)
-                response = HttpResponse(OP, content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(OP), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
             elif 'location_id' in request.GET or 'pid' in request.GET:
                 location = request.GET.get('location_id', '')
                 pid = request.GET.get('pid', '')
                 L = ArticlebyLocation.object.articlesbylocation(location, pid)
-                response = HttpResponse(L, content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(L), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
             elif 'person_id' in request.GET or 'pid' in request.GET:
                 person = request.GET.get('person_id', '')
                 pid = request.GET.get('pid', '')
                 P = ArticlebyPerson.object.articlesbyperson(person,pid)
-                response = HttpResponse(P, content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(P), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
             elif 'organization_id' in request.GET or 'pid' in request.GET:
                 organization = request.GET.get('organization_id', '')
                 pid = request.GET.get('pid', '')
                 O = ArticlebyOrganization.object.articlebyorganization(organization, pid)
-                response = HttpResponse(O, content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(O), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
             else:
                 A = Article.objects.values('id', 'headline', 'clicks')
-                response = HttpResponse(A, content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
     except:
@@ -117,3 +117,17 @@ def article_content(request):
         if article:
             response = HttpResponse(article.content).content
             return HttpResponse(response)
+
+def  convertListToMap(lists):
+    result = []
+    for list in lists:
+        result.append(convertEachListToMap(list))
+    return result
+
+def convertEachListToMap(list):
+    result = {}
+    result['id'] = list[0]
+    result['headline'] = list[1]
+    result['clicks'] = list[2]
+    result['published_date'] = list[3]
+    return result
