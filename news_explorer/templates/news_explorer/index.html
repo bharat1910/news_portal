@@ -179,6 +179,7 @@
                                                             '<a data-toggle="collapse" data-parent="#search_results" class="collapsed" article_id=' + data[i].id + ' href="#' + data[i].id + '">' +
                                                                  headline +
                                                             '</a>' +
+                                                            '<button style="float:right" class="btn btn-default btn-info btn-xs disabled" id="button_' + data[i].id + '"> <span class="glyphicon glyphicon-ok"></span> ' + data[i].clicks + '</button>' +
                                                         '</h4>' +
                                                     '</div>' +
                                                     '<div id=' + data[i].id + ' class="panel-collapse collapse" style="height:0px">' +
@@ -200,7 +201,11 @@
                             }
                         );
 
-                        $.get("click_article", {article_id : article_id});
+                        $.get("click_article", {article_id : article_id},
+                            function(data) {
+                                $("#button_" + article_id).html(' <span class="glyphicon glyphicon-ok"></span> ' + data);
+                            }
+                        );
                     });
                 }
             );
