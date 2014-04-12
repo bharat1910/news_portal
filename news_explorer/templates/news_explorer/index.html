@@ -88,7 +88,7 @@
           <button id="search_button" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
       </form>
 
-      <div class="panel-group" id="accordion">
+      <div class="panel-group" id="search_results">
 
       </div>
 
@@ -170,27 +170,35 @@
                     data = data.substring(0, data.length - 1).substring(1);
                     articles = data.replace(/u"/g, '"').split(")(");
 
-                    $("#accordion").empty();
+                    $("#search_results").empty();
 
                     for (var i=0; i<articles.length; i++) {
                         var headline = articles[i].substring(articles[i].indexOf(',')+1).trim();
                         headline = headline.substring(0, headline.length - 1).substring(1);
 
-                        $("#accordion").append('<div class="panel panel-default">' +
+                        $("#search_results").append('<div class="panel panel-default">' +
                                                     '<div class="panel-heading">' +
                                                         '<h4 class="panel-title">' +
-                                                            '<a data-toggle="collapse" data-parent="#accordion" href="#' + articles[i].substring(0, articles[i].indexOf(',')).replace(/L/g, '') + '">' +
+                                                            '<a data-toggle="collapse" data-parent="#search_results" class="collapsed" article_id=' + articles[i].substring(0, articles[i].indexOf(',')).replace(/L/g, '') + ' href="#' + articles[i].substring(0, articles[i].indexOf(',')).replace(/L/g, '') + '">' +
                                                                  headline +
                                                             '</a>' +
                                                         '</h4>' +
                                                     '</div>' +
-                                                    '<div id=' + articles[i].substring(0, articles[i].indexOf(',')).replace(/L/g, '') + ' class="panel-collapse collapse in">' +
+                                                    '<div id=' + articles[i].substring(0, articles[i].indexOf(',')).replace(/L/g, '') + ' class="panel-collapse collapse" style="height:0px">' +
                                                         '<div class="panel-body">' +
-                                                            'Content' +
                                                         '</div>' +
                                                     '</div>' +
                                                '</div>');
                     }
+
+                    $(".collapsed").bind('click', function() {
+                        article_id = this.getAttribute('article_id');
+                        $.get("article_content", {article_id : article_id},
+                            function(data) {
+                                $($("#" + article_id).find('.panel-body')[0]).html(data);
+                            }
+                        );
+                    });
                 }
             );
         });
