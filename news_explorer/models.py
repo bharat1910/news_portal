@@ -64,6 +64,7 @@ class Article(models.Model):
       headline = models.CharField(max_length=300)
       content = models.CharField(max_length=10000)
       number = models.IntegerField(default=0)
+      clicks = models.IntegerField(default=0)
       objects = PersonLocationOrganizationManager()
 
 class Location(models.Model):
