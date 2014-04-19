@@ -45,25 +45,9 @@
               </div>
               <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                      <li id="news_articles_by_selection"><a href="#">News Article Viewer</a></li>
+                  <li id="news_articles_by_selection_li"><a href="#">News Article Viewer</a></li>
+                  <li id="news_articles_chart_li"><a href="#">Chart Visualisation</a></li>
                   <li><a href="#">Map Visualisation</a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li class="divider"></li>
-                      <li class="dropdown-header">Nav header</li>
-                      <li><a href="#">Separated link</a></li>
-                      <li><a href="#">One more separated link</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="active"><a href="./">Default</a></li>
-                  <li><a href="../navbar-static-top/">Static top</a></li>
-                  <li><a href="../navbar-fixed-top/">Fixed top</a></li>
                 </ul>
               </div><!--/.nav-collapse -->
             </div><!--/.container-fluid -->
@@ -73,9 +57,6 @@
       <div class="jumbotron" id="default">
         <h1>News Explorer!</h1>
         <p>Work in progress .. </p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
       </div>
 
       <form class="well form-search" id="news_articles_by_selection_div" style="display:none">
@@ -92,6 +73,19 @@
 
       </div>
 
+      <form class="well form-search" id="news_articles_chart_div" style="display:none">
+          <select class="chzn-select-chart" style="width:200px;" id="location_chart" data-placeholder="Choose a country..."></select>
+
+          <select class="chzn-select-chart" style="width:200px;" id="organization_chart" data-placeholder="Choose an organization..."></select>
+
+          <select class="chzn-select-chart" style="width:200px;" id="person_chart" data-placeholder="Choose a person..."></select>
+
+          <button id="search_button_chart" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
+      </form>
+
+      <div class="panel-group" id="highcharts">
+
+      </div>
     </div> <!-- /container -->
 
 
@@ -106,11 +100,20 @@
 
     <script>
 
-        $("#news_articles_by_selection").bind('click', function() {
+        $("#news_articles_by_selection_li").bind('click', function() {
             $("#default").hide();
+            $("#news_articles_chart_div").hide();
             $("#news_articles_by_selection_div").show();
 
             showSelectOptions();
+        });
+
+        $("#news_articles_chart_li").bind('click', function() {
+            $("#default").hide();
+            $("#news_articles_by_selection_div").hide();
+            $("#news_articles_chart_div").show();
+
+            showChartSelectOptions();
         });
 
         $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
@@ -161,6 +164,46 @@
 
             $(function(){
                 $(".chzn-select").chosen();
+            });
+        }
+
+        function showChartSelectOptions()
+        {
+            $.get("person", function( data ) {
+                data = eval(data);
+                for (var i=0; i<data.length; i++) {
+                    $('#person_chart')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#person_chart").trigger("chosen:updated");
+            });
+
+            $.get("location", function( data ) {
+                data = eval(data);
+                for (var i=0; i<data.length; i++) {
+                    $('#location_chart')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#location_chart").trigger("chosen:updated");
+            });
+
+            $.get("organization", function( data ) {
+                data = eval(data);
+                for (var i=0; i<data.length; i++) {
+                    $('#organization_chart')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#organization_chart").trigger("chosen:updated");
+            });
+
+            $(function(){
+                $(".chzn-select-chart").chosen();
             });
         }
 
