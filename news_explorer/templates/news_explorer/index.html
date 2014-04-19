@@ -165,7 +165,9 @@
         }
 
         $("#search_button").bind('click', function() {
-            $.get("articles",  {location_id : $("#location").val()},
+            $.get("articles",  {location_id : $("#location").val(),
+                                organization_id : $("#organization").val(),
+                                person_id : $("#person").val()},
                 function( data ) {
                     $("#search_results").empty();
                     data = eval(data);
