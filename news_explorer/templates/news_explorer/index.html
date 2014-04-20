@@ -136,6 +136,9 @@
         {
             $.get("person", function( data ) {
                 data = eval(data);
+
+                addDefault($('#person'));
+
                 for (var i=0; i<data.length; i++) {
                     $('#person')
                         .append($("<option></option>")
@@ -147,6 +150,9 @@
 
             $.get("location", function( data ) {
                 data = eval(data);
+
+                addDefault($('#location'));
+
                 for (var i=0; i<data.length; i++) {
                     $('#location')
                         .append($("<option></option>")
@@ -158,6 +164,9 @@
 
             $.get("organization", function( data ) {
                 data = eval(data);
+
+                addDefault($('#organization'));
+
                 for (var i=0; i<data.length; i++) {
                     $('#organization')
                         .append($("<option></option>")
@@ -176,6 +185,9 @@
         {
             $.get("person", function( data ) {
                 data = eval(data);
+
+                addDefault($('#person_chart'));
+
                 for (var i=0; i<data.length; i++) {
                     $('#person_chart')
                         .append($("<option></option>")
@@ -187,6 +199,9 @@
 
             $.get("location", function( data ) {
                 data = eval(data);
+
+                addDefault($('#location_chart'));
+
                 for (var i=0; i<data.length; i++) {
                     $('#location_chart')
                         .append($("<option></option>")
@@ -198,6 +213,9 @@
 
             $.get("organization", function( data ) {
                 data = eval(data);
+
+                addDefault($('#organization_chart'));
+
                 for (var i=0; i<data.length; i++) {
                     $('#organization_chart')
                         .append($("<option></option>")
@@ -212,10 +230,16 @@
             });
         }
 
+        function addDefault(div$)
+        {
+            div$.append("<option></option>");
+        }
+
         $("#search_button").bind('click', function() {
-            $.get("articles",  {location_id : $("#location").val(),
-                                organization_id : $("#organization").val(),
-                                person_id : $("#person").val()},
+
+            inputParameters = getInputParameters();
+
+            $.get("articles", inputParameters,
                 function( data ) {
                     $("#search_results").empty();
                     data = eval(data);
@@ -264,9 +288,10 @@
         });
 
         $("#search_button_chart").bind('click', function() {
-            $.get("articles",  {location_id : $("#location").val(),
-                                organization_id : $("#organization").val(),
-                                person_id : $("#person").val()},
+
+            inputParameters = getChartInputParameters();
+
+            $.get("articles",  inputParameters,
             function( data ) {
                 eachArticleClickCount = new Array();
 
@@ -311,6 +336,42 @@
                 $('#highcharts_div').show();
             });
         });
+
+        function getInputParameters()
+        {
+            var result = {};
+            if ($("#location").val() != "") {
+                result['location_id'] = $("#location").val();
+            }
+
+            if ($("#organization").val() != "") {
+                result['organization_id'] = $("#organization").val();
+            }
+
+            if ($("#person").val() != "") {
+                result['person_id'] = $("#person").val();
+            }
+
+            return result;
+        }
+
+        function getChartInputParameters()
+        {
+            var result = {};
+            if ($("#location_chart").val() != "") {
+                result['location_id'] = $("#location_chart").val();
+            }
+
+            if ($("#organization_chart").val() != "") {
+                result['organization_id'] = $("#organization_chart").val();
+            }
+
+            if ($("#person_chart").val() != "") {
+                result['person_id'] = $("#person_chart").val();
+            }
+
+            return result;
+        }
     </script>
   </body>
 </html>
