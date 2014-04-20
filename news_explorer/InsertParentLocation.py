@@ -10,11 +10,10 @@ try:
 
         L = Location.objects.all()
         for l in L:
-            if l.name not in locationToParentMap.keys():
-                locationToParentMap[l.name] = getParent(l.name)
+            locationToParentMap[l.name] = getParent(l.name)
 
-                if locationToParentMap[l.name] not in parents:
-                    parents.append(locationToParentMap[l.name])
+            if locationToParentMap[l.name] not in parents:
+                parents.append(locationToParentMap[l.name])
 
         for p in parents:
             pl = ParentLocation(name = p)
