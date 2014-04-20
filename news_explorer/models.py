@@ -150,7 +150,7 @@ class ParentLocation(models.Model):
 class Location(models.Model):
     #article = models.ForeignKey(Article)
     name = models.CharField(max_length=200)
-    parentlocation = models.ForeignKey(ParentLocation)
+    parentlocation_id = models.IntegerField(default=0)
     objects = LocationLookup()
 
 class Person(models.Model):
