@@ -83,7 +83,7 @@
           <button id="search_button_chart" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
       </form>
 
-      <div class="panel-group" id="highcharts_div" style="width:90%;height:400px">
+      <div class="panel-group" id="highcharts_div" style="height:400px">
 
       </div>
     </div> <!-- /container -->
@@ -300,7 +300,13 @@
                     eachArticleClickCount.push({x : i, y : data[i].clicks});
                 }
 
+                $("#news_articles_chart_div").width($("#news_articles_chart_div").width());
+
                 $('#highcharts_div').highcharts({
+                    chart: {
+                        borderColor: '#F5F5F5',
+                        borderWidth: 3
+                    },
                     title: {
                         text: 'Article Click Count',
                         x: -20 //center
