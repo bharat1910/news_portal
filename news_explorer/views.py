@@ -97,8 +97,12 @@ def getJson(request):
                 response = HttpResponse(Json.dumps(convertListToMap(O), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
             else:
-                A = Article.objects.values('id', 'headline', 'clicks', 'file__published_date')
-		#response = HttpResponse(A).content
+                if 'pid' in request.GET:
+                    pid = request.GET.get('pid', '')
+                    if pid == '1':
+                        A = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('clicks')
+                    elif pid == '2':
+                        A = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('-clicks')
                 response = HttpResponse(Json.dumps(convertValuesToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
