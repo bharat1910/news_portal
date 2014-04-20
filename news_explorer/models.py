@@ -27,6 +27,10 @@ class PersonManager(models.Manager):
         if pid == '1':
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                            " (select article_id from news_explorer_articlebyperson where person_id = %s) order by clicks desc;", [personid])
+        elif pid == '2':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select article_id from news_explorer_articlebyperson where person_id = %s) order by clicks;", [personid])
+
         else:
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                            " (select article_id from news_explorer_articlebyperson where person_id = %s) order by published_date desc;", [personid])
@@ -36,9 +40,13 @@ class PersonManager(models.Manager):
 class LocationManager(models.Manager):
     def articlesbylocation(self, locationid, pid):
         cursor = connection.cursor()
-        if pid == '1':
+        print pid
+        if pid == 1:
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                            " (select article_id from news_explorer_articlebylocation where location_id = %s) order by clicks desc;", [locationid])
+        elif pid == 2:
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select article_id from news_explorer_articlebylocation where location_id = %s) order by clicks;", [locationid])
         else:
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                    " (select article_id from news_explorer_articlebylocation where location_id = %s) order by published_date desc;", [locationid])
@@ -51,6 +59,9 @@ class OrganizationManager(models.Manager):
         if pid == '1':
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                            " (select article_id from news_explorer_articlebyorganization where organization_id = %s) order by clicks desc;", [organizationid])
+        elif pid == '2':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select article_id from news_explorer_articlebyorganization where organization_id = %s) order by clicks;", [organizationid])
         else:
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                    "(select article_id from news_explorer_articlebyorganization where organization_id = %s) order by published_date desc;", [organizationid])
@@ -63,6 +74,9 @@ class PersonLocationManager(models.Manager):
         if pid == '1':
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                            " (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l where person_id = %s and location_id = %s and p.article_id = l.article_id) order by clicks desc;", [personid, locationid])
+        elif pid == '2':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l where person_id = %s and location_id = %s and p.article_id = l.article_id) order by clicks;", [personid, locationid])
         else:
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                    "(select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l where person_id = %s and location_id = %s and p.article_id = l.article_id) order by published_date desc;", [personid, locationid])
@@ -75,6 +89,9 @@ class PersonOrganizationManager(models.Manager):
         if pid == '1':
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                            " (select p.article_id from news_explorer_articlebyperson p, news_explorer_articlebyorganization o where person_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks desc;", [personid,organizationid])
+        elif pid == '2':
+                        cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select p.article_id from news_explorer_articlebyperson p, news_explorer_articlebyorganization o where person_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks;", [personid,organizationid])
         else:
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                    "(select p.article_id from news_explorer_articlebyperson p, news_explorer_articlebyorganization o where person_id = %s and organization_id = %s and p.article_id = o.article_id) order by published_date desc;", [personid,organizationid])
@@ -87,6 +104,9 @@ class LocationOrganizationManager(models.Manager):
         if pid == '1':
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                            " (select p.article_id from news_explorer_articlebylocation p,news_explorer_articlebyorganization o where location_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks desc;", [locationid,organizationid])
+        elif pid == '2':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select p.article_id from news_explorer_articlebylocation p,news_explorer_articlebyorganization o where location_id = %s and organization_id = %s and p.article_id = o.article_id) order by clicks;", [locationid,organizationid])
         else:
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                    "(select p.article_id from news_explorer_articlebylocation p,news_explorer_articlebyorganization o where location_id = %s and organization_id = %s and p.article_id = o.article_id) order by published_date desc;", [locationid, organizationid])
@@ -99,6 +119,9 @@ class PersonLocationOrganizationManager(models.Manager):
         if pid == '1':
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                            " (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l, news_explorer_articlebyorganization o where person_id = %s and location_id = %s and organization_id = %s and p.article_id = l.article_id = o.article_id) order by clicks desc;", [personid,locationid,organizationid])
+        elif pid == '2':
+            cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
+                           " (select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l, news_explorer_articlebyorganization o where person_id = %s and location_id = %s and organization_id = %s and p.article_id = l.article_id = o.article_id) order by clicks;", [personid,locationid,organizationid])
         else:
             cursor.execute("select a.id, a.headline, a.clicks, f.published_date from news_explorer_article a, news_explorer_file f where file_id = f.id and a.id in"
                    "(select p.article_id from news_explorer_articlebyperson p,news_explorer_articlebylocation l, news_explorer_articlebyorganization o where person_id = %s and location_id = %s and organization_id = %s and p.article_id = l.article_id = o.article_id) order by published_date desc;", [personid, locationid, organizationid])
@@ -118,6 +141,7 @@ class Article(models.Model):
     content = models.CharField(max_length=10000)
     number = models.IntegerField(default=0)
     clicks = models.IntegerField(default=0)
+    category = models.CharField(max_length=200)
     objects = PersonLocationOrganizationManager()
 
 class Location(models.Model):
