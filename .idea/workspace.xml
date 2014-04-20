@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="        function getInputParameters()&#10;        {&#10;            var result = {};&#10;            if ($(&quot;#location&quot;).val() != &quot;&quot;) {&#10;                result['location_id'] = $(&quot;#location&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#organization&quot;).val() != &quot;&quot;) {&#10;                result['organization_id'] = $(&quot;#organization&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#person&quot;).val() != &quot;&quot;) {&#10;                result['person_id'] = $(&quot;#person&quot;).val();&#10;            }&#10;&#10;            return result;&#10;        }">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" afterPath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="news_portal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="406" column="60" selection-start="15336" selection-end="15336" vertical-scroll-proportion="0.5737122" vertical-offset="5767" max-vertical-offset="6330">
+            <state line="406" column="60" selection-start="15336" selection-end="15336" vertical-scroll-proportion="-253.75" vertical-offset="0" max-vertical-offset="6330">
               <folding>
                 <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -40,6 +40,44 @@
                 <element signature="n#style#0;n#select#2;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Parser.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/news_explorer/Parser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="30" selection-start="2366" selection-end="2397" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3045">
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="131" column="37" selection-start="7270" selection-end="7272" vertical-scroll-proportion="-16.153847" vertical-offset="1545" max-vertical-offset="2895">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InsertParentLocation.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/news_explorer/InsertParentLocation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="0" selection-start="119" selection-end="119" vertical-scroll-proportion="0.14376996" vertical-offset="0" max-vertical-offset="626">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="152" column="4" selection-start="11546" selection-end="11563" vertical-scroll-proportion="0.0" vertical-offset="2027" max-vertical-offset="2865">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -66,6 +104,8 @@
         <option value="$PROJECT_DIR$/news_explorer/templates/news_explorer/news_articles_by_selection.html" />
         <option value="$PROJECT_DIR$/news_explorer/views.py" />
         <option value="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
+        <option value="$PROJECT_DIR$/news_explorer/UpdateParentLocation.py" />
+        <option value="$PROJECT_DIR$/news_explorer/InsertParentLocation.py" />
       </list>
     </option>
   </component>
@@ -153,54 +193,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -384,7 +376,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13571429" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32539684" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -419,6 +411,23 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="406" column="60" selection-start="15336" selection-end="15336" vertical-scroll-proportion="0.0" vertical-offset="5767" max-vertical-offset="6330">
+          <folding>
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="379" column="29" selection-start="14360" selection-end="14360" vertical-scroll-proportion="0.0" vertical-offset="5302" max-vertical-offset="5865">
@@ -588,16 +597,6 @@
         <state line="19" column="29" selection-start="934" selection-end="934" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="675" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/Parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="81" selection-start="7014" selection-end="7014" vertical-scroll-proportion="0.0" vertical-offset="1544" max-vertical-offset="2595" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="44" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/lib/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="86865" />
@@ -623,14 +622,9 @@
         <state line="351" column="1" selection-start="9790" selection-end="9790" vertical-scroll-proportion="6.09375" vertical-offset="1755" max-vertical-offset="5505" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2310" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="406" column="60" selection-start="15336" selection-end="15336" vertical-scroll-proportion="0.5737122" vertical-offset="5767" max-vertical-offset="6330">
+        <state line="406" column="60" selection-start="15336" selection-end="15336" vertical-scroll-proportion="-253.75" vertical-offset="0" max-vertical-offset="6330">
           <folding>
             <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -642,6 +636,43 @@
             <element signature="n#style#0;n#select#2;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/map.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="15" selection-start="746" selection-end="844" vertical-scroll-proportion="0.15280136" vertical-offset="360" max-vertical-offset="1200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/Parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="30" selection-start="2366" selection-end="2397" vertical-scroll-proportion="0.0" vertical-offset="677" max-vertical-offset="3045">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="37" selection-start="7270" selection-end="7272" vertical-scroll-proportion="-16.153847" vertical-offset="1545" max-vertical-offset="2895">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="152" column="4" selection-start="11546" selection-end="11563" vertical-scroll-proportion="0.0" vertical-offset="2027" max-vertical-offset="2865">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/InsertParentLocation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="119" selection-end="119" vertical-scroll-proportion="0.14376996" vertical-offset="0" max-vertical-offset="626">
+          <folding />
         </state>
       </provider>
     </entry>
