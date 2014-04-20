@@ -83,7 +83,7 @@
           <button id="search_button_chart" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
       </form>
 
-      <div class="panel-group" id="highcharts">
+      <div class="panel-group" id="highcharts_div" style="width:90%;height:400px">
 
       </div>
     </div> <!-- /container -->
@@ -98,11 +98,15 @@
     <script src="http://harvesthq.github.com/chosen/chosen.jquery.js"></script>
     <link rel="stylesheet" href="http://harvesthq.github.com/chosen/chosen.css">
 
+    <!-- Highcharts specific imports -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+
     <script>
 
         $("#news_articles_by_selection_li").bind('click', function() {
             $("#default").hide();
             $("#news_articles_chart_div").hide();
+            $("#highcharts_div").hide();
             $("#news_articles_by_selection_div").show();
 
             showSelectOptions();
@@ -111,6 +115,7 @@
         $("#news_articles_chart_li").bind('click', function() {
             $("#default").hide();
             $("#news_articles_by_selection_div").hide();
+            $("#search_results").hide();
             $("#news_articles_chart_div").show();
 
             showChartSelectOptions();
@@ -234,6 +239,8 @@
                                                '</div>');
                     }
 
+                    $("#search_results").show();
+
                     $(".collapsed").bind('click', function() {
                         if(this.getAttribute('class') != "collapsed") {
                             return;
@@ -254,6 +261,55 @@
                     });
                 }
             );
+        });
+
+        $("#search_button_chart").bind('click', function() {
+            $.get("articles",  {location_id : $("#location").val(),
+                                organization_id : $("#organization").val(),
+                                person_id : $("#person").val()},
+            function( data ) {
+                eachArticleClickCount = new Array();
+
+                data = eval(data);
+                for (var i=0; i<data.length; i++) {
+                    eachArticleClickCount.push({x : i, y : data[i].clicks});
+                }
+
+                $('#highcharts_div').highcharts({
+                    title: {
+                        text: 'Article Click Count',
+                        x: -20 //center
+                    },
+                    tooltip: {
+                        formatter: function() {
+                            return data[this.x].headline;
+                        }
+                    },
+                    xAxis: {
+                        labels: {
+                            enabled : false
+                        }
+                    },
+                    yAxis: {
+                        title : {
+                          text : "Click Count"
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }]
+                    },
+                    legend: {
+                        enabled : false
+                    },
+                    series: [{
+                        name: 'Click Count',
+                        data: eachArticleClickCount
+                    }]
+                });
+                $('#highcharts_div').show();
+            });
         });
     </script>
   </body>
