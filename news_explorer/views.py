@@ -133,6 +133,12 @@ def count_by_location(request):
 	response = HttpResponse(Json.dumps(convertLocationListToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
         return HttpResponse(response)
 
+def count_by_parentlocation(request):
+    if request.method == 'GET':
+	A = ArticlebyLocation.obj.countbyparentlocation()
+	response = HttpResponse(Json.dumps(convertParentLocationListToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+        return HttpResponse(response)
+
 def convertListToMap(lists):
     result = []
     for list in lists:
@@ -172,6 +178,19 @@ def convertEachLocationListToMap(list):
     result['location_id'] = list['location']
     result['location_name'] = list['location__name']
     result['article_count'] = list['article__count']
+    return result
+
+def convertParentLocationListToMap(lists):
+    result = []
+    for list in lists:
+        result.append(convertEachParentLocationListToMap(list))
+    return result
+
+def convertEachParentLocationListToMap(list):
+    result = {}
+    result['parentlocation_id'] = list[0]
+    result['parentlocation_name'] = list[1]
+    result['article_count'] = list[2]
     return result
 
 def convertSelectAttributesToMap(lists):
