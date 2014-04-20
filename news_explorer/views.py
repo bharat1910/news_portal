@@ -80,7 +80,7 @@ def getJson(request):
                 location = request.GET.get('location_id', '')
                 pid = request.GET.get('pid', '')
                 L = ArticlebyLocation.object.articlesbylocation(location, pid)
-		response = HttpResponse(Json.dumps(convertListToMap(L), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(L), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
             elif 'person_id' in request.GET and 'pid' in request.GET:
