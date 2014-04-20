@@ -83,7 +83,7 @@
           <button id="search_button_chart" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
       </form>
 
-      <div class="panel-group" id="highcharts_div" style="height:400px">
+      <div id="highcharts_div">
 
       </div>
     </div> <!-- /container -->
@@ -300,7 +300,7 @@
                     eachArticleClickCount.push({x : i, y : data[i].clicks});
                 }
 
-                $("#news_articles_chart_div").width($("#news_articles_chart_div").width());
+                $('#highcharts_div').show();
 
                 $('#highcharts_div').highcharts({
                     chart: {
@@ -339,7 +339,6 @@
                         data: eachArticleClickCount
                     }]
                 });
-                $('#highcharts_div').show();
             });
         });
 
