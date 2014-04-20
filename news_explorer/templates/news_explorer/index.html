@@ -86,6 +86,14 @@
       <div id="highcharts_div">
 
       </div>
+
+      &nbsp;
+
+      <div class="panel panel-default" id="chart_click_content" style="display:none">
+        <div class="panel-heading" id="chart_click_content_headline"></div>
+        <div class="panel-body" id="chart_click_content_content">
+        </div>
+      </div>
     </div> <!-- /container -->
 
 
@@ -107,6 +115,7 @@
             $("#default").hide();
             $("#news_articles_chart_div").hide();
             $("#highcharts_div").hide();
+            $("#chart_click_content").hide();
             $("#news_articles_by_selection_div").show();
 
             showSelectOptions();
@@ -334,6 +343,17 @@
                     legend: {
                         enabled : false
                     },
+                    plotOptions: {
+                        series: {
+                            cursor: 'pointer',
+                            events: {
+                                click: function(event) {
+                                    $("#chart_click_content").show();
+                                    showArticleData(data[event.point.x].id, data[event.point.x].headline);
+                                }
+                            }
+                        }
+                    },
                     series: [{
                         name: 'Click Count',
                         data: eachArticleClickCount
@@ -380,6 +400,17 @@
             result['pid'] = 1;
 
             return result;
+        }
+
+        function showArticleData(id, headline)
+        {
+            $("#chart_click_content_headline").html(headline);
+
+            $.get("article_content", {article_id : id},
+                function(data) {
+                    $("#chart_click_content_content").html(data);
+                }
+            );
         }
     </script>
   </body>
