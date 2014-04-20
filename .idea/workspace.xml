@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="        function getInputParameters()&#10;        {&#10;            var result = {};&#10;            if ($(&quot;#location&quot;).val() != &quot;&quot;) {&#10;                result['location_id'] = $(&quot;#location&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#organization&quot;).val() != &quot;&quot;) {&#10;                result['organization_id'] = $(&quot;#organization&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#person&quot;).val() != &quot;&quot;) {&#10;                result['person_id'] = $(&quot;#person&quot;).val();&#10;            }&#10;&#10;            return result;&#10;        }">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" afterPath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="news_portal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +29,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="302" column="44" selection-start="12007" selection-end="12007" vertical-scroll-proportion="0.46714032" vertical-offset="4267" max-vertical-offset="5805">
+            <state line="379" column="29" selection-start="14360" selection-end="14360" vertical-scroll-proportion="0.6802842" vertical-offset="5302" max-vertical-offset="5865">
               <folding>
                 <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -606,7 +607,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="302" column="44" selection-start="12007" selection-end="12007" vertical-scroll-proportion="0.46714032" vertical-offset="4267" max-vertical-offset="5805">
+        <state line="379" column="29" selection-start="14360" selection-end="14360" vertical-scroll-proportion="0.6802842" vertical-offset="5302" max-vertical-offset="5865">
           <folding>
             <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />

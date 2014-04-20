@@ -308,8 +308,7 @@
                         borderWidth: 3
                     },
                     title: {
-                        text: 'Article Click Count',
-                        x: -20 //center
+                        text: 'Article Click Count'
                     },
                     tooltip: {
                         formatter: function() {
@@ -322,6 +321,7 @@
                         }
                     },
                     yAxis: {
+                        min : 0,
                         title : {
                           text : "Click Count"
                         },
@@ -357,6 +357,8 @@
                 result['person_id'] = $("#person").val();
             }
 
+            result['pid'] = 2;
+
             return result;
         }
 
@@ -374,6 +376,8 @@
             if ($("#person_chart").val() != "") {
                 result['person_id'] = $("#person_chart").val();
             }
+
+            result['pid'] = 1;
 
             return result;
         }
