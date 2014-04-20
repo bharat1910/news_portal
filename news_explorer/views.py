@@ -49,8 +49,7 @@ def getJson(request):
                 organization = request.GET.get('organization_id', '')
                 pid = request.GET.get('pid', '')
                 f = Article.objects.articlesbypersonlocationorganization(person, location, organization, pid)
-		response = HttpResponse(f).content
-                #response = HttpResponse(Json.dumps(convertListToMap(f), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+                response = HttpResponse(Json.dumps(convertListToMap(f), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
             elif 'person_id' in request.GET and 'location_id' in request.GET and 'pid' in request.GET:
