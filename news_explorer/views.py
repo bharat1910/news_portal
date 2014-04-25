@@ -11,6 +11,7 @@ from news_explorer.models import File, Person, Organization, Location, Article, 
 
 def index(request):
     context = {}
+    getCountry("Delhi")
     return render(request, 'news_explorer/index.html', context)
 
 def news_articles_by_selection(request):
@@ -33,20 +34,23 @@ def getCoordinates(location):
 	return (lat,lng)
 
 def getCountry(location):
-	(lat,lng) = getCoordinates(location)
-	url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+str(lat)+','+str(lng)+'&sensor=false'
-	r = requests.get(url, auth=('user', 'pass'))
-	res = r.json()
-	res = convert(res)
-	rows = res['results'][0]['address_components']
-	count = len(rows)
-	country = location
-	for x in range(0,count):
-		type_of_attr = str(rows[x]['types'])
-		if 'country' in type_of_attr:
-			country = rows[x]['long_name']
-	print country
-	return country
+    try:
+        (lat,lng) = getCoordinates(location)
+        url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+str(lat)+','+str(lng)+'&sensor=false'
+        r = requests.get(url, auth=('user', 'pass'))
+        res = r.json()
+        res = convert(res)
+        rows = res['results'][0]['address_components']
+        count = len(rows)
+        country = location
+        for x in range(0,count):
+            type_of_attr = str(rows[x]['types'])
+            if 'country' in type_of_attr:
+                country = rows[x]['long_name']
+        print country
+        return country
+    except:
+        return location
 
 def convert(input):
     if isinstance(input, dict):
