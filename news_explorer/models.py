@@ -128,6 +128,13 @@ class PersonLocationOrganizationManager(models.Manager):
         rows = cursor.fetchall()
         return rows
 
+class ParentLocationManager(models.Manager):
+    def countbyparentlocation(self):
+	cursor = connection.cursor()
+	cursor.execute("select p.name, l.parentlocation_id, count(a.article_id) from news_explorer_parentlocation p, news_explorer_location l, news_explorer_articlebylocation a where p.id = l.parentlocation_id and l.id = a.location_id group by l.parentlocation_id;")
+	rows = cursor.fetchall()
+	return rows
+
 class File(models.Model):
     name = models.CharField(max_length=200)
     path_file = models.CharField(max_length=200)
@@ -167,6 +174,7 @@ class ArticlebyLocation(models.Model):
     location = models.ForeignKey(Location)
     article = models.ForeignKey(Article)
     count = models.IntegerField(default=0)
+    obj = ParentLocationManager()
     object = LocationManager()
     objects = LocationOrganizationManager()
 
