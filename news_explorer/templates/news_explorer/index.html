@@ -25,8 +25,20 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
 
+    <style>
+        #highcharts_map_div {
+        height: 500px;
+        min-width: 310px;
+        max-width: 800px;
+        margin: 0 auto;
+        }
+
+        .loading {
+        margin-top: 10em;
+        text-align: center;
+        color: gray;
+        }
     </style>
   </head>
 
@@ -47,7 +59,7 @@
                 <ul class="nav navbar-nav">
                   <li id="news_articles_by_selection_li"><a href="#">News Article Viewer</a></li>
                   <li id="news_articles_chart_li"><a href="#">Chart Visualisation</a></li>
-                  <li><a href="#">Map Visualisation</a></li>
+                  <li id="news_articles_map_li"><a href="#">Map Visualisation</a></li>
                 </ul>
               </div><!--/.nav-collapse -->
             </div><!--/.container-fluid -->
@@ -94,6 +106,10 @@
         <div class="panel-body" id="chart_click_content_content">
         </div>
       </div>
+
+      <div id="highcharts_map_div">
+
+      </div>
     </div> <!-- /container -->
 
 
@@ -109,6 +125,9 @@
     <!-- Highcharts specific imports -->
     <script src="http://code.highcharts.com/highcharts.js"></script>
 
+    <!-- HighCharts map related imports -->
+    <script src="http://code.highcharts.com/maps/modules/map.js"></script>
+
     <script>
 
         $("#news_articles_by_selection_li").bind('click', function() {
@@ -117,6 +136,7 @@
             $("#highcharts_div").hide();
             $("#chart_click_content").hide();
             $("#news_articles_by_selection_div").show();
+            $("#highcharts_map_div").hide();
 
             showSelectOptions();
         });
@@ -126,6 +146,7 @@
             $("#news_articles_by_selection_div").hide();
             $("#search_results").hide();
             $("#news_articles_chart_div").show();
+            $("#highcharts_map_div").hide();
 
             showChartSelectOptions();
         });
@@ -412,6 +433,54 @@
                 }
             );
         }
+
+        $("#news_articles_map_li").bind('click', function() {
+            $("#news_articles_by_selection_div").hide();
+            $("#search_results").hide();
+            $("#news_articles_chart_div").hide();
+            $("#highcharts_div").hide();
+            $("#chart_click_content").hide();
+            $("#default").hide();
+
+            //$('#highcharts_map_div').empty().show();
+
+            $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
+
+                // Initiate the chart
+                $('#highcharts_map_div').highcharts('Map', {
+
+                    title : {
+                        text : 'News Explorer Visualization'
+                    },
+
+                    mapNavigation: {
+                        enabled: true,
+                        enableDoubleClickZoomTo: true
+                    },
+
+                    colorAxis: {
+                        min: 1,
+                        max: 1000,
+                        type: 'logarithmic'
+                    },
+
+                    series : [{
+                        data : data,
+                        mapData: Highcharts.maps.world,
+                        joinBy: 'code',
+                        name: 'User Interest',
+                        states: {
+                            hover: {
+                                color: '#BADA55'
+                            }
+                        },
+                        tooltip: {
+                            valueSuffix: 'clicks'
+                        }
+                    }]
+                });
+            });
+        });
     </script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import requests
 # Create your views here.
 from django.http import HttpResponse, HttpRequest
 from django.utils import simplejson as Json
@@ -11,6 +11,7 @@ from news_explorer.models import File, Person, Organization, Location, Article, 
 
 def index(request):
     context = {}
+    getCountry("Delhi")
     return render(request, 'news_explorer/index.html', context)
 
 def news_articles_by_selection(request):
@@ -21,6 +22,45 @@ def jdefault(o):
     if isinstance(o, set):
         return list(o)
     return o.__dict__
+
+def getCoordinates(location):
+	url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+location+'&sensor=true'
+	r = requests.get(url, auth=('user', 'pass'))
+	res = r.json()
+	res = convert(res)
+	lat = res['results'][0]['geometry']['location']['lat']
+	lng = res['results'][0]['geometry']['location']['lng']
+	print (lat,lng)
+	return (lat,lng)
+
+def getCountry(location):
+    try:
+        (lat,lng) = getCoordinates(location)
+        url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+str(lat)+','+str(lng)+'&sensor=false'
+        r = requests.get(url, auth=('user', 'pass'))
+        res = r.json()
+        res = convert(res)
+        rows = res['results'][0]['address_components']
+        count = len(rows)
+        country = location
+        for x in range(0,count):
+            type_of_attr = str(rows[x]['types'])
+            if 'country' in type_of_attr:
+                country = rows[x]['long_name']
+        print country
+        return country
+    except:
+        return location
+
+def convert(input):
+    if isinstance(input, dict):
+        return {convert(key): convert(value) for key, value in input.iteritems()}
+    elif isinstance(input, list):
+        return [convert(element) for element in input]
+    elif isinstance(input, unicode):
+        return input.encode('utf-8')
+    else:
+        return input
 
 def initiate_chosen(request, reqtype):
     if request.method == 'GET':
