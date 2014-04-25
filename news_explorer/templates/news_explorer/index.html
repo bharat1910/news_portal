@@ -127,6 +127,7 @@
 
     <!-- HighCharts map related imports -->
     <script src="http://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="http://www.highcharts.com/samples/data/maps/world.js"></script>
 
     <script>
 
@@ -441,8 +442,6 @@
             $("#highcharts_div").hide();
             $("#chart_click_content").hide();
             $("#default").hide();
-
-            //$('#highcharts_map_div').empty().show();
 
             $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
 
