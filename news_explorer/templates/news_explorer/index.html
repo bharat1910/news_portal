@@ -131,6 +131,14 @@
 
     <script>
 
+        var locationid_map = new Object();
+        $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
+           data = eval(data);
+           for (var i=0; i<data.length; i++) {
+                locationid_map[data[i].name.toLowerCase()] = data[i].code;
+           }
+        });
+
         $("#news_articles_by_selection_li").bind('click', function() {
             $("#default").hide();
             $("#news_articles_chart_div").hide();
@@ -443,7 +451,18 @@
             $("#chart_click_content").hide();
             $("#default").hide();
 
-            $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
+            $.get("parentlocation_count", {}, function(data) {
+
+                data = eval(data);
+                var result = []
+
+                for (var i=0; i<data.length; i++) {
+                    if(locationid_map[data[i].parentlocation_name.toLowerCase()] != undefined) {
+                        result.push({name  : data[i].parentlocation_name,
+                                     code  : locationid_map[data[i].parentlocation_name.toLowerCase()],
+                                     value : data[i].article_count})
+                    }
+                }
 
                 // Initiate the chart
                 $('#highcharts_map_div').highcharts('Map', {
@@ -464,7 +483,7 @@
                     },
 
                     series : [{
-                        data : data,
+                        data : result,
                         mapData: Highcharts.maps.world,
                         joinBy: 'code',
                         name: 'User Interest',
