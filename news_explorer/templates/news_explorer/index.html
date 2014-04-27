@@ -65,50 +65,60 @@
             </div><!--/.container-fluid -->
         </div>
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron" id="default">
-        <h1>News Explorer!</h1>
-        <p>Work in progress .. </p>
+      <div id="tab1">
+          <!-- Main component for a primary marketing message or call to action -->
+          <div class="jumbotron" id="default">
+            <h1>News Explorer!</h1>
+            <p>Work in progress .. </p>
+          </div>
       </div>
 
-      <form class="well form-search" id="news_articles_by_selection_div" style="display:none">
-          <select class="chzn-select" style="width:200px;" id="location" data-placeholder="Choose a country..."></select>
+      <div id="tab2" style="display:none">
+          <form class="well form-search" id="news_articles_by_selection_div">
+              <select class="chzn-select" style="width:200px;" id="location" data-placeholder="Choose a country..."></select>
 
-          <select class="chzn-select" style="width:200px;" id="organization" data-placeholder="Choose an organization..."></select>
+              <select class="chzn-select" style="width:200px;" id="organization" data-placeholder="Choose an organization..."></select>
 
-          <select class="chzn-select" style="width:200px;" id="person" data-placeholder="Choose a person..."></select>
+              <select class="chzn-select" style="width:200px;" id="person" data-placeholder="Choose a person..."></select>
 
-          <button id="search_button" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
-      </form>
+              <button id="search_button" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
+          </form>
 
-      <div class="panel-group" id="search_results">
+          <div class="panel-group" id="search_results">
 
+          </div>
       </div>
 
-      <form class="well form-search" id="news_articles_chart_div" style="display:none">
-          <select class="chzn-select-chart" style="width:200px;" id="location_chart" data-placeholder="Choose a country..."></select>
+      <div id="tab3" style="display:none">
+          <form class="well form-search" id="news_articles_chart_div">
+              <select class="chzn-select-chart" style="width:200px;" id="location_chart" data-placeholder="Choose a country..."></select>
 
-          <select class="chzn-select-chart" style="width:200px;" id="organization_chart" data-placeholder="Choose an organization..."></select>
+              <select class="chzn-select-chart" style="width:200px;" id="organization_chart" data-placeholder="Choose an organization..."></select>
 
-          <select class="chzn-select-chart" style="width:200px;" id="person_chart" data-placeholder="Choose a person..."></select>
+              <select class="chzn-select-chart" style="width:200px;" id="person_chart" data-placeholder="Choose a person..."></select>
 
-          <button id="search_button_chart" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
-      </form>
+              <button id="search_button_chart" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
+          </form>
 
-      <div id="highcharts_div">
+          <div id="highcharts_div">
 
+          </div>
+
+          &nbsp;
+
+          <div class="panel panel-default" id="chart_click_content" style="display:none">
+            <div class="panel-heading" id="chart_click_content_headline"></div>
+            <div class="panel-body" id="chart_click_content_content">
+            </div>
+          </div>
       </div>
 
       &nbsp;
 
-      <div class="panel panel-default" id="chart_click_content" style="display:none">
-        <div class="panel-heading" id="chart_click_content_headline"></div>
-        <div class="panel-body" id="chart_click_content_content">
-        </div>
-      </div>
+      <div id="tab4" style="display:none">
+          <div id="highcharts_map_div">
 
-      <div id="highcharts_map_div">
-
+          </div>
       </div>
     </div> <!-- /container -->
 
@@ -130,7 +140,6 @@
     <script src="http://www.highcharts.com/samples/data/maps/world.js"></script>
 
     <script>
-
         var locationid_map = new Object();
         $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
            data = eval(data);
@@ -140,22 +149,19 @@
         });
 
         $("#news_articles_by_selection_li").bind('click', function() {
-            $("#default").hide();
-            $("#news_articles_chart_div").hide();
-            $("#highcharts_div").hide();
-            $("#chart_click_content").hide();
-            $("#news_articles_by_selection_div").show();
-            $("#highcharts_map_div").hide();
+            $("#tab1").hide();
+            $("#tab2").show();
+            $("#tab3").hide();
+            $("#tab4").hide();
 
             showSelectOptions();
         });
 
         $("#news_articles_chart_li").bind('click', function() {
-            $("#default").hide();
-            $("#news_articles_by_selection_div").hide();
-            $("#search_results").hide();
-            $("#news_articles_chart_div").show();
-            $("#highcharts_map_div").hide();
+            $("#tab1").hide();
+            $("#tab2").hide();
+            $("#tab3").show();
+            $("#tab4").hide();
 
             showChartSelectOptions();
         });
@@ -444,12 +450,10 @@
         }
 
         $("#news_articles_map_li").bind('click', function() {
-            $("#news_articles_by_selection_div").hide();
-            $("#search_results").hide();
-            $("#news_articles_chart_div").hide();
-            $("#highcharts_div").hide();
-            $("#chart_click_content").hide();
-            $("#default").hide();
+            $("#tab1").hide();
+            $("#tab2").hide();
+            $("#tab3").hide();
+            $("#tab4").show();
 
             $.get("parentlocation_count", {}, function(data) {
 
