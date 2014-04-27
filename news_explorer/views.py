@@ -169,7 +169,8 @@ def article_content(request):
 
 def count_by_location(request):
     if request.method == 'GET':
-	A = ArticlebyLocation.objects.values('location', 'location__name').annotate(Count('article')).order_by()
+	parentlocationid = request.GET['parentlocation_id']
+	A = ArticlebyLocation.objects.filter(location__parentlocation_id=parentlocationid).values('location', 'location__name').annotate(Count('article')).order_by()
 	response = HttpResponse(Json.dumps(convertLocationListToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
         return HttpResponse(response)
 
