@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import requests
-# Create your views here.
+from lxml import objectify
 from django.http import HttpResponse, HttpRequest
 from django.utils import simplejson as Json
 from django.conf import settings
@@ -179,6 +179,12 @@ def count_by_parentlocation(request):
 	A = ArticlebyLocation.obj.countbyparentlocation()
 	response = HttpResponse(Json.dumps(convertParentLocationListToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
         return HttpResponse(response)
+
+def search_results(request):
+    url = 'http://localhost:8983/solr/cs410/clustering?&q=bush+clinton&wt=json'
+    r = requests.get(url, auth=('user', 'pass'))
+    response = convert(r.json())['response']['docs']
+    return HttpResponse(response)
 
 def convertListToMap(lists):
     result = []

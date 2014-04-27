@@ -60,6 +60,7 @@
                   <li id="news_articles_by_selection_li"><a href="#">News Article Viewer</a></li>
                   <li id="news_articles_chart_li"><a href="#">Chart Visualisation</a></li>
                   <li id="news_articles_map_li"><a href="#">Map Visualisation</a></li>
+                  <li id="news_articles_search_li"><a href="#">Search</a></li>
                 </ul>
               </div><!--/.nav-collapse -->
             </div><!--/.container-fluid -->
@@ -120,6 +121,10 @@
 
           </div>
       </div>
+
+      <div id="tab5" style="display:none">
+            <input type="email" class="form-control" id="search_text" placeholder="Enter Search Text">
+      </div>
     </div> <!-- /container -->
 
 
@@ -153,6 +158,7 @@
             $("#tab2").show();
             $("#tab3").hide();
             $("#tab4").hide();
+            $("#tab5").hide();
 
             showSelectOptions();
         });
@@ -162,6 +168,7 @@
             $("#tab2").hide();
             $("#tab3").show();
             $("#tab4").hide();
+            $("#tab5").hide();
 
             showChartSelectOptions();
         });
@@ -454,6 +461,7 @@
             $("#tab2").hide();
             $("#tab3").hide();
             $("#tab4").show();
+            $("#tab5").hide();
 
             $.get("parentlocation_count", {}, function(data) {
 
@@ -503,6 +511,18 @@
                         }
                     }]
                 });
+            });
+        });
+
+        $("#news_articles_search_li").bind('click', function() {
+            $("#tab1").hide();
+            $("#tab2").hide();
+            $("#tab3").hide();
+            $("#tab4").hide();
+            $("#tab5").show();
+
+            $.get('search_results', {q : "bush"}, function(data) {
+                console.log(data);
             });
         });
     </script>
