@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="        function getInputParameters()&#10;        {&#10;            var result = {};&#10;            if ($(&quot;#location&quot;).val() != &quot;&quot;) {&#10;                result['location_id'] = $(&quot;#location&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#organization&quot;).val() != &quot;&quot;) {&#10;                result['organization_id'] = $(&quot;#organization&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#person&quot;).val() != &quot;&quot;) {&#10;                result['person_id'] = $(&quot;#person&quot;).val();&#10;            }&#10;&#10;            return result;&#10;        }">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" afterPath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/views.py" afterPath="$PROJECT_DIR$/news_explorer/views.py" />
     </list>
     <ignored path="news_portal.iws" />
@@ -38,10 +37,8 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="183" column="76" selection-start="9475" selection-end="9475" vertical-scroll-proportion="0.6329527" vertical-offset="2357" max-vertical-offset="4125">
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state line="1" column="15" selection-start="51" selection-end="51" vertical-scroll-proportion="0.025553662" vertical-offset="0" max-vertical-offset="4110">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -438,9 +435,7 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="185" column="33" selection-start="9456" selection-end="9456" vertical-scroll-proportion="0.0" vertical-offset="2775" max-vertical-offset="3885">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -661,10 +656,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="76" selection-start="9475" selection-end="9475" vertical-scroll-proportion="0.6329527" vertical-offset="2357" max-vertical-offset="4125">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state line="1" column="15" selection-start="51" selection-end="51" vertical-scroll-proportion="0.025553662" vertical-offset="0" max-vertical-offset="4110">
+          <folding />
         </state>
       </provider>
     </entry>
