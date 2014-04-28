@@ -176,20 +176,36 @@ def count_by_location(request):
 
 def count_by_parentlocation(request):
     if request.method == 'GET':
-	A = ArticlebyLocation.obj.countbyparentlocation()
-	response = HttpResponse(Json.dumps(convertParentLocationListToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-        return HttpResponse(response)
+       A = ArticlebyLocation.obj.countbyparentlocation()
+       response = HttpResponse(Json.dumps(convertParentLocationListToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+       return HttpResponse(response)
 
 def search_results(request):
-    url = 'http://localhost:8983/solr/cs410/clustering?&q=bush+clinton&wt=json'
+    url = 'http://localhost:8983/solr/cs410/clustering?&q=' + request.GET['q'] + '&wt=json'
     r = requests.get(url, auth=('user', 'pass'))
-    response = convert(r.json())['response']['docs']
+    response = HttpResponse(Json.dumps(convertSearchListToMap(r), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
     return HttpResponse(response)
 
 def convertListToMap(lists):
     result = []
     for list in lists:
         result.append(convertEachListToMap(list))
+    return result
+
+def convertSearchListToMap(r):
+    lists = convert(r.json())['response']['docs']
+    result = []
+    for list in lists:
+        print 1
+        print list
+        result.append(convertEachSearchResultToMap(list))
+    return result
+
+def convertEachSearchResultToMap(sr):
+    result = {}
+    result['id'] = sr['id']
+    result['headline'] = sr['title'][0]
+    result['content'] = sr['content'][0]
     return result
 
 def convertEachListToMap(list):

@@ -123,7 +123,12 @@
       </div>
 
       <div id="tab5" style="display:none">
-            <input type="email" class="form-control" id="search_text" placeholder="Enter Search Text">
+            <input type="email" class="form-control" id="search_text" placeholder="Enter Search Text" onkeypress="if (window.event.keyCode==13) updateSearchResults()">
+
+            &nbsp;
+
+            <div class="panel-group" id="plain_search_results">
+            </div>
       </div>
     </div> <!-- /container -->
 
@@ -520,11 +525,35 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").show();
-
-            $.get('search_results', {q : "bush"}, function(data) {
-                console.log(data);
-            });
         });
+
+        function updateSearchResults()
+        {
+            $.get('search_results', {q : $("#search_text").val()}, function(data) {
+                $("#plain_search_results").empty();
+
+                data = eval(data)
+
+                for (var i=0; i<data.length; i++) {
+                    var headline = data[i].headline;
+
+                    $("#plain_search_results").append('<div class="panel panel-default">' +
+                                                    '<div class="panel-heading">' +
+                                                        '<h4 class="panel-title">' +
+                                                            '<a data-toggle="collapse" data-parent="#plain_search_results" class="collapsed" article_id=' + data[i].id + ' href="#tab5_' + data[i].id + '">' +
+                                                                 headline +
+                                                            '</a>' +
+                                                        '</h4>' +
+                                                    '</div>' +
+                                                    '<div id=tab5_' + data[i].id + ' class="panel-collapse collapse" style="height:0px">' +
+                                                        '<div class="panel-body">' +
+                                                            data[i].content +
+                                                        '</div>' +
+                                                    '</div>' +
+                                               '</div>');
+                }
+            });
+        }
     </script>
   </body>
 </html>
