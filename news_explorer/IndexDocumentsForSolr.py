@@ -11,8 +11,8 @@ def indexDocumentsForSolr():
         file.write('<field name="id">' + str(a['id']) + '</field>\n')
         file.write('<field name="cat"></field>\n')
         file.write('<field name="url"></field>\n')
-        file.write('<field name="title">' + str(a['headline']) + '</field>\n')
-        file.write('<field name="content">' + str(a['content']) + '</field>\n')
+        file.write('<field name="title">' + str(a['headline']).replace("&", "and") + '</field>\n')
+        file.write('<field name="content">' + str(a['content']).replace("&", "and") + '</field>\n')
         file.write('</doc>\n')
 
     file.write('</add>')
