@@ -84,9 +84,15 @@
 
               <button id="search_button" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
           </form>
-
+				
+		  <div class="btn-toolbar" role="toolbar" id="news_articles_by_selection_tools">
+			
+		  </div>
+		  
+		  &nbsp;
+		  
           <div class="panel-group" id="search_results">
-
+		  
           </div>
       </div>
 
@@ -100,7 +106,7 @@
 
               <button id="search_button_chart" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
           </form>
-
+		  
           <div id="highcharts_div">
 
           </div>
@@ -126,7 +132,13 @@
             <input type="email" class="form-control" id="search_text" placeholder="Enter Search Text" onkeypress="if (event.keyCode==13) updateSearchResults()">
 
             &nbsp;
-
+			
+			<div class="btn-toolbar" role="toolbar" id="search_text_tools">
+			
+			</div>
+		  
+		  &nbsp;
+			
             <div class="panel-group" id="plain_search_results">
             </div>
       </div>
@@ -164,7 +176,7 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").hide();
-
+			
             showSelectOptions();
         });
 
@@ -293,14 +305,40 @@
         }
 
         $("#search_button").bind('click', function() {
-
-            inputParameters = getInputParameters();
+			displaySelector();
+			getArticles($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
+        });
+		
+		function displaySelector()
+		{
+			$("#news_articles_by_selection_tools").empty();
+			
+			$("#news_articles_by_selection_tools").append('<div class="btn-group"> <button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button1" param=""> Any time </button> <button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button2" param="week"> Past week </button> <button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button3" param="month"> Past month </button> <button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button4" param="year"> Past year </button> </div> <div class="btn-group"> <button type="button" class="order_selector btn btn-default btn-info btn-xs" id="order_button1" param="2"> Most popular </button> <button type="button" class="order_selector btn btn-default btn-info btn-xs" id="order_button2" param="1"> Most recent </button> </div>' );
+			
+			$("#time_button1").addClass('active');
+			$("#order_button1").addClass('active');
+			
+			$('.time_selector').bind('click', function() {
+				$(this).addClass('active').siblings().removeClass('active');
+				getArticles($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
+			});
+			
+			$('.order_selector').bind('click', function() {
+				$(this).addClass('active').siblings().removeClass('active');
+				getArticles($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
+			});
+		}
+		
+		function getArticles(fdate, pid)
+		{
+            inputParameters = getInputParameters(fdate, pid);
 
             $.get("articles", inputParameters,
                 function( data ) {
                     $("#search_results").empty();
-                    data = eval(data);
-
+					
+					data = eval(data);
+					
                     for (var i=0; i<data.length; i++) {
                         var headline = data[i].headline;
 
@@ -321,7 +359,7 @@
                     }
 
                     $("#search_results").show();
-
+					
                     $(".collapsed").bind('click', function() {
                         if(this.getAttribute('class') != "collapsed") {
                             return;
@@ -342,8 +380,8 @@
                     });
                 }
             );
-        });
-
+		}
+		
         $("#search_button_chart").bind('click', function() {
 
             inputParameters = getChartInputParameters();
@@ -410,7 +448,7 @@
             });
         });
 
-        function getInputParameters()
+        function getInputParameters(fdate, pid)
         {
             var result = {};
             if ($("#location").val() != "") {
@@ -424,9 +462,12 @@
             if ($("#person").val() != "") {
                 result['person_id'] = $("#person").val();
             }
-
-            result['pid'] = 2;
-
+			
+			result['pid'] = pid;
+			
+			if(fdate != '')
+				result['fdate'] = fdate;
+			
             return result;
         }
 
@@ -444,9 +485,9 @@
             if ($("#person_chart").val() != "") {
                 result['person_id'] = $("#person_chart").val();
             }
-
-            result['pid'] = 1;
-
+			
+            result['pid'] = 2;
+			
             return result;
         }
 
@@ -531,15 +572,16 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").show();
-        });
+			
+		});
 
         function updateSearchResults()
         {
             $.get('search_results', {q : $("#search_text").val()}, function(data) {
                 $("#plain_search_results").empty();
-
+				
                 data = eval(data)
-
+				
                 for (var i=0; i<data.length; i++) {
                     var headline = data[i].headline;
 
@@ -558,6 +600,7 @@
                                                     '</div>' +
                                                '</div>');
                 }
+				
 				$(".collapsed").bind('click', function() {
                         if(this.getAttribute('class') != "collapsed") {
                             return;
