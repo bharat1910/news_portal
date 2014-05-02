@@ -31,7 +31,6 @@ def getCoordinates(location):
 	res = convert(res)
 	lat = res['results'][0]['geometry']['location']['lat']
 	lng = res['results'][0]['geometry']['location']['lng']
-	print (lat,lng)
 	return (lat,lng)
 
 def getCountry(location):
@@ -48,7 +47,6 @@ def getCountry(location):
             type_of_attr = str(rows[x]['types'])
             if 'country' in type_of_attr:
                 country = rows[x]['long_name']
-        print country
         return country
     except:
         return location
@@ -132,10 +130,8 @@ def getJson_new(request):
 						f = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('clicks')
 					elif pid == '2':
 						f = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('-clicks')
-			print f
 			if 'fdate' in request.GET:
 				x = filterByDate("month",23,04,2005,f)
-				print x
 				response = HttpResponse(x, content_type="application/json", mimetype="application/json").content
  				return HttpResponse(response)
 			else:
@@ -148,7 +144,6 @@ def initiate_chosen(request, reqtype):
     if request.method == 'GET':
         if reqtype == "location":
             L = Location.objects.uniqueLocation()
-            print L
             response = HttpResponse(Json.dumps(convertSelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
 
@@ -171,7 +166,6 @@ def getJson(request):
                 organization = request.GET.get('organization_id', '')
                 pid = request.GET.get('pid', '')
                 f = Article.objects.articlesbypersonlocationorganization(person, location, organization, pid)
-		print f
 		response = HttpResponse(Json.dumps(convertListToMap(f), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
@@ -180,7 +174,6 @@ def getJson(request):
                 location = request.GET.get('location_id', '')
                 pid = request.GET.get('pid', '')
                 PL = ArticlebyPerson.objects.articlesbypersonlocation(person, location, pid)
-		print PL
 		response = HttpResponse(Json.dumps(convertListToMap(PL), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
@@ -189,7 +182,6 @@ def getJson(request):
                 location = request.GET.get('location_id', '')
                 pid =  request.GET.get('pid', '')
                 OL = ArticlebyLocation.objects.articlesbylocationorganization(location,organization,pid)
-		print OL
 		response = HttpResponse(Json.dumps(convertListToMap(OL), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
@@ -198,7 +190,6 @@ def getJson(request):
                 organization = request.GET.get('organization_id', '')
                 pid = request.GET.get('pid', '')
                 OP = ArticlebyOrganization.objects.articlesbypersonorganization(person,organization,pid)
-		print OP
 		response = HttpResponse(Json.dumps(convertListToMap(OP), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
@@ -206,7 +197,6 @@ def getJson(request):
                 location = request.GET.get('location_id', '')
                 pid = request.GET.get('pid', '')
                 L = ArticlebyLocation.object.articlesbylocation(location, pid)
-		print L
 		response = HttpResponse(Json.dumps(convertListToMap(L), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
@@ -214,7 +204,6 @@ def getJson(request):
                 person = request.GET.get('person_id', '')
                 pid = request.GET.get('pid', '')
                 P = ArticlebyPerson.object.articlesbyperson(person,pid)
-		print P
 		response = HttpResponse(Json.dumps(convertListToMap(P), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
 
@@ -222,7 +211,6 @@ def getJson(request):
                 organization = request.GET.get('organization_id', '')
                 pid = request.GET.get('pid', '')
                 O = ArticlebyOrganization.object.articlebyorganization(organization, pid)
-		print O
 		response = HttpResponse(Json.dumps(convertListToMap(O), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
                 return HttpResponse(response)
             else:
@@ -231,7 +219,6 @@ def getJson(request):
                     if pid == '1':
 			A = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('clicks')
 			x = filterByDate("month",23,04,2005,A)
-			print x
 			response = HttpResponse(x, content_type="application/json", mimetype="application/json").content
                 	return HttpResponse(response)
                     elif pid == '2':
@@ -289,8 +276,6 @@ def convertSearchListToMap(r):
     lists = convert(r.json())['response']['docs']
     result = []
     for list in lists:
-        print 1
-        print list
         result.append(convertEachSearchResultToMap(list))
     return result
 
@@ -299,6 +284,7 @@ def convertEachSearchResultToMap(sr):
     result['id'] = sr['id']
     result['headline'] = sr['title'][0]
     result['content'] = sr['content'][0]
+    result['clicks'] = Article.objects.get(id = sr['id']).clicks
     return result
 
 def convertEachListToMap(list):

@@ -397,7 +397,7 @@
                             events: {
                                 click: function(event) {
                                     $("#chart_click_content").show();
-                                    showArticleData(data[event.point.x].id, data[event.point.x].headline);
+                                    showArticleData(data[event.point.x].id, data[event.point.x].headline, data[event.point.x].clicks);
                                 }
                             }
                         }
@@ -450,13 +450,19 @@
             return result;
         }
 
-        function showArticleData(id, headline)
+        function showArticleData(id, headline, clicks)
         {
-            $("#chart_click_content_headline").html(headline);
+            $("#chart_click_content_headline").html(headline + '<button style="float:right" class="btn btn-default btn-info btn-xs disabled" id="chart_button_' + id + '"> <span class="glyphicon glyphicon-ok"></span> ' + clicks + '</button>');
 
             $.get("article_content", {article_id : id},
                 function(data) {
                     $("#chart_click_content_content").html(data);
+                }
+            );
+			
+			$.get("click_article", {article_id : id},
+                function(data) {
+                    $("#chart_button_" + id).html(' <span class="glyphicon glyphicon-ok"></span> ' + data);
                 }
             );
         }
@@ -542,7 +548,7 @@
                                                         '<h4 class="panel-title">' +
                                                             '<a data-toggle="collapse" data-parent="#plain_search_results" class="collapsed" article_id=' + data[i].id + ' href="#tab5_' + data[i].id + '">' +
                                                                  headline +
-                                                            '</a>' +
+                                                            '</a>' + '<button style="float:right" class="btn btn-default btn-info btn-xs disabled" id="search_button_' + data[i].id + '"> <span class="glyphicon glyphicon-ok"></span> ' + data[i].clicks + '</button>' +
                                                         '</h4>' +
                                                     '</div>' +
                                                     '<div id=tab5_' + data[i].id + ' class="panel-collapse collapse" style="height:0px">' +
@@ -552,6 +558,19 @@
                                                     '</div>' +
                                                '</div>');
                 }
+				$(".collapsed").bind('click', function() {
+                        if(this.getAttribute('class') != "collapsed") {
+                            return;
+                        }
+
+                        article_id = this.getAttribute('article_id');
+
+                        $.get("click_article", {article_id : article_id},
+                            function(data) {
+                                $("#search_button_" + article_id).html(' <span class="glyphicon glyphicon-ok"></span> ' + data);
+                            }
+                        );
+                    });
             });
         }
     </script>
