@@ -18,47 +18,62 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from sklearn.naive_bayes import MultinomialNB
 
-# Load the training set
-print("Loading newsgroups training set... ")
-news_train = load_files('train')
-print("%d documents" % len(news_train.filenames))
-print("%d categories" % len(news_train.target_names))
-print(news_train.target_names)
-print()
+from news_explorer.models import Article
 
-print("Extracting features from the dataset using a sparse vectorizer")
-vectorizer = TfidfVectorizer(encoding='latin1')
-X_train = vectorizer.fit_transform((open(f).read()
-                                    for f in news_train.filenames))
-print("n_samples: %d, n_features: %d" % X_train.shape)
-print()
-assert sp.issparse(X_train)
-y_train = news_train.target
+def classifyDocs():
+    # Load the training set
+    print("Loading newsgroups training set... ")
+    news_train = load_files('news_explorer/train')
+    print("%d documents" % len(news_train.filenames))
+    print("%d categories" % len(news_train.target_names))
+    print()
 
-print("Loading newsgroups test set... ")
-X_test = vectorizer.transform((open('test/' + f).read() for f in os.listdir('test')))
-print("n_samples: %d, n_features: %d" % X_test.shape)
-print()
+    print("Extracting features from the dataset using a sparse vectorizer")
+    vectorizer = TfidfVectorizer(encoding='latin1')
+    X_train = vectorizer.fit_transform((open(f).read()
+                                        for f in news_train.filenames))
+    print("n_samples: %d, n_features: %d" % X_train.shape)
+    print()
+    assert sp.issparse(X_train)
+    y_train = news_train.target
 
-###############################################################################
-# Benchmark classifiers
-def benchmark(clf_class, params, name):
-    t0 = time()
-    clf = clf_class(**params).fit(X_train, y_train)
+    print("Loading newsgroups test set... ")
+    A = Article.objects.values('id', 'headline', 'content')
 
-    print("Predicting the outcomes of the testing set")
-    t0 = time()
-    pred = clf.predict(X_test)
-    print(pred)
+    ids = []
+    content = []
+    for a in A:
+        ids.append(a['id'])
+        content.append(a['content'])
 
-parameters = {
-    'loss': 'hinge',
-    'penalty': 'l2',
-    'n_iter': 50,
-    'alpha': 0.00001,
-    'fit_intercept': True,
-}
+    X_test = vectorizer.transform(content)
 
-benchmark(SGDClassifier, parameters, 'SGD')
+    print("n_samples: %d, n_features: %d" % X_test.shape)
+    print()
 
-pl.show()
+    ###############################################################################
+    # Benchmark classifiers
+    def benchmark(clf_class, params, name):
+        t0 = time()
+        clf = clf_class(**params).fit(X_train, y_train)
+
+        print("Predicting the outcomes of the testing set")
+        t0 = time()
+        pred = clf.predict(X_test)
+
+        for i in range(len(pred)):
+            article = Article.objects.get(id = ids[i])
+            article.category = news_train.target_names[pred[i]]
+            article.save()
+
+    parameters = {
+        'loss': 'hinge',
+        'penalty': 'l2',
+        'n_iter': 50,
+        'alpha': 0.00001,
+        'fit_intercept': True,
+    }
+
+    benchmark(SGDClassifier, parameters, 'SGD')
+
+    pl.show()
