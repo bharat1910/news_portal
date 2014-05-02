@@ -62,29 +62,15 @@ def convert(input):
         return input
 
 def filterByDate(option,day,month,year,jsonObj):
+	dateA = date(year, month, day)
 	if(option == "week"):
-		dateA = date(year, month, day)
-		dateB = dateA + datetime.timedelta(days=7)
-		jsonObj = jsonObj.filter(file__published_date__range=[dateA,dateB])
-		jsonObj = Json.dumps(convertValuesToMap(jsonObj), default=jdefault, indent=4)
+		dateB = dateA + datetime.timedelta(days=-7)
 	elif(option == "year"):
-		dateA = date(year, 01, 01)
-		dateB = date(year, 12, 31)
-		jsonObj = jsonObj.filter(file__published_date__range=[dateA,dateB])
-		jsonObj = Json.dumps(convertValuesToMap(jsonObj), default=jdefault, indent=4)
+		dateB = dateA + datetime.timedelta(days=-365)
 	elif(option == "month"):
-		dateA = date(year, month, 01)
-		if month == 04 or month == 06 or month == 9 or month == 11:
-			dateB = date(year, month, 30)
-		elif month == 02:
-			if month%4 == 0:
-				dateB = date(year, month, 29)
-			else:
-				dateB = date(year, month, 28)
-		elif month == 01 or month == 03 or month == 07 or month == 8 or month == 12:
-			dateB = date(year, month, 31)
-		jsonObj = jsonObj.filter(file__published_date__range=[dateA,dateB])
-		jsonObj = Json.dumps(convertValuesToMap(jsonObj), default=jdefault, indent=4)	
+		dateB = dateA + datetime.timedelta(days=-30)
+	jsonObj = jsonObj.filter(file__published_date__range=[dateB,dateA])
+	jsonObj = Json.dumps(convertValuesToMap(jsonObj), default=jdefault, indent=4)	
 	return jsonObj
 
 def getJson_new(request):
@@ -131,7 +117,8 @@ def getJson_new(request):
 					elif pid == '2':
 						f = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('-clicks')
 			if 'fdate' in request.GET:
-				x = filterByDate("month",23,04,2005,f)
+				fdate = request.GET.get('fdate', '')
+				x = filterByDate(fdate,23,04,2005,f)
 				response = HttpResponse(x, content_type="application/json", mimetype="application/json").content
  				return HttpResponse(response)
 			else:
