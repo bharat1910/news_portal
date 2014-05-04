@@ -61,6 +61,7 @@
                   <li id="news_articles_chart_li"><a href="#">Chart Visualisation</a></li>
                   <li id="news_articles_map_li"><a href="#">Map Visualisation</a></li>
                   <li id="news_articles_search_li"><a href="#">Search</a></li>
+                  <li id="news_articles_wordcloud"><a href="#">Word Cloud</a></li>
                 </ul>
               </div><!--/.nav-collapse -->
             </div><!--/.container-fluid -->
@@ -142,6 +143,10 @@
             <div class="panel-group" id="plain_search_results">
             </div>
       </div>
+	<div id="tab6" style="display:none">
+            <h1>Word Cloud!</h1>
+            <p>Work in progress .. </p>
+	</div>
     </div> <!-- /container -->
 
 
@@ -176,7 +181,7 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").hide();
-			
+	    $("#tab6").hide();
             showSelectOptions();
         });
 
@@ -186,7 +191,7 @@
             $("#tab3").show();
             $("#tab4").hide();
             $("#tab5").hide();
-
+            $("#tab6").hide();
             showChartSelectOptions();
         });
 
@@ -375,8 +380,7 @@
                         $.get("click_article", {article_id : article_id},
                             function(data) {
                                 $("#button_" + article_id).html(' <span class="glyphicon glyphicon-ok"></span> ' + data);
-                            }
-                        );
+                            });
                     });
                 }
             );
@@ -514,7 +518,7 @@
             $("#tab3").hide();
             $("#tab4").show();
             $("#tab5").hide();
-
+            $("#tab6").hide();
             $.get("parentlocation_count", {}, function(data) {
 
                 data = eval(data);
@@ -572,7 +576,16 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").show();
-			
+		$("#tab6").hide();	
+		});
+
+        $("#news_articles_wordcloud").bind('click', function() {
+            $("#tab1").hide();
+            $("#tab2").hide();
+            $("#tab3").hide();
+            $("#tab4").hide();
+            $("#tab5").hide();
+		$("#tab6").show();	
 		});
 
         function updateSearchResults()
