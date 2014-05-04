@@ -8,19 +8,30 @@
   <script type='text/javascript' src="http://www.jasondavies.com/wordcloud/d3.layout.cloud.js"></script>
   <script type='text/javascript'>
 
-function renderWordCloud() {
-   var ar = getArticles();
-   alert(ar);
-   var fill = d3.scale.category20();
+
+function getArticles()
+		{
+var a = [];
+	            inputParameters = getInputParameters();
+	
+		            $.get("articles", inputParameters,
+		                function( data ) {
+				        data = eval(data);
+		                    for (var i=0; i<data.length; i++) {
+		                        var headline = data[i].headline;
+					a.push(headline+":"+data[i].clicks); 
+		                    }   
+
+var fill = d3.scale.category20();
        
-   var jsonobj = [{"headline":"Mexiko-Stadt","clicks":70},{"headline":"Manila","clicks":80},{"headline":"Mexiko-Stadt","clicks":70},{"headline":"Manila","clicks":80}];
+  /* var jsonobj = [{"headline":"Mexiko-Stadt","clicks":70},{"headline":"Manila","clicks":80},{"headline":"Mexiko-Stadt","clicks":50},{"headline":"Manila","clicks":80}];
    var arr = [];
    for (elem in jsonobj) {
 	  arr.push(jsonobj[elem]["headline"]+":"+jsonobj[elem]["clicks"]);
-   }
+   }*/
        
    d3.layout.cloud().size([300, 300])
-      .words(arr.map(function(d) {
+      .words(a.map(function(d) {
     	 var temp = d.split(":");
     	 var t=temp[1]/100;
     	 return {text: temp[0], size: 10+t*50};
@@ -49,35 +60,27 @@ function renderWordCloud() {
         })
         .text(function(d) { return d.text; });
   }
-}
-
-function getArticles()
-		{
-	            inputParameters = getInputParameters();
-	var a = [];
-		            $.get("articles", inputParameters,
-		                function( data ) {
-				        data = eval(data);
-		                    for (var i=0; i<data.length; i++) {
-		                        var headline = data[i].headline;
-					a.push(headline+":"+data[i].clicks); 
-		                    }   
                 });
-                return a;
                 }
 
 function getInputParameters()
         {
             var result = {};
-            result['location_id'] = 1;
-            result['organization_id'] = 1;
-            result['person_id'] = 1;
+          
 	    result['pid'] = 1;			
             return result;
         }
+
+
+function renderWordCloud(d) {
+
+   
+}
+
+
    
 window.onload = function(){
-  renderWordCloud();
+   getArticles();
 }
 </script>
 </head>
