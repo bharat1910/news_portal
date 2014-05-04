@@ -77,60 +77,6 @@ def filterByDate(option,day,month,year,jsonObj):
 	jsonObj = Json.dumps(convertValuesToMap(jsonObj), default=jdefault, indent=4)	
 	return jsonObj
 
-def getJson_new(request):
-	try:
-		if request.method == 'GET':
-			if 'location_id' in request.GET and 'person_id' in request.GET and 'organization_id'in request.GET and 'pid' in request.GET:
-				person = request.GET.get('person_id', '')
-				location = request.GET.get('location_id', '')
-				organization = request.GET.get('organization_id', '')
-				pid = request.GET.get('pid', '')
-				f = Article.objects.articlesbypersonlocationorganization(person, location, organization, pid)
-			elif 'person_id' in request.GET and 'location_id' in request.GET and 'pid' in request.GET:
-				person = request.GET.get('person_id', '')
-				location = request.GET.get('location_id', '')
-				pid = request.GET.get('pid', '')
-				f = ArticlebyPerson.objects.articlesbypersonlocation(person, location, pid)
-			elif 'organization_id' in request.GET and 'location_id' in request.GET and 'pid' in request.GET:
-				organization = request.GET.get('organization_id', '')
-				location = request.GET.get('location_id', '')
-				pid =  request.GET.get('pid', '')
-				f = ArticlebyLocation.objects.articlesbylocationorganization(location,organization,pid)
-			elif 'organization_id' in request.GET and 'person_id' in request.GET and 'pid' in request.GET:
-				person = request.GET.get('person_id', '')
-				organization = request.GET.get('organization_id', '')
-				pid = request.GET.get('pid', '')
-				f = ArticlebyOrganization.objects.articlesbypersonorganization(person,organization,pid)
-			elif 'location_id' in request.GET and 'pid' in request.GET:
-				location = request.GET.get('location_id', '')
-				pid = request.GET.get('pid', '')
-				f = ArticlebyLocation.object.articlesbylocation(location, pid)
-			elif 'person_id' in request.GET and 'pid' in request.GET:
-				person = request.GET.get('person_id', '')
-				pid = request.GET.get('pid', '')
-				f = ArticlebyPerson.object.articlesbyperson(person,pid)
-			elif 'organization_id' in request.GET and 'pid' in request.GET:
-				organization = request.GET.get('organization_id', '')
-				pid = request.GET.get('pid', '')
-				f = ArticlebyOrganization.object.articlebyorganization(organization, pid)
-			else:
-				if 'pid' in request.GET:
-  					pid = request.GET.get('pid', '')
- 					if pid == '1':
-						f = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('clicks')
-					elif pid == '2':
-						f = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('-clicks')
-			if 'fdate' in request.GET:
-				fdate = request.GET.get('fdate', '')
-				x = filterByDate(fdate,23,04,2005,f)
-				response = HttpResponse(x, content_type="application/json", mimetype="application/json").content
- 				return HttpResponse(response)
-			else:
-				response = HttpResponse(Json.dumps(convertValuesToMap(f), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-				return HttpResponse(response)
-	except:
-		print "Error"
-
 def initiate_chosen(request, reqtype):
     if request.method == 'GET':
         if reqtype == "location":

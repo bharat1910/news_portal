@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="        function getInputParameters()&#10;        {&#10;            var result = {};&#10;            if ($(&quot;#location&quot;).val() != &quot;&quot;) {&#10;                result['location_id'] = $(&quot;#location&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#organization&quot;).val() != &quot;&quot;) {&#10;                result['organization_id'] = $(&quot;#organization&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#person&quot;).val() != &quot;&quot;) {&#10;                result['person_id'] = $(&quot;#person&quot;).val();&#10;            }&#10;&#10;            return result;&#10;        }">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" afterPath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/views.py" afterPath="$PROJECT_DIR$/news_explorer/views.py" />
     </list>
     <ignored path="news_portal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,28 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="33" selection-start="5310" selection-end="5310" vertical-scroll-proportion="0.0" vertical-offset="2880" max-vertical-offset="5175">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Classification.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news_explorer/Classification.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="27" selection-start="2216" selection-end="2229" vertical-scroll-proportion="0.0" vertical-offset="574" max-vertical-offset="1230">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="686" column="9" selection-start="27044" selection-end="27044" vertical-scroll-proportion="0.44049734" vertical-offset="10042" max-vertical-offset="10770">
+            <state line="77" column="18" selection-start="2729" selection-end="2729" vertical-scroll-proportion="-0.19575857" vertical-offset="1125" max-vertical-offset="4215">
               <folding />
             </state>
           </provider>
@@ -79,8 +60,8 @@
         <option value="$PROJECT_DIR$/news_explorer/IndexDocumentsForSolr.py" />
         <option value="$PROJECT_DIR$/news_explorer/test/001.txt" />
         <option value="$PROJECT_DIR$/news_explorer/Classification.py" />
-        <option value="$PROJECT_DIR$/news_explorer/views.py" />
         <option value="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
+        <option value="$PROJECT_DIR$/news_explorer/views.py" />
       </list>
     </option>
   </component>
@@ -412,9 +393,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32539684" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
@@ -437,6 +418,27 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="33" selection-start="5310" selection-end="5310" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5175">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/Classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="27" selection-start="2216" selection-end="2229" vertical-scroll-proportion="0.0" vertical-offset="574" max-vertical-offset="1230">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="686" column="9" selection-start="27044" selection-end="27044" vertical-scroll-proportion="0.0" vertical-offset="10042" max-vertical-offset="10770">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="120" column="33" selection-start="5159" selection-end="5159" vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="5115">
@@ -682,23 +684,23 @@
         <state line="3" column="4" selection-start="75" selection-end="130" vertical-scroll-proportion="0.07188498" vertical-offset="0" max-vertical-offset="626" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
+    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="33" selection-start="5310" selection-end="5310" vertical-scroll-proportion="0.0" vertical-offset="2880" max-vertical-offset="5175">
+        <state line="686" column="9" selection-start="27044" selection-end="27044" vertical-scroll-proportion="0.42105263" vertical-offset="10042" max-vertical-offset="10770">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/Classification.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="27" selection-start="2216" selection-end="2229" vertical-scroll-proportion="0.0" vertical-offset="574" max-vertical-offset="1230">
+        <state line="73" column="27" selection-start="2216" selection-end="2229" vertical-scroll-proportion="0.83226836" vertical-offset="319" max-vertical-offset="975">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
+    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="686" column="9" selection-start="27044" selection-end="27044" vertical-scroll-proportion="0.44049734" vertical-offset="10042" max-vertical-offset="10770">
+        <state line="77" column="18" selection-start="2729" selection-end="2729" vertical-scroll-proportion="-0.19575857" vertical-offset="1125" max-vertical-offset="4215">
           <folding />
         </state>
       </provider>
