@@ -632,18 +632,42 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").hide();
-	        $("#tab6").show();
-
+	    $("#tab6").show();
             var a = [];
+            var counts = {};
+	    var ignore = ["and","the","to","a","of","for","as","i","with","is","on","that","this","can","in","be","has","if"];
 
-            inputPara = getWordCloudInputParameters();
+            inputPara = getWordCloudInputParameters();	
 		    $.get("articles", inputPara,
 		            function( data ) {
-				         data = eval(data);
+				data = eval(data);
+				alert(data);
 		                 for (var i=0; i<data.length; i++) {
-					        a.push(data[i].headline+":"+data[i].clicks);
+			               alert("here4");
+                                       var content_text = data[i].headline;	   
+                                       var sWords = content_text.split(" "); 
+	                               var iWordsCount = sWords.length;
+	   
+	                               for(var i=0;i<iWordsCount;i++)
+		                       {
+		                       var sWord = sWords[i];
+		                      //Make this case-insensitive
+		                       if($.inArray(sWords[i], ignore)==-1){
+		                       counts[sWord]=counts[sWord]||0;
+		                       counts[sWord]++;
+		                       }
+		                       }
 		                 }
-
+                               for(sWord in counts)
+		                {
+				alert(sWord);
+				alert(counts[sWord]);
+		         	a.push({
+			        	text:sWord,
+				        frequency:counts[sWord]
+			         });
+		                }
+             
                          $("#wordcloud_div").empty();
                          $('#wordcloud_div').show();
 
@@ -651,9 +675,9 @@
 
                          d3.layout.cloud().size([300, 300])
                                   .words(a.map(function(d) {
-                            var temp = d.split(":");
-                            var t=temp[1]/100;
-                            return {text: temp[0], size: 10+t*50};
+                            var w = d.text;
+                            var f = d.frequency/10;
+                            return {text: w, size: 10+f*50};
                          }))
                          .rotate(function() { return ~~(Math.random() * 2) * 90; })
                          .font("Impact")
@@ -680,13 +704,9 @@
                                  })
                                  .text(function(d) { return d.text; });
                          }
-
                     }
             );
-
 	    });
-
-
 
         function getWordCloudInputParameters()
         {
