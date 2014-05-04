@@ -144,8 +144,9 @@
             </div>
       </div>
 	<div id="tab6" style="display:none">
-            <h1>Word Cloud!</h1>
-            <p>Work in progress .. </p>
+            <div id="wordcloud_div">
+
+          </div>
 	</div>
     </div> <!-- /container -->
 
@@ -165,6 +166,10 @@
     <!-- HighCharts map related imports -->
     <script src="http://code.highcharts.com/maps/modules/map.js"></script>
     <script src="http://www.highcharts.com/samples/data/maps/world.js"></script>
+
+    <!-- D3 Word Cloud related imports -->
+    <script type='text/javascript' src='http://d3js.org/d3.v3.min.js'></script>
+    <script type='text/javascript' src="http://www.jasondavies.com/wordcloud/d3.layout.cloud.js"></script>
 
     <script>
         var locationid_map = new Object();
@@ -494,7 +499,14 @@
 			
             return result;
         }
-
+        
+        function getWordCloudInputParameters()
+        {
+          var result = {};
+	  result['pid'] = 1;	
+          return result;
+        } 
+       
         function showArticleData(id, headline, clicks)
         {
             $("#chart_click_content_headline").html(headline + '<button style="float:right" class="btn btn-default btn-info btn-xs disabled" id="chart_button_' + id + '"> <span class="glyphicon glyphicon-ok"></span> ' + clicks + '</button>');
@@ -585,8 +597,55 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").hide();
-		$("#tab6").show();	
-		});
+	    $("#tab6").show();	
+
+/*TESTING*/
+                    var a = [];
+	            	
+                    inputPara = getWordCloudInputParameters();
+		    $.get("articles", inputPara,
+		                function( data ) {
+				        data = eval(data);
+		                    for (var i=0; i<data.length; i++) {
+					a.push(data[i].headline+":"+data[i].clicks); 
+		                    }   
+  $('#wordcloud_div').show();
+           var fill = d3.scale.category20();
+             
+   d3.layout.cloud().size([300, 300])
+      .words(a.map(function(d) {
+    	 var temp = d.split(":");
+    	 var t=temp[1]/100;
+    	 return {text: temp[0], size: 10+t*50};
+      }))
+      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .font("Impact")
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw)
+      .start();
+
+  function draw(words) {
+    d3.select("#wordcloud_div").append("svg")
+        .attr("width", 300)
+        .attr("height", 300)
+      .append("g")
+        .attr("transform", "translate(150,150)")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Impact")
+        .style("fill", function(d, i) { return fill(i); })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+  }
+
+                });
+     
+	});
 
         function updateSearchResults()
         {
