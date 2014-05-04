@@ -97,72 +97,26 @@ def initiate_chosen(request, reqtype):
 def getJson(request):
     try:
         if request.method == 'GET':
-            if 'location_id' in request.GET and 'person_id' in request.GET and 'organization_id'in request.GET and 'pid' in request.GET:
-                person = request.GET.get('person_id', '')
-                location = request.GET.get('location_id', '')
-                organization = request.GET.get('organization_id', '')
-                pid = request.GET.get('pid', '')
-                f = Article.objects.articlesbypersonlocationorganization(person, location, organization, pid)
-		response = HttpResponse(Json.dumps(convertListToMap(f), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-                return HttpResponse(response)
+            a = Article.objects.values('id', 'headline', 'clicks', 'file__published_date')
+            if 'location_id' in request.GET:
+                a = a.filter(articlebylocation__location_id = request.GET.get('location_id', ''))
+            if 'person_id' in request.GET:
+                a = a.filter(articlebyperson__person_id = request.GET.get('person_id', ''))
+            if 'organization_id' in request.GET:
+                a = a.filter(articlebyorganization__organization_id = request.GET.get('organization_id', ''))
 
-            elif 'person_id' in request.GET and 'location_id' in request.GET and 'pid' in request.GET:
-                person = request.GET.get('person_id', '')
-                location = request.GET.get('location_id', '')
-                pid = request.GET.get('pid', '')
-                PL = ArticlebyPerson.objects.articlesbypersonlocation(person, location, pid)
-		response = HttpResponse(Json.dumps(convertListToMap(PL), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-                return HttpResponse(response)
+            if 'pid' in request.GET:
+                pid = int(request.GET.get('pid', ''))
+                if pid == 1:
+                    a = a.order_by('clicks')
+                elif pid == 2:
+                    a = a.order_by('-clicks')
+                else:
+                    a = a.order_by('-file__published_date')
 
-            elif 'organization_id' in request.GET and 'location_id' in request.GET and 'pid' in request.GET:
-                organization = request.GET.get('organization_id', '')
-                location = request.GET.get('location_id', '')
-                pid =  request.GET.get('pid', '')
-                OL = ArticlebyLocation.objects.articlesbylocationorganization(location,organization,pid)
-		response = HttpResponse(Json.dumps(convertListToMap(OL), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-                return HttpResponse(response)
+            response = HttpResponse(Json.dumps(convertToList(a), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
 
-            elif 'organization_id' in request.GET and 'person_id' in request.GET and 'pid' in request.GET:
-                person = request.GET.get('person_id', '')
-                organization = request.GET.get('organization_id', '')
-                pid = request.GET.get('pid', '')
-                OP = ArticlebyOrganization.objects.articlesbypersonorganization(person,organization,pid)
-		response = HttpResponse(Json.dumps(convertListToMap(OP), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-                return HttpResponse(response)
-
-            elif 'location_id' in request.GET and 'pid' in request.GET:
-                location = request.GET.get('location_id', '')
-                pid = request.GET.get('pid', '')
-                L = ArticlebyLocation.object.articlesbylocation(location, pid)
-		response = HttpResponse(Json.dumps(convertListToMap(L), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-                return HttpResponse(response)
-
-            elif 'person_id' in request.GET and 'pid' in request.GET:
-                person = request.GET.get('person_id', '')
-                pid = request.GET.get('pid', '')
-                P = ArticlebyPerson.object.articlesbyperson(person,pid)
-		response = HttpResponse(Json.dumps(convertListToMap(P), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-                return HttpResponse(response)
-
-            elif 'organization_id' in request.GET and 'pid' in request.GET:
-                organization = request.GET.get('organization_id', '')
-                pid = request.GET.get('pid', '')
-                O = ArticlebyOrganization.object.articlebyorganization(organization, pid)
-		response = HttpResponse(Json.dumps(convertListToMap(O), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-                return HttpResponse(response)
-            else:
-                if 'pid' in request.GET:
-                    pid = request.GET.get('pid', '')
-                    if pid == '1':
-			A = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('clicks')
-			x = filterByDate("month",23,04,2005,A)
-			response = HttpResponse(x, content_type="application/json", mimetype="application/json").content
-                	return HttpResponse(response)
-                    elif pid == '2':
-                        A = Article.objects.values('id', 'headline', 'clicks', 'file__published_date').order_by('-clicks')
-		response = HttpResponse(Json.dumps(convertValuesToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-                return HttpResponse(response)
-
+            return HttpResponse(response)
     except:
         print "Error"
 
@@ -203,10 +157,10 @@ def search_results(request):
     response = HttpResponse(Json.dumps(convertSearchListToMap(r), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
     return HttpResponse(response)
 
-def convertListToMap(lists):
+def convertToList(lists):
     result = []
     for list in lists:
-        result.append(convertEachListToMap(list))
+        result.append(list)
     return result
 
 def convertSearchListToMap(r):
@@ -229,7 +183,7 @@ def convertEachListToMap(list):
     result['id'] = list[0]
     result['headline'] = list[1]
     result['clicks'] = list[2]
-    result['published_date'] = list[3]
+    #result['published_date'] = list[3]
     return result
 
 def convertValuesToMap(lists):
