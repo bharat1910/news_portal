@@ -502,9 +502,22 @@
         
         function getWordCloudInputParameters()
         {
-          var result = {};
-	  result['pid'] = 1;	
-          return result;
+           var result = {};
+            if ($("#location").val() != "") {
+                result['location_id'] = $("#location").val();
+            }
+
+            if ($("#organization").val() != "") {
+                result['organization_id'] = $("#organization").val();
+            }
+
+            if ($("#person").val() != "") {
+                result['person_id'] = $("#person").val();
+            }
+			
+	    result['pid'] = 1;
+			
+            return result;
         } 
        
         function showArticleData(id, headline, clicks)
