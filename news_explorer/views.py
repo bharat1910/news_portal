@@ -15,6 +15,10 @@ def index(request):
     getCountry("Delhi")
     return render(request, 'news_explorer/index.html', context)
 
+def wordcloud(request):
+    context = {}
+    return render(request, 'news_explorer/wordcloud.html', context)
+
 def news_articles_by_selection(request):
     context = {}
     return render(request, 'news_explorer/news_articles_by_selection.html', context)

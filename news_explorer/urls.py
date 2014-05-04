@@ -4,6 +4,7 @@ from news_explorer import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
+    url(r'^wordcloud$', views.wordcloud, name='wordcloud'),
     url(r'^articles$', views.getJson, name='getJson'),
     url(r'^articles_new$', views.getJson_new, name='getJson_new'),
     url(r'^click_article$', views.click_article, name='click_article'),

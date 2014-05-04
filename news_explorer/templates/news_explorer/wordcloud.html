@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Word Cloud</title>
+  <script type='text/javascript' src='http://d3js.org/d3.v3.min.js'></script>
+  <script type='text/javascript' src="http://www.jasondavies.com/wordcloud/d3.layout.cloud.js"></script>
+  <script type='text/javascript'>
+   var renderWordCloud = function() {
+   var fill = d3.scale.category20();
+       
+   var jsonobj = [{"title":"Mexiko-Stadt","clicks":70},{"title":"Manila","clicks":80},{"title":"Mexiko-Stadt","clicks":70},{"title":"Manila","clicks":80}];
+   var arr = [];
+   for (elem in jsonobj) {
+	  arr.push(jsonobj[elem]["title"]+":"+jsonobj[elem]["clicks"]);
+   }
+       
+   d3.layout.cloud().size([300, 300])
+      .words(arr.map(function(d) {
+    	 var temp = d.split(":");
+    	 var t=temp[1]/100;
+    	 return {text: temp[0], size: 10+t*50};
+      }))
+      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .font("Impact")
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw)
+      .start();
+
+  function draw(words) {
+    d3.select("body").append("svg")
+        .attr("width", 300)
+        .attr("height", 300)
+      .append("g")
+        .attr("transform", "translate(150,150)")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Impact")
+        .style("fill", function(d, i) { return fill(i); })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+  }
+}
+
+window.onload = function(){
+  renderWordCloud();  
+}
+</script>
+</head>
+<body>
+</body>
+</html>
+
