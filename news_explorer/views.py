@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import requests
-import datetime
+from datetime import datetime, timedelta
 from datetime import date
 from django.http import HttpResponse, HttpRequest
 from django.utils import simplejson as Json
@@ -105,6 +105,20 @@ def getJson(request):
             if 'organization_id' in request.GET:
                 a = a.filter(articlebyorganization__organization_id = request.GET.get('organization_id', ''))
 
+            if 'fdate' in request.GET:
+                print(2)
+                toDate = datetime(2005, 05, 24)
+                fdate = request.GET.get('fdate', '')
+                if fdate == "week":
+                    fromDate = toDate + timedelta(days=-7)
+                elif fdate == "month":
+                    fromDate = toDate + timedelta(days=-31)
+                else:
+                    fromDate = toDate + timedelta(days=-366)
+
+                a = a.filter(file__published_date__gte = fromDate)\
+                     .filter(file__published_date__lte = toDate)
+
             if 'pid' in request.GET:
                 pid = int(request.GET.get('pid', ''))
                 if pid == 1:
@@ -160,7 +174,7 @@ def search_results(request):
 def convertToList(lists):
     result = []
     for list in lists:
-        result.append(list)
+        result.append(convertEachEntityToMap(list))
     return result
 
 def convertSearchListToMap(r):
@@ -178,12 +192,12 @@ def convertEachSearchResultToMap(sr):
     result['clicks'] = Article.objects.get(id = sr['id']).clicks
     return result
 
-def convertEachListToMap(list):
+def convertEachEntityToMap(list):
     result = {}
-    result['id'] = list[0]
-    result['headline'] = list[1]
-    result['clicks'] = list[2]
-    #result['published_date'] = list[3]
+    result['id'] = list['id']
+    result['headline'] = list['headline']
+    result['clicks'] = list['clicks']
+    result['published_date'] = list['file__published_date'].strftime("%Y-%m-%d")
     return result
 
 def convertValuesToMap(lists):

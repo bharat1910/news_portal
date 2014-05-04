@@ -138,7 +138,7 @@ class ParentLocationManager(models.Manager):
 class File(models.Model):
     name = models.CharField(max_length=200)
     path_file = models.CharField(max_length=200)
-    published_date= models.CharField(max_length=200)
+    published_date= models.DateField()
     source= models.CharField(max_length=200)
     published_location = models.CharField(max_length=20)
 
