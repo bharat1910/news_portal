@@ -641,9 +641,9 @@
 		    $.get("articles", inputPara,
 		            function( data ) {
 				data = eval(data);
-				alert(data);
+				
 		                 for (var i=0; i<data.length; i++) {
-			               alert("here4");
+			              
                                        var content_text = data[i].headline;	   
                                        var sWords = content_text.split(" "); 
 	                               var iWordsCount = sWords.length;
@@ -660,8 +660,7 @@
 		                 }
                                for(sWord in counts)
 		                {
-				alert(sWord);
-				alert(counts[sWord]);
+				
 		         	a.push({
 			        	text:sWord,
 				        frequency:counts[sWord]
