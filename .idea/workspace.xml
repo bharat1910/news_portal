@@ -28,30 +28,8 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="12" selection-start="5864" selection-end="5864" vertical-scroll-proportion="0.92659056" vertical-offset="1397" max-vertical-offset="3900">
+            <state line="95" column="12" selection-start="3859" selection-end="3859" vertical-scroll-proportion="0.41226575" vertical-offset="1033" max-vertical-offset="4095">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news_explorer/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="42" selection-start="261" selection-end="273" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="315">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="10" selection-start="5532" selection-end="5532" vertical-scroll-proportion="91.25" vertical-offset="4395" max-vertical-offset="12105">
-              <folding>
-                <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -59,7 +37,7 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="36" selection-start="11289" selection-end="11289" vertical-scroll-proportion="0.0" vertical-offset="1305" max-vertical-offset="2985">
+            <state line="17" column="26" selection-start="567" selection-end="585" vertical-scroll-proportion="61.73077" vertical-offset="1860" max-vertical-offset="2985">
               <folding />
             </state>
           </provider>
@@ -765,23 +743,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="42" selection-start="261" selection-end="273" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="36" selection-start="11289" selection-end="11289" vertical-scroll-proportion="0.0" vertical-offset="1305" max-vertical-offset="2985">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="10" selection-start="5532" selection-end="5532" vertical-scroll-proportion="91.25" vertical-offset="4395" max-vertical-offset="12105">
+        <state line="486" column="60" selection-start="19363" selection-end="19363" vertical-scroll-proportion="0.45840406" vertical-offset="7020" max-vertical-offset="12105">
           <folding>
             <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -790,9 +754,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="42" selection-start="261" selection-end="273" vertical-scroll-proportion="0.07188498" vertical-offset="0" max-vertical-offset="626">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="26" selection-start="567" selection-end="585" vertical-scroll-proportion="61.73077" vertical-offset="1860" max-vertical-offset="2985">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="12" selection-start="5864" selection-end="5864" vertical-scroll-proportion="0.92659056" vertical-offset="1397" max-vertical-offset="3900">
+        <state line="95" column="12" selection-start="3859" selection-end="3859" vertical-scroll-proportion="0.41226575" vertical-offset="1033" max-vertical-offset="4095">
           <folding />
         </state>
       </provider>

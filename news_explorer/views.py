@@ -83,15 +83,17 @@ def initiate_chosen(request, reqtype):
             L = Location.objects.uniqueLocation()
             response = HttpResponse(Json.dumps(convertSelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
-
         elif reqtype == "organization":
             L = Organization.objects.uniqueOrganization()
             response = HttpResponse(Json.dumps(convertSelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
-
         elif reqtype == "person":
             L = Person.objects.uniquePerson()
             response = HttpResponse(Json.dumps(convertSelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
+            return HttpResponse(response)
+        elif reqtype == "category":
+            L = Article.objects.values('category').distinct()
+            response = HttpResponse(Json.dumps(convertCategorySelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
 
 def getJson(request):
@@ -261,4 +263,16 @@ def convertToMap(list):
     result1 = {}
     result1['id'] = list[0]
     result1['name'] = list[1]
+    return result1
+
+def convertCategorySelectAttributesToMap(lists):
+    result1 = []
+    for list in lists:
+        result1.append(convertCategoryToMap(list))
+    return result1
+
+def convertCategoryToMap(list):
+    result1 = {}
+    result1['id'] = list['category']
+    result1['name'] = list['category']
     return result1
