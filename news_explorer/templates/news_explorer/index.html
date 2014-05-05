@@ -143,8 +143,9 @@
             <div class="panel-group" id="plain_search_results">
             </div>
       </div>
-	<div id="tab6" style="display:none">
-              <form class="well form-search" id="news_articles_wordcloud_div">
+
+      <div id="tab6" style="display:none">
+          <form class="well form-search" id="news_articles_wordcloud_div">
               <select class="chzn-select-wordcloud" style="width:200px;" id="location_wordcloud" data-placeholder="Choose a country..."></select>
 
               <select class="chzn-select-wordcloud" style="width:200px;" id="organization_wordcloud" data-placeholder="Choose an organization..."></select>
@@ -155,10 +156,10 @@
           </form>
 		  
 
-            <div id="wordcloud_div">
+          <div id="wordcloud_div">
 
           </div>
-	</div>
+	  </div>
     </div> <!-- /container -->
 
 
@@ -319,56 +320,6 @@
                 $(".chzn-select-chart").chosen();
             });
         }
-
-function showWordCloudSelectOptions()
-        {
-            $.get("person", function( data ) {
-                data = eval(data);
-
-                addDefault($('#person_wordcloud'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#person_wordcloud')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#person_wordcloud").trigger("chosen:updated");
-            });
-
-            $.get("location", function( data ) {
-                data = eval(data);
-
-                addDefault($('#location_wordcloud'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#location_wordcloud')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#location_wordcloud").trigger("chosen:updated");
-            });
-
-            $.get("organization", function( data ) {
-                data = eval(data);
-
-                addDefault($('#organization_wordcloud'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#organization_wordcloud')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#organization_wordcloud").trigger("chosen:updated");
-            });
-
-            $(function(){
-                $(".chzn-select-wordcloud").chosen();
-            });
-        }
-
 
         function addDefault(div$)
         {
@@ -769,8 +720,9 @@ function showWordCloudSelectOptions()
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").hide();
-	    $("#tab6").show();
-	    showWordCloudSelectOptions()
+
+	        $("#tab6").show();
+	        showWordCloudSelectOptions()
 	    });
 
         function getWordCloudInputParameters()
@@ -791,6 +743,55 @@ function showWordCloudSelectOptions()
 	        result['pid'] = 1;
 
             return result;
+        }
+
+        function showWordCloudSelectOptions()
+        {
+            $.get("person", function( data ) {
+                data = eval(data);
+
+                addDefault($('#person_wordcloud'));
+
+                for (var i=0; i<data.length; i++) {
+                    $('#person_wordcloud')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#person_wordcloud").trigger("chosen:updated");
+            });
+
+            $.get("location", function( data ) {
+                data = eval(data);
+
+                addDefault($('#location_wordcloud'));
+
+                for (var i=0; i<data.length; i++) {
+                    $('#location_wordcloud')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#location_wordcloud").trigger("chosen:updated");
+            });
+
+            $.get("organization", function( data ) {
+                data = eval(data);
+
+                addDefault($('#organization_wordcloud'));
+
+                for (var i=0; i<data.length; i++) {
+                    $('#organization_wordcloud')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#organization_wordcloud").trigger("chosen:updated");
+            });
+
+            $(function(){
+                $(".chzn-select-wordcloud").chosen();
+            });
         }
     </script>
   </body>

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="        function getInputParameters()&#10;        {&#10;            var result = {};&#10;            if ($(&quot;#location&quot;).val() != &quot;&quot;) {&#10;                result['location_id'] = $(&quot;#location&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#organization&quot;).val() != &quot;&quot;) {&#10;                result['organization_id'] = $(&quot;#organization&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#person&quot;).val() != &quot;&quot;) {&#10;                result['person_id'] = $(&quot;#person&quot;).val();&#10;            }&#10;&#10;            return result;&#10;        }">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/models.py" afterPath="$PROJECT_DIR$/news_explorer/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/views.py" afterPath="$PROJECT_DIR$/news_explorer/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" afterPath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="news_portal.iws" />
@@ -27,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="46" selection-start="4458" selection-end="4458" vertical-scroll-proportion="0.22998296" vertical-offset="1500" max-vertical-offset="3885">
+            <state line="118" column="0" selection-start="4791" selection-end="4923" vertical-scroll-proportion="-8.076923" vertical-offset="1560" max-vertical-offset="3885">
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -47,11 +46,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="497" column="29" selection-start="19162" selection-end="19162" vertical-scroll-proportion="-15.166667" vertical-offset="7091" max-vertical-offset="11055">
-              <folding />
+            <state line="147" column="10" selection-start="5554" selection-end="5554" vertical-scroll-proportion="0.41426146" vertical-offset="1961" max-vertical-offset="12060">
+              <folding>
+                <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,9 +93,9 @@
         <option value="$PROJECT_DIR$/news_explorer/Classification.py" />
         <option value="$PROJECT_DIR$/news_explorer/Parser.py" />
         <option value="$PROJECT_DIR$/news_explorer/urls.py" />
-        <option value="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
         <option value="$PROJECT_DIR$/news_explorer/models.py" />
         <option value="$PROJECT_DIR$/news_explorer/views.py" />
+        <option value="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
       </list>
     </option>
   </component>
@@ -433,7 +436,11 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="497" column="29" selection-start="19162" selection-end="19162" vertical-scroll-proportion="0.0" vertical-offset="7091" max-vertical-offset="11055">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -461,7 +468,11 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="686" column="9" selection-start="27044" selection-end="27044" vertical-scroll-proportion="0.0" vertical-offset="10042" max-vertical-offset="10770">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -482,7 +493,11 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="37" selection-start="377" selection-end="383" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8760">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -494,14 +509,22 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="554" column="14" selection-start="20796" selection-end="20796" vertical-scroll-proportion="0.0" vertical-offset="7897" max-vertical-offset="8460">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="523" column="33" selection-start="19056" selection-end="19056" vertical-scroll-proportion="0.0" vertical-offset="7462" max-vertical-offset="8025">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -518,7 +541,11 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="497" column="53" selection-start="18477" selection-end="18477" vertical-scroll-proportion="0.0" vertical-offset="7000" max-vertical-offset="7665">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -530,7 +557,11 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="444" column="14" selection-start="16416" selection-end="16416" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7365">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -542,42 +573,66 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="406" column="60" selection-start="15336" selection-end="15336" vertical-scroll-proportion="0.0" vertical-offset="5767" max-vertical-offset="6330">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="379" column="29" selection-start="14360" selection-end="14360" vertical-scroll-proportion="0.0" vertical-offset="5302" max-vertical-offset="5865">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="311" column="13" selection-start="13030" selection-end="13030" vertical-scroll-proportion="0.0" vertical-offset="3997" max-vertical-offset="4815">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="205" column="37" selection-start="8151" selection-end="8151" vertical-scroll-proportion="0.0" vertical-offset="2662" max-vertical-offset="3975">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="136" column="16" selection-start="5734" selection-end="5734" vertical-scroll-proportion="0.0" vertical-offset="2737" max-vertical-offset="3300">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="133" column="48" selection-start="5722" selection-end="5722" vertical-scroll-proportion="0.0" vertical-offset="2362" max-vertical-offset="3060">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -589,7 +644,11 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="119" column="109" selection-start="5263" selection-end="5263" vertical-scroll-proportion="0.0" vertical-offset="1796" max-vertical-offset="2445">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -611,7 +670,11 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="35" selection-start="470" selection-end="493" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1425">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -704,7 +767,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="132" column="61" selection-start="6392" selection-end="6392" vertical-scroll-proportion="0.4855196" vertical-offset="1695" max-vertical-offset="3045">
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -712,13 +775,6 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="42" selection-start="261" selection-end="273" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="497" column="29" selection-start="19162" selection-end="19162" vertical-scroll-proportion="-15.166667" vertical-offset="7091" max-vertical-offset="11055">
           <folding />
         </state>
       </provider>
@@ -732,9 +788,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="46" selection-start="4458" selection-end="4458" vertical-scroll-proportion="0.22998296" vertical-offset="1500" max-vertical-offset="3885">
+        <state line="118" column="0" selection-start="4791" selection-end="4923" vertical-scroll-proportion="-8.076923" vertical-offset="1560" max-vertical-offset="3885">
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="10" selection-start="5554" selection-end="5554" vertical-scroll-proportion="0.41426146" vertical-offset="1961" max-vertical-offset="12060">
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
