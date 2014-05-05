@@ -519,19 +519,16 @@ function showWordCloudSelectOptions()
         });
 
        $("#search_button_wordcloud").bind('click', function() {
-
-           var a = [];
+            var a = [];
             var counts = {};
 	    var ignore = ["and","the","to","a","of","for","as","i","with","is","on","that","this","can","in","be","has","if"];
 
             inputPara = getWordCloudInputParameters();	
-		    $.get("articles", inputPara,
+            		    $.get("articles", inputPara,
 		            function( data ) {
 				data = eval(data);
-				
 		                 for (var i=0; i<data.length; i++) {
-			              
-                                       var content_text = data[i].headline;	   
+			               var content_text = data[i].headline;	   
                                        var sWords = content_text.split(" "); 
 	                               var iWordsCount = sWords.length;
 	   
@@ -784,12 +781,12 @@ function showWordCloudSelectOptions()
                 result['organization_id'] = $("#organization_wordcloud").val();
             }
 
-            if ($("#person").val() != "") {
+            if ($("#person_wordcloud").val() != "") {
                 result['person_id'] = $("#person_wordcloud").val();
             }
-
-	        result['pid'] = 1;
-
+			
+            result['pid'] = 1;
+			
             return result;
         }
     </script>
