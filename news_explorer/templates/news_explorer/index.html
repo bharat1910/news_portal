@@ -479,7 +479,7 @@
 		            function( data ) {
 				data = eval(data);
 		                 for (var i=0; i<data.length; i++) {
-			               var content_text = data[i].headline;	   
+			               var content_text = data[i].content;	   
                                        var sWords = content_text.split(" "); 
 	                               var iWordsCount = sWords.length;
 	   
@@ -738,7 +738,7 @@
             }
 			
             result['pid'] = 1;
-			
+	    result['content'] = "";		
             return result;
         }
 
