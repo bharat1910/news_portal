@@ -34,6 +34,13 @@
         margin: 0 auto;
         }
 
+        #wordcloud_map_div {
+        height: 500px;
+        min-width: 310px;
+        max-width: 800px;
+        margin: 0 auto;
+        }
+
         .loading {
         margin-top: 10em;
         text-align: center;
@@ -157,7 +164,6 @@
 		  
 
           <div id="wordcloud_div">
-
           </div>
 	  </div>
     </div> <!-- /container -->
@@ -507,11 +513,11 @@
 
                          var fill = d3.scale.category20();
 
-                         d3.layout.cloud().size([300, 300])
+                         d3.layout.cloud().size([800, 500])
                                   .words(a.map(function(d) {
                             var w = d.text;
                             var f = d.frequency/10;
-                            return {text: w, size: 10+f*50};
+                            return {text: w, size: 20+f*50};
                          }))
                          .rotate(function() { return ~~(Math.random() * 2) * 90; })
                          .font("Impact")
@@ -521,8 +527,8 @@
 
                          function draw(words) {
                                d3.select("#wordcloud_div").append("svg")
-                                 .attr("width", 300)
-                                 .attr("height", 300)
+                                 .attr("width", 800)
+                                 .attr("height", 500)
                                  .append("g")
                                  .attr("transform", "translate(150,150)")
                                  .selectAll("text")
