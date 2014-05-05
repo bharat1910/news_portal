@@ -97,7 +97,11 @@ def initiate_chosen(request, reqtype):
 def getJson(request):
     try:
         if request.method == 'GET':
-            a = Article.objects.values('id', 'headline', 'clicks', 'file__published_date')
+            a = [];
+	    if 'content' in request.GET:
+		a = Article.objects.values('id', 'headline', 'content', 'clicks', 'file__published_date')
+	    else:
+		a = Article.objects.values('id', 'headline', 'clicks', 'file__published_date')
             if 'location_id' in request.GET:
                 a = a.filter(articlebylocation__location_id = request.GET.get('location_id', ''))
             if 'person_id' in request.GET:
@@ -127,9 +131,10 @@ def getJson(request):
                     a = a.order_by('-clicks')
                 else:
                     a = a.order_by('-file__published_date')
-
-            response = HttpResponse(Json.dumps(convertToList(a), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-
+	    if 'content' in request.GET:
+	            response = HttpResponse(Json.dumps(convertToList(a,"true"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+	    else:
+	    	    response = HttpResponse(Json.dumps(convertToList(a,"false"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
     except:
         print "Error"
@@ -171,10 +176,10 @@ def search_results(request):
     response = HttpResponse(Json.dumps(convertSearchListToMap(r), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
     return HttpResponse(response)
 
-def convertToList(lists):
+def convertToList(lists,content):
     result = []
     for list in lists:
-        result.append(convertEachEntityToMap(list))
+        result.append(convertEachEntityToMap(list,content))
     return result
 
 def convertSearchListToMap(r):
@@ -192,11 +197,13 @@ def convertEachSearchResultToMap(sr):
     result['clicks'] = Article.objects.get(id = sr['id']).clicks
     return result
 
-def convertEachEntityToMap(list):
+def convertEachEntityToMap(list,content):
     result = {}
     result['id'] = list['id']
     result['headline'] = list['headline']
     result['clicks'] = list['clicks']
+    if content == "true":
+    	result['content'] = list['content']
     result['published_date'] = list['file__published_date'].strftime("%Y-%m-%d")
     return result
 
