@@ -90,6 +90,8 @@
 
               <select class="chzn-select" style="width:200px;" id="person" data-placeholder="Choose a person..."></select>
 
+              <select class="chzn-select" style="width:200px;" id="category" data-placeholder="Choose a category..."></select>
+
               <button id="search_button" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
           </form>
 				
@@ -111,6 +113,8 @@
               <select class="chzn-select-chart" style="width:200px;" id="organization_chart" data-placeholder="Choose an organization..."></select>
 
               <select class="chzn-select-chart" style="width:200px;" id="person_chart" data-placeholder="Choose a person..."></select>
+
+              <select class="chzn-select-chart" style="width:200px;" id="category_chart" data-placeholder="Choose a category..."></select>
 
               <button id="search_button_chart" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
           </form>
@@ -159,6 +163,8 @@
 
               <select class="chzn-select-wordcloud" style="width:200px;" id="person_wordcloud" data-placeholder="Choose a person..."></select>
 
+              <select class="chzn-select-wordcloud" style="width:200px;" id="category_wordcloud" data-placeholder="Choose a category..."></select>
+
               <button id="search_button_wordcloud" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
           </form>
 		  
@@ -204,7 +210,8 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").hide();
-	    $("#tab6").hide();
+	        $("#tab6").hide();
+
             showSelectOptions();
         });
 
@@ -215,6 +222,7 @@
             $("#tab4").hide();
             $("#tab5").hide();
             $("#tab6").hide();
+
             showChartSelectOptions();
         });
 
@@ -273,6 +281,20 @@
                 $("#organization").trigger("chosen:updated");
             });
 
+            $.get("category", function( data ) {
+                data = eval(data);
+
+                addDefault($('#category'));
+
+                for (var i=0; i<data.length; i++) {
+                    $('#category')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#category").trigger("chosen:updated");
+            });
+
             $(function(){
                 $(".chzn-select").chosen();
             });
@@ -320,6 +342,20 @@
                         .text(data[i].name));
                 }
                 $("#organization_chart").trigger("chosen:updated");
+            });
+
+            $.get("category", function( data ) {
+                data = eval(data);
+
+                addDefault($('#category_chart'));
+
+                for (var i=0; i<data.length; i++) {
+                    $('#category_chart')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#category_chart").trigger("chosen:updated");
             });
 
             $(function(){
@@ -562,7 +598,11 @@
             if ($("#person").val() != "") {
                 result['person_id'] = $("#person").val();
             }
-			
+
+            if ($("#category").val() != "") {
+                result['category'] = $("#category").val();
+            }
+
 			result['pid'] = pid;
 			
 			if(fdate != '')
@@ -585,7 +625,11 @@
             if ($("#person_chart").val() != "") {
                 result['person_id'] = $("#person_chart").val();
             }
-			
+
+            if ($("#category_chart").val() != "") {
+                result['category'] = $("#category_chart").val();
+            }
+
             result['pid'] = 1;
 			
             return result;
@@ -672,7 +716,7 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").show();
-		$("#tab6").hide();	
+		    $("#tab6").hide();
 		});
 
         function updateSearchResults()
@@ -723,8 +767,8 @@
             $("#tab3").hide();
             $("#tab4").hide();
             $("#tab5").hide();
+            $("#tab6").show();
 
-	        $("#tab6").show();
 	        showWordCloudSelectOptions()
 	    });
 
@@ -742,9 +786,13 @@
             if ($("#person_wordcloud").val() != "") {
                 result['person_id'] = $("#person_wordcloud").val();
             }
-			
+
+            if ($("#category_wordcloud").val() != "") {
+                result['category'] = $("#category_wordcloud").val();
+            }
+
             result['pid'] = 1;
-	    result['content'] = "";		
+	        result['content'] = "";
             return result;
         }
 
@@ -790,6 +838,21 @@
                         .text(data[i].name));
                 }
                 $("#organization_wordcloud").trigger("chosen:updated");
+            });
+
+
+            $.get("category", function( data ) {
+                data = eval(data);
+
+                addDefault($('#category_wordcloud'));
+
+                for (var i=0; i<data.length; i++) {
+                    $('#category_wordcloud')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#category_wordcloud").trigger("chosen:updated");
             });
 
             $(function(){

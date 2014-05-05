@@ -112,6 +112,8 @@ def getJson(request):
                 a = a.filter(articlebyperson__person_id = request.GET.get('person_id', ''))
             if 'organization_id' in request.GET:
                 a = a.filter(articlebyorganization__organization_id = request.GET.get('organization_id', ''))
+            if 'category' in request.GET:
+                a = a.filter(category = request.GET.get('category', ''))
 
             if 'fdate' in request.GET:
                 print(2)
