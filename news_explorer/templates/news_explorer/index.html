@@ -144,6 +144,17 @@
             </div>
       </div>
 	<div id="tab6" style="display:none">
+              <form class="well form-search" id="news_articles_wordcloud_div">
+              <select class="chzn-select-wordcloud" style="width:200px;" id="location_wordcloud" data-placeholder="Choose a country..."></select>
+
+              <select class="chzn-select-wordcloud" style="width:200px;" id="organization_wordcloud" data-placeholder="Choose an organization..."></select>
+
+              <select class="chzn-select-wordcloud" style="width:200px;" id="person_wordcloud" data-placeholder="Choose a person..."></select>
+
+              <button id="search_button_wordcloud" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
+          </form>
+		  
+
             <div id="wordcloud_div">
 
           </div>
@@ -309,6 +320,56 @@
             });
         }
 
+function showWordCloudSelectOptions()
+        {
+            $.get("person", function( data ) {
+                data = eval(data);
+
+                addDefault($('#person_wordcloud'));
+
+                for (var i=0; i<data.length; i++) {
+                    $('#person_wordcloud')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#person_wordcloud").trigger("chosen:updated");
+            });
+
+            $.get("location", function( data ) {
+                data = eval(data);
+
+                addDefault($('#location_wordcloud'));
+
+                for (var i=0; i<data.length; i++) {
+                    $('#location_wordcloud')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#location_wordcloud").trigger("chosen:updated");
+            });
+
+            $.get("organization", function( data ) {
+                data = eval(data);
+
+                addDefault($('#organization_wordcloud'));
+
+                for (var i=0; i<data.length; i++) {
+                    $('#organization_wordcloud')
+                        .append($("<option></option>")
+                        .attr("value",data[i].id)
+                        .text(data[i].name));
+                }
+                $("#organization_wordcloud").trigger("chosen:updated");
+            });
+
+            $(function(){
+                $(".chzn-select-wordcloud").chosen();
+            });
+        }
+
+
         function addDefault(div$)
         {
             div$.append("<option></option>");
@@ -455,6 +516,82 @@
                     }]
                 });
             });
+        });
+
+       $("#search_button_wordcloud").bind('click', function() {
+
+           var a = [];
+            var counts = {};
+	    var ignore = ["and","the","to","a","of","for","as","i","with","is","on","that","this","can","in","be","has","if"];
+
+            inputPara = getWordCloudInputParameters();	
+		    $.get("articles", inputPara,
+		            function( data ) {
+				data = eval(data);
+				
+		                 for (var i=0; i<data.length; i++) {
+			              
+                                       var content_text = data[i].headline;	   
+                                       var sWords = content_text.split(" "); 
+	                               var iWordsCount = sWords.length;
+	   
+	                               for(var i=0;i<iWordsCount;i++)
+		                       {
+		                       var sWord = sWords[i];
+		                      //Make this case-insensitive
+		                       if($.inArray(sWords[i], ignore)==-1){
+		                       counts[sWord]=counts[sWord]||0;
+		                       counts[sWord]++;
+		                       }
+		                       }
+		                 }
+                               for(sWord in counts)
+		                {
+				
+		         	a.push({
+			        	text:sWord,
+				        frequency:counts[sWord]
+			         });
+		                }
+             
+                         $("#wordcloud_div").empty();
+                         $('#wordcloud_div').show();
+
+                         var fill = d3.scale.category20();
+
+                         d3.layout.cloud().size([300, 300])
+                                  .words(a.map(function(d) {
+                            var w = d.text;
+                            var f = d.frequency/10;
+                            return {text: w, size: 10+f*50};
+                         }))
+                         .rotate(function() { return ~~(Math.random() * 2) * 90; })
+                         .font("Impact")
+                         .fontSize(function(d) { return d.size; })
+                         .on("end", draw)
+                         .start();
+
+                         function draw(words) {
+                               d3.select("#wordcloud_div").append("svg")
+                                 .attr("width", 300)
+                                 .attr("height", 300)
+                                 .append("g")
+                                 .attr("transform", "translate(150,150)")
+                                 .selectAll("text")
+                                 .data(words)
+                                 .enter().append("text")
+                                 .style("font-size", function(d) { return d.size + "px"; })
+                                 .style("font-family", "Impact")
+                                 .style("fill", function(d, i) { return fill(i); })
+                                 .attr("text-anchor", "middle")
+                                 .attr("transform", function(d) {
+
+                                 return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                                 })
+                                 .text(function(d) { return d.text; });
+                         }
+                    });
+           
         });
 
         function getInputParameters(fdate, pid)
@@ -633,93 +770,22 @@
             $("#tab4").hide();
             $("#tab5").hide();
 	    $("#tab6").show();
-            var a = [];
-            var counts = {};
-	    var ignore = ["and","the","to","a","of","for","as","i","with","is","on","that","this","can","in","be","has","if"];
-
-            inputPara = getWordCloudInputParameters();	
-		    $.get("articles", inputPara,
-		            function( data ) {
-				data = eval(data);
-				
-		                 for (var i=0; i<data.length; i++) {
-			              
-                                       var content_text = data[i].headline;	   
-                                       var sWords = content_text.split(" "); 
-	                               var iWordsCount = sWords.length;
-	   
-	                               for(var i=0;i<iWordsCount;i++)
-		                       {
-		                       var sWord = sWords[i];
-		                      //Make this case-insensitive
-		                       if($.inArray(sWords[i], ignore)==-1){
-		                       counts[sWord]=counts[sWord]||0;
-		                       counts[sWord]++;
-		                       }
-		                       }
-		                 }
-                               for(sWord in counts)
-		                {
-				
-		         	a.push({
-			        	text:sWord,
-				        frequency:counts[sWord]
-			         });
-		                }
-             
-                         $("#wordcloud_div").empty();
-                         $('#wordcloud_div').show();
-
-                         var fill = d3.scale.category20();
-
-                         d3.layout.cloud().size([300, 300])
-                                  .words(a.map(function(d) {
-                            var w = d.text;
-                            var f = d.frequency/10;
-                            return {text: w, size: 10+f*50};
-                         }))
-                         .rotate(function() { return ~~(Math.random() * 2) * 90; })
-                         .font("Impact")
-                         .fontSize(function(d) { return d.size; })
-                         .on("end", draw)
-                         .start();
-
-                         function draw(words) {
-                               d3.select("#wordcloud_div").append("svg")
-                                 .attr("width", 300)
-                                 .attr("height", 300)
-                                 .append("g")
-                                 .attr("transform", "translate(150,150)")
-                                 .selectAll("text")
-                                 .data(words)
-                                 .enter().append("text")
-                                 .style("font-size", function(d) { return d.size + "px"; })
-                                 .style("font-family", "Impact")
-                                 .style("fill", function(d, i) { return fill(i); })
-                                 .attr("text-anchor", "middle")
-                                 .attr("transform", function(d) {
-
-                                 return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                                 })
-                                 .text(function(d) { return d.text; });
-                         }
-                    }
-            );
+	    showWordCloudSelectOptions()
 	    });
 
         function getWordCloudInputParameters()
         {
            var result = {};
-            if ($("#location").val() != "") {
-                result['location_id'] = $("#location").val();
+            if ($("#location_wordcloud").val() != "") {
+                result['location_id'] = $("#location_wordcloud").val();
             }
 
-            if ($("#organization").val() != "") {
-                result['organization_id'] = $("#organization").val();
+            if ($("#organization_wordcloud").val() != "") {
+                result['organization_id'] = $("#organization_wordcloud").val();
             }
 
             if ($("#person").val() != "") {
-                result['person_id'] = $("#person").val();
+                result['person_id'] = $("#person_wordcloud").val();
             }
 
 	        result['pid'] = 1;
