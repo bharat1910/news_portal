@@ -98,10 +98,12 @@ def getJson(request):
     try:
         if request.method == 'GET':
             a = [];
-	    if 'content' in request.GET:
-		a = Article.objects.values('id', 'headline', 'content', 'clicks', 'file__published_date')
-	    else:
-		a = Article.objects.values('id', 'headline', 'clicks', 'file__published_date')
+
+            if 'content' in request.GET:
+                a = Article.objects.values('id', 'headline', 'content', 'clicks', 'file__published_date')
+            else:
+                a = Article.objects.values('id', 'headline', 'clicks', 'file__published_date')
+
             if 'location_id' in request.GET:
                 a = a.filter(articlebylocation__location_id = request.GET.get('location_id', ''))
             if 'person_id' in request.GET:
@@ -131,10 +133,12 @@ def getJson(request):
                     a = a.order_by('-clicks')
                 else:
                     a = a.order_by('-file__published_date')
-	    if 'content' in request.GET:
-	            response = HttpResponse(Json.dumps(convertToList(a,"true"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
-	    else:
-	    	    response = HttpResponse(Json.dumps(convertToList(a,"false"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+
+            if 'content' in request.GET:
+                response = HttpResponse(Json.dumps(convertToList(a,"true"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+            else:
+                response = HttpResponse(Json.dumps(convertToList(a,"false"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+
             return HttpResponse(response)
     except:
         print "Error"

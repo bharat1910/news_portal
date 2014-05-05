@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="        function getInputParameters()&#10;        {&#10;            var result = {};&#10;            if ($(&quot;#location&quot;).val() != &quot;&quot;) {&#10;                result['location_id'] = $(&quot;#location&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#organization&quot;).val() != &quot;&quot;) {&#10;                result['organization_id'] = $(&quot;#organization&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#person&quot;).val() != &quot;&quot;) {&#10;                result['person_id'] = $(&quot;#person&quot;).val();&#10;            }&#10;&#10;            return result;&#10;        }">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" afterPath="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/views.py" afterPath="$PROJECT_DIR$/news_explorer/views.py" />
     </list>
     <ignored path="news_portal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,13 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="0" selection-start="4791" selection-end="4923" vertical-scroll-proportion="-8.076923" vertical-offset="1560" max-vertical-offset="3885">
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state line="141" column="12" selection-start="5864" selection-end="5864" vertical-scroll-proportion="0.92659056" vertical-offset="1397" max-vertical-offset="3900">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -46,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="10" selection-start="5554" selection-end="5554" vertical-scroll-proportion="0.41426146" vertical-offset="1961" max-vertical-offset="12060">
+            <state line="147" column="10" selection-start="5532" selection-end="5532" vertical-scroll-proportion="91.25" vertical-offset="4395" max-vertical-offset="12105">
               <folding>
                 <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -94,8 +91,8 @@
         <option value="$PROJECT_DIR$/news_explorer/Parser.py" />
         <option value="$PROJECT_DIR$/news_explorer/urls.py" />
         <option value="$PROJECT_DIR$/news_explorer/models.py" />
-        <option value="$PROJECT_DIR$/news_explorer/views.py" />
         <option value="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
+        <option value="$PROJECT_DIR$/news_explorer/views.py" />
       </list>
     </option>
   </component>
@@ -131,7 +128,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -220,6 +216,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -454,9 +451,7 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="125" column="33" selection-start="5310" selection-end="5310" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5175">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -479,9 +474,7 @@
     <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="120" column="33" selection-start="5159" selection-end="5159" vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="5115">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -786,23 +779,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="0" selection-start="4791" selection-end="4923" vertical-scroll-proportion="-8.076923" vertical-offset="1560" max-vertical-offset="3885">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="10" selection-start="5554" selection-end="5554" vertical-scroll-proportion="0.41426146" vertical-offset="1961" max-vertical-offset="12060">
+        <state line="147" column="10" selection-start="5532" selection-end="5532" vertical-scroll-proportion="91.25" vertical-offset="4395" max-vertical-offset="12105">
           <folding>
             <element signature="n#style#0;n#select#0;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#1;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#2;n#form#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="12" selection-start="5864" selection-end="5864" vertical-scroll-proportion="0.92659056" vertical-offset="1397" max-vertical-offset="3900">
+          <folding />
         </state>
       </provider>
     </entry>
