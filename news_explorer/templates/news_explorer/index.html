@@ -198,7 +198,8 @@
             '<div class="btn-group" id="order-select">' +
 	            '<button type="button" class="order_selector btn btn-default btn-info btn-xs" id="order_button1" param="2"> Most popular </button>' +
 	            '<button type="button" class="order_selector btn btn-default btn-info btn-xs" id="order_button2" param="1"> Most recent </button>' +
-            '</div>');
+            '</div>' +
+            '<a href="#" onclick="searchByText()" class="btn btn-default btn-xs search_by_text_top" style="float:right; margin-right:5px"><span class="glyphicon glyphicon-hand-right"></span> Search By Text</a>');
 
             $("#time_button1").addClass('active');
 			$("#order_button1").addClass('active');
@@ -238,6 +239,9 @@
             $("#tab4").hide();
             $("#tab5").hide();
 	        $("#tab6").hide();
+
+
+            $(".search_by_text_top").show();
 
             tab_id = "tab2";
 
@@ -426,6 +430,8 @@
             $("#tab5").hide();
             $("#tab6").hide();
 
+            $(".search_by_text_top").hide();
+
             tab_id = "tab3";
 
             $("#news_articles_by_selection_div").show();
@@ -546,6 +552,8 @@
             $("#tab5").hide();
             $("#tab6").hide();
 
+            $(".search_by_text_top").hide();
+
             tab_id = "tab4";
 
             $("#news_articles_by_selection_div").show();
@@ -625,6 +633,8 @@
             $("#tab5").show();
 		    $("#tab6").hide();
 
+            $(".search_by_text_top").show();
+
 		    tab_id = "tab5";
 
             $("#news_articles_by_selection_div").show();
@@ -696,6 +706,8 @@
             $("#tab4").hide();
             $("#tab5").hide();
             $("#tab6").show();
+
+            $(".search_by_text_top").hide();
 
             tab_id = "tab6";
 
