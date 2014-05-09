@@ -37,7 +37,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="326" column="45" selection-start="12218" selection-end="12218" vertical-scroll-proportion="0.55350554" vertical-offset="5242" max-vertical-offset="14263">
+            <state line="326" column="42" selection-start="12215" selection-end="12215" vertical-scroll-proportion="0.55350554" vertical-offset="5242" max-vertical-offset="14280">
               <folding />
             </state>
           </provider>
@@ -696,7 +696,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="326" column="45" selection-start="12218" selection-end="12218" vertical-scroll-proportion="0.55350554" vertical-offset="5242" max-vertical-offset="14263">
+        <state line="326" column="42" selection-start="12215" selection-end="12215" vertical-scroll-proportion="0.55350554" vertical-offset="5242" max-vertical-offset="14280">
           <folding />
         </state>
       </provider>
