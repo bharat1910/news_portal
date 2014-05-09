@@ -7,7 +7,7 @@ from django.utils import simplejson as Json
 from django.conf import settings
 from django.utils.importlib import import_module
 from django.db.models import Count
-from news_explorer.models import File, Person, Organization, Location, Article, ArticlebyLocation, ArticlebyPerson \
+from news_explorer.models import File, Person, Organization, Location, Article, ParentLocation, ArticlebyLocation, ArticlebyPerson \
     , ArticlebyOrganization, PersonManager,OrganizationManager,LocationManager
 
 def index(request):
@@ -103,6 +103,8 @@ def getJson(request):
 
             if 'content' in request.GET:
                 a = Article.objects.values('id', 'headline', 'content', 'clicks', 'file__published_date')
+            elif 'map' in request.GET:
+                a = Article.objects.values('id', 'articlebylocation__location__parentlocation_id')
             else:
                 a = Article.objects.values('id', 'headline', 'clicks', 'file__published_date')
 
@@ -140,6 +142,11 @@ def getJson(request):
 
             if 'content' in request.GET:
                 response = HttpResponse(Json.dumps(convertToList(a,"true"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+            elif 'map' in request.GET:
+                a = a.values('articlebylocation__location__parentlocation_id')
+                b = ParentLocation.objects.filter(id__in = a).values('id', 'name')
+                a = a.values('articlebylocation__location__parentlocation_id').annotate(Count('id'))
+                response = HttpResponse(Json.dumps(combineSets(a, b), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
             else:
                 response = HttpResponse(Json.dumps(convertToList(a,"false"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
 
@@ -174,14 +181,17 @@ def count_by_location(request):
 
 def count_by_parentlocation(request):
     if request.method == 'GET':
-       A = ArticlebyLocation.obj.countbyparentlocation()
+       A = ArticlebyLocation.obj.countbyparentlocation(request)
        response = HttpResponse(Json.dumps(convertParentLocationListToMap(A), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
        return HttpResponse(response)
 
 def search_results(request):
     url = 'http://localhost:8983/solr/cs410/clustering?&q=' + request.GET['q'] + '&wt=json'
     r = requests.get(url, auth=('user', 'pass'))
-    response = HttpResponse(Json.dumps(convertSearchListToMap(r), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+    r = convert(r.json())['response']['docs']
+    idList = [res['id'] for res in r]
+    a = getSelection(idList, request)
+    response = HttpResponse(Json.dumps(convertSearchListToMap(a), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
     return HttpResponse(response)
 
 def convertToList(lists,content):
@@ -190,19 +200,53 @@ def convertToList(lists,content):
         result.append(convertEachEntityToMap(list,content))
     return result
 
-def convertSearchListToMap(r):
-    lists = convert(r.json())['response']['docs']
+def getSelection(idList, request):
+    a = Article.objects.filter(id__in = idList).values('id', 'headline', 'content', 'clicks')
+    if 'location_id' in request.GET:
+        a = a.filter(articlebylocation__location_id = request.GET.get('location_id', ''))
+    if 'person_id' in request.GET:
+        a = a.filter(articlebyperson__person_id = request.GET.get('person_id', ''))
+    if 'organization_id' in request.GET:
+        a = a.filter(articlebyorganization__organization_id = request.GET.get('organization_id', ''))
+    if 'category' in request.GET:
+        a = a.filter(category = request.GET.get('category', ''))
+
+    if 'fdate' in request.GET:
+        print(2)
+        toDate = datetime(2005, 05, 24)
+        fdate = request.GET.get('fdate', '')
+        if fdate == "week":
+            fromDate = toDate + timedelta(days=-7)
+        elif fdate == "month":
+            fromDate = toDate + timedelta(days=-31)
+        else:
+            fromDate = toDate + timedelta(days=-366)
+
+        a = a.filter(file__published_date__gte = fromDate)\
+             .filter(file__published_date__lte = toDate)
+
+    if 'pid' in request.GET:
+        pid = int(request.GET.get('pid', ''))
+        if pid == 1:
+            a = a.order_by('clicks')
+        elif pid == 2:
+            a = a.order_by('-clicks')
+        else:
+            a = a.order_by('-file__published_date')
+    return a
+
+def convertSearchListToMap(lists):
     result = []
     for list in lists:
-        result.append(convertEachSearchResultToMap(list))
+            result.append(convertEachSearchResultToMap(list))
     return result
 
 def convertEachSearchResultToMap(sr):
     result = {}
     result['id'] = sr['id']
-    result['headline'] = sr['title'][0]
-    result['content'] = sr['content'][0]
-    result['clicks'] = Article.objects.get(id = sr['id']).clicks
+    result['headline'] = sr['headline']
+    result['content'] = sr['content']
+    result['clicks'] = sr['clicks']
     return result
 
 def convertEachEntityToMap(list,content):
@@ -278,3 +322,17 @@ def convertCategoryToMap(list):
     result1['id'] = list['category']
     result1['name'] = list['category']
     return result1
+
+def combineSets(aLists, bLists):
+    result = []
+    for aList in aLists:
+        bList = bLists.filter(id = aList['articlebylocation__location__parentlocation_id'])[0]
+        result.append(combineEachSet(aList, bList))
+    return result
+
+def combineEachSet(aList, bList):
+    result = {}
+    result['parentlocation_id'] = bList['id']
+    result['parentlocation_name'] = bList['name']
+    result['article_count'] = aList['id__count']
+    return result

@@ -82,43 +82,26 @@
           </div>
       </div>
 
+
+      <form id="news_articles_by_selection_div">
+
+      </form>
+
+      <div class="btn-toolbar" role="toolbar" id="news_articles_by_selection_tools">
+
+      </div>
+
+      &nbsp;
+
       <div id="tab2" style="display:none">
-          <form class="well form-search" id="news_articles_by_selection_div">
-              <select class="chzn-select" style="width:200px;" id="location" data-placeholder="Choose a country..."></select>
 
-              <select class="chzn-select" style="width:200px;" id="organization" data-placeholder="Choose an organization..."></select>
-
-              <select class="chzn-select" style="width:200px;" id="person" data-placeholder="Choose a person..."></select>
-
-              <select class="chzn-select" style="width:200px;" id="category" data-placeholder="Choose a category..."></select>
-
-              <button id="search_button" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
-          </form>
-				
-		  <div class="btn-toolbar" role="toolbar" id="news_articles_by_selection_tools">
-			
-		  </div>
-		  
-		  &nbsp;
-		  
           <div class="panel-group" id="search_results">
 		  
           </div>
       </div>
 
       <div id="tab3" style="display:none">
-          <form class="well form-search" id="news_articles_chart_div">
-              <select class="chzn-select-chart" style="width:200px;" id="location_chart" data-placeholder="Choose a country..."></select>
 
-              <select class="chzn-select-chart" style="width:200px;" id="organization_chart" data-placeholder="Choose an organization..."></select>
-
-              <select class="chzn-select-chart" style="width:200px;" id="person_chart" data-placeholder="Choose a person..."></select>
-
-              <select class="chzn-select-chart" style="width:200px;" id="category_chart" data-placeholder="Choose a category..."></select>
-
-              <button id="search_button_chart" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
-          </form>
-		  
           <div id="highcharts_div">
 
           </div>
@@ -135,41 +118,25 @@
       &nbsp;
 
       <div id="tab4" style="display:none">
+
           <div id="highcharts_map_div">
 
           </div>
       </div>
 
       <div id="tab5" style="display:none">
-            <input type="email" class="form-control" id="search_text" placeholder="Enter Search Text" onkeypress="if (event.keyCode==13) updateSearchResults()">
+          <input type="email" class="form-control" id="search_text" placeholder="Enter Search Text" onkeypress="if (event.keyCode==13) updateSearchResults()">
 
-            &nbsp;
-			
-			<div class="btn-toolbar" role="toolbar" id="search_text_tools">
-			
-			</div>
-		  
-		  &nbsp;
-			
-            <div class="panel-group" id="plain_search_results">
-            </div>
+          &nbsp;
+
+          <div class="panel-group" id="plain_search_results">
+          </div>
       </div>
 
       <div id="tab6" style="display:none">
-          <form class="well form-search" id="news_articles_wordcloud_div">
-              <select class="chzn-select-wordcloud" style="width:200px;" id="location_wordcloud" data-placeholder="Choose a country..."></select>
-
-              <select class="chzn-select-wordcloud" style="width:200px;" id="organization_wordcloud" data-placeholder="Choose an organization..."></select>
-
-              <select class="chzn-select-wordcloud" style="width:200px;" id="person_wordcloud" data-placeholder="Choose a person..."></select>
-
-              <select class="chzn-select-wordcloud" style="width:200px;" id="category_wordcloud" data-placeholder="Choose a category..."></select>
-
-              <button id="search_button_wordcloud" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>
-          </form>
-		  
 
           <div id="wordcloud_div">
+
           </div>
 	  </div>
     </div> <!-- /container -->
@@ -204,6 +171,66 @@
            }
         });
 
+        var tab_id = "tab1";
+        var showSelect = true;
+
+        $(function() {
+            $("#news_articles_by_selection_div").hide();
+            $("#news_articles_by_selection_tools").hide();
+
+            $("#news_articles_by_selection_div").addClass("well form-search");
+            $("#news_articles_by_selection_div").append('<select class="chzn-select" style="width:200px;" id="location" data-placeholder="Choose a country..."></select>' +
+
+              '<select class="chzn-select" style="width:200px;" id="organization" data-placeholder="Choose an organization..."></select>' +
+
+              '<select class="chzn-select" style="width:200px;" id="person" data-placeholder="Choose a person..."></select>' +
+
+              '<select class="chzn-select" style="width:200px;" id="category" data-placeholder="Choose a category..."></select>' +
+
+              '<button id="search_button" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>');
+
+            $("#news_articles_by_selection_tools").append('<div class="btn-group" id="time-select">' +
+	            '<button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button1" param=""> Any time </button>' +
+	            '<button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button2" param="week"> Past week </button>' +
+	            '<button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button3" param="month"> Past month </button>' +
+	            '<button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button4" param="year"> Past year </button>' +
+            '</div>' +
+            '<div class="btn-group" id="order-select">' +
+	            '<button type="button" class="order_selector btn btn-default btn-info btn-xs" id="order_button1" param="2"> Most popular </button>' +
+	            '<button type="button" class="order_selector btn btn-default btn-info btn-xs" id="order_button2" param="1"> Most recent </button>' +
+            '</div>');
+
+            $("#time_button1").addClass('active');
+			$("#order_button1").addClass('active');
+
+            $("#search_button").bind('click', function() {
+                displayResults();
+            });
+
+            $('.time_selector').bind('click', function() {
+			    $(this).addClass('active').siblings().removeClass('active');
+			    displayResults();
+		    });
+
+		    $('.order_selector').bind('click', function() {
+			    $(this).addClass('active').siblings().removeClass('active');
+			    displayResults();
+		    });
+        });
+
+        function displayResults() {
+            if(tab_id == "tab2")
+			    getArticles($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
+		    else if(tab_id == "tab3")
+		        renderChart($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
+		    else if(tab_id == "tab4")
+   			    renderMap($($(".time_selector.active")[0]).attr('param'));
+	   		else if (tab_id == "tab5" && $("#search_text").val()!='')
+	   		    updateSearchResults();
+	    	else if (tab_id == "tab6")
+		        renderWordCloud($($(".time_selector.active")[0]).attr('param'));
+        }
+
         $("#news_articles_by_selection_li").bind('click', function() {
             $("#tab1").hide();
             $("#tab2").show();
@@ -212,29 +239,20 @@
             $("#tab5").hide();
 	        $("#tab6").hide();
 
-            showSelectOptions();
-        });
+            tab_id = "tab2";
 
-        $("#news_articles_chart_li").bind('click', function() {
-            $("#tab1").hide();
-            $("#tab2").hide();
-            $("#tab3").show();
-            $("#tab4").hide();
-            $("#tab5").hide();
-            $("#tab6").hide();
+            $("#news_articles_by_selection_div").show();
+            $("#search_button").show();
+            $("#news_articles_by_selection_tools").show();
+            $("#order-select").show();
 
-            showChartSelectOptions();
-        });
+            if(showSelect)
+                showSelectOptions();
+                showSelect = false;
 
-        $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
-            var $target = $( event.currentTarget );
-
-            $target.closest( '.btn-group' )
-                .find( '[data-bind="label"]' ).text( $target.text() )
-                .end()
-            .children( '.dropdown-toggle' ).dropdown( 'toggle' );
-
-            return false;
+            if(isSelected()) {
+                getArticles($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
+            }
         });
 
         function showSelectOptions()
@@ -300,115 +318,28 @@
             });
         }
 
-        function showChartSelectOptions()
-        {
-            $.get("person", function( data ) {
-                data = eval(data);
-
-                addDefault($('#person_chart'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#person_chart')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#person_chart").trigger("chosen:updated");
-            });
-
-            $.get("location", function( data ) {
-                data = eval(data);
-
-                addDefault($('#location_chart'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#location_chart')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#location_chart").trigger("chosen:updated");
-            });
-
-            $.get("organization", function( data ) {
-                data = eval(data);
-
-                addDefault($('#organization_chart'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#organization_chart')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#organization_chart").trigger("chosen:updated");
-            });
-
-            $.get("category", function( data ) {
-                data = eval(data);
-
-                addDefault($('#category_chart'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#category_chart')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#category_chart").trigger("chosen:updated");
-            });
-
-            $(function(){
-                $(".chzn-select-chart").chosen();
-            });
-        }
-
         function addDefault(div$)
         {
             div$.append("<option></option>");
         }
 
-        $("#search_button").bind('click', function() {
-			displaySelector();
-			getArticles($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
-        });
-		
-		function displaySelector()
-		{
-			$("#news_articles_by_selection_tools").empty();
-			
-			$("#news_articles_by_selection_tools").append('<div class="btn-group"> <button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button1" param=""> Any time </button> ' +
-			                                              '<button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button2" param="week"> Past week </button> ' +
-			                                              '<button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button3" param="month"> Past month </button> ' +
-			                                              '<button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button4" param="year"> Past year </button> </div> ' +
-			                                              '<div class="btn-group"> <button type="button" class="order_selector btn btn-default btn-info btn-xs" id="order_button1" param="2"> Most popular </button> ' +
-			                                              '<button type="button" class="order_selector btn btn-default btn-info btn-xs" id="order_button2" param="1"> Most recent </button> </div>' +
-			                                              '<a href="#" onclick="searchByText()" class="btn btn-default btn-xs search_by_text" style="float:right"><span class="glyphicon glyphicon-hand-right"></span> Search By Text</a>');
-			
-			$("#time_button1").addClass('active');
-			$("#order_button1").addClass('active');
-			
-			$('.time_selector').bind('click', function() {
-				$(this).addClass('active').siblings().removeClass('active');
-				getArticles($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
-			});
-			
-			$('.order_selector').bind('click', function() {
-				$(this).addClass('active').siblings().removeClass('active');
-				getArticles($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
-			});
-		}
-		
+        function isSelected() {
+            if ($("#location").val() || $("#organization").val() || $("#person").val() || $("#category").val()) {
+                return true;
+            }
+            return false;
+        }
+
 		function getArticles(fdate, pid)
 		{
-            inputParameters = getInputParameters(fdate, pid);
+            inputParameters = getInputParameters(fdate, pid, 'tab2');
 
             $.get("articles", inputParameters,
                 function( data ) {
                     $("#search_results").empty();
-					
+
 					data = eval(data);
-					
+
                     for (var i=0; i<data.length; i++) {
                         var headline = data[i].headline;
 
@@ -429,7 +360,7 @@
                     }
 
                     $("#search_results").show();
-					
+
                     $(".collapsed").bind('click', function() {
                         if(this.getAttribute('class') != "collapsed") {
                             return;
@@ -450,10 +381,81 @@
                 }
             );
 		}
-		
-        $("#search_button_chart").bind('click', function() {
 
-            inputParameters = getChartInputParameters();
+       function getInputParameters(fdate, pid, tabid)
+       {
+            var result = {};
+            if ($("#location").val() != "") {
+                result['location_id'] = $("#location").val();
+            }
+
+            if ($("#organization").val() != "") {
+                result['organization_id'] = $("#organization").val();
+            }
+
+            if ($("#person").val() != "") {
+                result['person_id'] = $("#person").val();
+            }
+
+            if ($("#category").val() != "") {
+                result['category'] = $("#category").val();
+            }
+
+			result['pid'] = pid;
+
+			if(fdate != '')
+				result['fdate'] = fdate;
+
+            if(tabid == 'tab4')
+                result['map'] = '';
+
+            if(tabid == 'tab5')
+                result['q'] = $("#search_text").val();
+
+			if(tabid == 'tab6')
+			    result['content'] = '';
+
+            return result;
+       }
+
+        $("#news_articles_chart_li").bind('click', function() {
+            $("#tab1").hide();
+            $("#tab2").hide();
+            $("#tab3").show();
+            $("#tab4").hide();
+            $("#tab5").hide();
+            $("#tab6").hide();
+
+            tab_id = "tab3";
+
+            $("#news_articles_by_selection_div").show();
+            $("#search_button").show();
+            $("#news_articles_by_selection_tools").show();
+            $("#order-select").show();
+
+            if(showSelect)
+                showSelectOptions();
+                showSelect = false;
+
+            if(isSelected()) {
+                renderChart($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
+            }
+        });
+
+        $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
+            var $target = $( event.currentTarget );
+
+            $target.closest( '.btn-group' )
+                .find( '[data-bind="label"]' ).text( $target.text() )
+                .end()
+            .children( '.dropdown-toggle' ).dropdown( 'toggle' );
+
+            return false;
+        });
+		
+        function renderChart(fdate, pid)
+        {
+            inputParameters = getInputParameters(fdate, pid, 'tab3');
 
             $.get("articles",  inputParameters,
             function( data ) {
@@ -515,133 +517,8 @@
                     }]
                 });
             });
-        });
+        }
 
-       $("#search_button_wordcloud").bind('click', function() {
-            var a = [];
-            var counts = {};
-	        var ignore = ["and","the","to","a","of","for","as","i","with","is","on","that","this","can","in","be","has","if"];
-
-            inputPara = getWordCloudInputParameters();	
-
-            $.get("articles", inputPara,
-		        function( data ) {
-				    data = eval(data);
-		            for (var i=0; i<data.length; i++) {
-                        var content_text = data[i].content;
-                        var sWords = content_text.split(" ");
-                        var iWordsCount = sWords.length;
-
-                        for(var i=0;i<iWordsCount;i++)
-                        {
-                            var sWord = sWords[i];
-
-                            //Make this case-insensitive
-                            if($.inArray(sWords[i], ignore)==-1) {
-                                   counts[sWord]=counts[sWord]||0;
-                                   counts[sWord]++;
-                            }
-                        }
-		            }
-
-                    for(sWord in counts)
-		            {
-				        a.push({
-			        	    text:sWord,
-				            frequency:counts[sWord]
-			            });
-		            }
-             
-                    $("#wordcloud_div").empty();
-                    $('#wordcloud_div').show();
-
-                    var fill = d3.scale.category20();
-
-                    d3.layout.cloud().size([800, 500])
-                             .words(a.map(function(d) {
-                                    var w = d.text;
-                                    var f = d.frequency/10;
-                                    return {text: w, size: 20+f*50};
-                             }))
-                             .rotate(function() { return ~~(Math.random() * 2) * 90; })
-                             .font("Impact")
-                             .fontSize(function(d) { return d.size; })
-                             .on("end", draw)
-                             .start();
-
-                    function draw(words) {
-                        d3.select("#wordcloud_div").append("svg")
-                                 .attr("width", 800)
-                                 .attr("height", 500)
-                                 .append("g")
-                                 .attr("transform", "translate(150,150)")
-                                 .selectAll("text")
-                                 .data(words)
-                                 .enter().append("text")
-                                 .style("font-size", function(d) { return d.size + "px"; })
-                                 .style("font-family", "Impact")
-                                 .style("fill", function(d, i) { return fill(i); })
-                                 .attr("text-anchor", "middle")
-                                 .attr("transform", function(d) {
-                                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                                 })
-                                 .text(function(d) { return d.text; });
-                    }
-                });
-           
-       });
-
-       function getInputParameters(fdate, pid)
-       {
-            var result = {};
-            if ($("#location").val() != "") {
-                result['location_id'] = $("#location").val();
-            }
-
-            if ($("#organization").val() != "") {
-                result['organization_id'] = $("#organization").val();
-            }
-
-            if ($("#person").val() != "") {
-                result['person_id'] = $("#person").val();
-            }
-
-            if ($("#category").val() != "") {
-                result['category'] = $("#category").val();
-            }
-
-			result['pid'] = pid;
-			
-			if(fdate != '')
-				result['fdate'] = fdate;
-			
-            return result;
-       }
-
-       function getChartInputParameters()
-       {
-            var result = {};
-            if ($("#location_chart").val() != "") {
-                result['location_id'] = $("#location_chart").val();
-            }
-
-            if ($("#organization_chart").val() != "") {
-                result['organization_id'] = $("#organization_chart").val();
-            }
-
-            if ($("#person_chart").val() != "") {
-                result['person_id'] = $("#person_chart").val();
-            }
-
-            if ($("#category_chart").val() != "") {
-                result['category'] = $("#category_chart").val();
-            }
-
-            result['pid'] = 1;
-			
-            return result;
-       }
-       
        function showArticleData(id, headline, clicks)
        {
             $("#chart_click_content_headline").html(headline +
@@ -668,7 +545,28 @@
             $("#tab4").show();
             $("#tab5").hide();
             $("#tab6").hide();
-            $.get("parentlocation_count", {}, function(data) {
+
+            tab_id = "tab4";
+
+            $("#news_articles_by_selection_div").show();
+            $("#search_button").show();
+            $("#news_articles_by_selection_tools").show();
+            $("#order-select").hide();
+
+            if(showSelect)
+                showSelectOptions();
+                showSelect = false;
+
+            if(isSelected()) {
+                renderMap($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
+            }
+       });
+
+        function renderMap(fdate) {
+
+            inputParameters = getInputParameters(fdate, 1, 'tab4');
+
+            $.get("articles", inputParameters, function(data) {
 
                 data = eval(data);
                 var result = []
@@ -717,7 +615,7 @@
                     }]
                 });
             });
-       });
+        }
 
        $("#news_articles_search_li").bind('click', function() {
             $("#tab1").hide();
@@ -726,15 +624,36 @@
             $("#tab4").hide();
             $("#tab5").show();
 		    $("#tab6").hide();
+
+		    tab_id = "tab5";
+
+            $("#news_articles_by_selection_div").show();
+            $("#search_button").hide();
+            $("#news_articles_by_selection_tools").show();
+            $("#order-select").show();
+
+            if(showSelect)
+                showSelectOptions();
+                showSelect = false;
+
+            if(isSelected()) {
+                if($("#search_text").val()!='')
+                    updateSearchResults();
+            }
 	   });
 
        function updateSearchResults()
        {
-            $.get('search_results', {q : $("#search_text").val()}, function(data) {
+            fdate = $($(".time_selector.active")[0]).attr('param')
+            pid = $($(".order_selector.active")[0]).attr('param')
+
+            inputParameters = getInputParameters(fdate, pid, 'tab5');
+
+            $.get('search_results', inputParameters, function(data) {
                 $("#plain_search_results").empty();
-				
+
                 data = eval(data)
-				
+
                 for (var i=0; i<data.length; i++) {
                     var headline = data[i].headline;
 
@@ -778,95 +697,94 @@
             $("#tab5").hide();
             $("#tab6").show();
 
-	        showWordCloudSelectOptions()
+            tab_id = "tab6";
+
+            $("#news_articles_by_selection_div").show();
+            $("#search_button").show();
+            $("#news_articles_by_selection_tools").show();
+            $("#order-select").hide();
+
+            if(showSelect)
+                showSelectOptions();
+                showSelect = false;
+
+            if(isSelected()) {
+                renderWordCloud($($(".time_selector.active")[0]).attr('param'));
+            }
 	   });
 
-       function getWordCloudInputParameters()
+	   function renderWordCloud(fdate)
        {
-           var result = {};
-            if ($("#location_wordcloud").val() != "") {
-                result['location_id'] = $("#location_wordcloud").val();
-            }
+            var a = [];
+            var counts = {};
+	        var ignore = ["and","the","to","a","of","for","as","i","with","is","on","that","this","can","in","be","has","if"];
 
-            if ($("#organization_wordcloud").val() != "") {
-                result['organization_id'] = $("#organization_wordcloud").val();
-            }
+            inputPara = getInputParameters(fdate, 1, 'tab6');
 
-            if ($("#person_wordcloud").val() != "") {
-                result['person_id'] = $("#person_wordcloud").val();
-            }
+            $.get("articles", inputPara,
+		        function( data ) {
+				    data = eval(data);
+		            for (var i=0; i<data.length; i++) {
+                        var content_text = data[i].content;
+                        var sWords = content_text.split(" ");
+                        var iWordsCount = sWords.length;
 
-            if ($("#category_wordcloud").val() != "") {
-                result['category'] = $("#category_wordcloud").val();
-            }
+                        for(var i=0;i<iWordsCount;i++)
+                        {
+                            var sWord = sWords[i];
 
-            result['pid'] = 1;
-	        result['content'] = "";
-            return result;
-       }
+                            //Make this case-insensitive
+                            if($.inArray(sWords[i], ignore)==-1) {
+                                   counts[sWord]=counts[sWord]||0;
+                                   counts[sWord]++;
+                            }
+                        }
+		            }
 
-       function showWordCloudSelectOptions()
-       {
-            $.get("person", function( data ) {
-                data = eval(data);
+                    for(sWord in counts)
+		            {
+				        a.push({
+			        	    text:sWord,
+				            frequency:counts[sWord]
+			            });
+		            }
 
-                addDefault($('#person_wordcloud'));
+                    $("#wordcloud_div").empty();
+                    $('#wordcloud_div').show();
 
-                for (var i=0; i<data.length; i++) {
-                    $('#person_wordcloud')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#person_wordcloud").trigger("chosen:updated");
-            });
+                    var fill = d3.scale.category20();
 
-            $.get("location", function( data ) {
-                data = eval(data);
+                    d3.layout.cloud().size([800, 500])
+                             .words(a.map(function(d) {
+                                    var w = d.text;
+                                    var f = d.frequency/10;
+                                    return {text: w, size: 20+f*50};
+                             }))
+                             .rotate(function() { return ~~(Math.random() * 2) * 90; })
+                             .font("Impact")
+                             .fontSize(function(d) { return d.size; })
+                             .on("end", draw)
+                             .start();
 
-                addDefault($('#location_wordcloud'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#location_wordcloud')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#location_wordcloud").trigger("chosen:updated");
-            });
-
-            $.get("organization", function( data ) {
-                data = eval(data);
-
-                addDefault($('#organization_wordcloud'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#organization_wordcloud')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#organization_wordcloud").trigger("chosen:updated");
-            });
-
-
-            $.get("category", function( data ) {
-                data = eval(data);
-
-                addDefault($('#category_wordcloud'));
-
-                for (var i=0; i<data.length; i++) {
-                    $('#category_wordcloud')
-                        .append($("<option></option>")
-                        .attr("value",data[i].id)
-                        .text(data[i].name));
-                }
-                $("#category_wordcloud").trigger("chosen:updated");
-            });
-
-            $(function(){
-                $(".chzn-select-wordcloud").chosen();
-            });
+                    function draw(words) {
+                        d3.select("#wordcloud_div").append("svg")
+                                 .attr("width", 800)
+                                 .attr("height", 500)
+                                 .append("g")
+                                 .attr("transform", "translate(150,150)")
+                                 .selectAll("text")
+                                 .data(words)
+                                 .enter().append("text")
+                                 .style("font-size", function(d) { return d.size + "px"; })
+                                 .style("font-family", "Impact")
+                                 .style("fill", function(d, i) { return fill(i); })
+                                 .attr("text-anchor", "middle")
+                                 .attr("transform", function(d) {
+                                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                                 })
+                                 .text(function(d) { return d.text; });
+                    }
+                });
        }
 
        function getSelectionHtml() {
