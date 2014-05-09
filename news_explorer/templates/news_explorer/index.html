@@ -644,7 +644,9 @@
        
        function showArticleData(id, headline, clicks)
        {
-            $("#chart_click_content_headline").html(headline + '<button style="float:right" class="btn btn-default btn-info btn-xs disabled" id="chart_button_' + id + '"> <span class="glyphicon glyphicon-ok"></span> ' + clicks + '</button>');
+            $("#chart_click_content_headline").html(headline +
+                                                    '<button style="float:right" class="btn btn-default btn-info btn-xs disabled" id="chart_button_' + id + '"> <span class="glyphicon glyphicon-ok"></span> ' + clicks + '</button>' +
+                                                    '<a href="#" onclick="searchByText()" class="btn btn-default btn-xs search_by_text" style="float:right; margin-right:5px"><span class="glyphicon glyphicon-hand-right"></span> Search By Text</a>');
 
             $.get("article_content", {article_id : id},
                 function(data) {
