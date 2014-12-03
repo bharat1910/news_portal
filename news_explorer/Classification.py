@@ -16,6 +16,7 @@ from sklearn.metrics import classification_report
 from sklearn.naive_bayes import MultinomialNB
 
 from news_explorer.models import Article
+from news_explorer.models import ArticleByCategory
 
 def classifyDocs():
     # Load the training set
@@ -59,9 +60,8 @@ def classifyDocs():
         pred = clf.predict(X_test)
 
         for i in range(len(pred)):
-            article = Article.objects.get(id = ids[i])
-            article.category = news_train.target_names[pred[i]]
-            article.save()
+            abc = ArticleByCategory(article_id = ids[i], category = news_train.target_names[pred[i]])
+            abc.save()
 
     parameters = {
         'loss': 'hinge',

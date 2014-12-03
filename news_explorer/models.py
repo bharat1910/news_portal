@@ -151,6 +151,10 @@ class Article(models.Model):
     category = models.CharField(max_length=200)
     objects = PersonLocationOrganizationManager()
 
+class ArticleByCategory(models.Model):
+    article = models.ForeignKey(Article)
+    category = models.CharField(max_length=200)
+
 class ParentLocation(models.Model):
     name = models.CharField(max_length=200)
 
