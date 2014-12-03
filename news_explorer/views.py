@@ -8,7 +8,7 @@ from django.conf import settings
 from django.utils.importlib import import_module
 from django.db.models import Count
 from news_explorer.models import File, Person, Organization, Location, Article, ParentLocation, ArticlebyLocation, ArticlebyPerson \
-    , ArticlebyOrganization, PersonManager,OrganizationManager,LocationManager
+    , ArticlebyOrganization, PersonManager,OrganizationManager,LocationManager, ArticleByCategory
 
 def index(request):
     context = {}
@@ -92,7 +92,7 @@ def initiate_chosen(request, reqtype):
             response = HttpResponse(Json.dumps(convertSelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
         elif reqtype == "category":
-            L = Article.objects.values('category').distinct()
+            L = ArticleByCategory.objects.values('category').distinct()
             response = HttpResponse(Json.dumps(convertCategorySelectAttributesToMap(L), default=jdefault,indent=4), content_type="application/json", mimetype="application/json").content
             return HttpResponse(response)
 
@@ -115,7 +115,7 @@ def getJson(request):
             if 'organization_id' in request.GET:
                 a = a.filter(articlebyorganization__organization_id = request.GET.get('organization_id', ''))
             if 'category' in request.GET:
-                a = a.filter(category = request.GET.get('category', ''))
+                a = a.filter(articlebycategory__category = request.GET.get('category', ''))
 
             if 'fdate' in request.GET:
                 print(2)
@@ -209,7 +209,7 @@ def getSelection(idList, request):
     if 'organization_id' in request.GET:
         a = a.filter(articlebyorganization__organization_id = request.GET.get('organization_id', ''))
     if 'category' in request.GET:
-        a = a.filter(category = request.GET.get('category', ''))
+        a = a.filter(articlebycategory__category = request.GET.get('category', ''))
 
     if 'fdate' in request.GET:
         print(2)

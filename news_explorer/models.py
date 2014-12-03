@@ -148,7 +148,6 @@ class Article(models.Model):
     content = models.CharField(max_length=10000)
     number = models.IntegerField(default=0)
     clicks = models.IntegerField(default=0)
-    category = models.CharField(max_length=200)
     objects = PersonLocationOrganizationManager()
 
 class ArticleByCategory(models.Model):
