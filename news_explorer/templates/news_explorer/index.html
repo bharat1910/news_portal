@@ -162,6 +162,9 @@
     <script type='text/javascript' src='http://d3js.org/d3.v3.min.js'></script>
     <script type='text/javascript' src="http://www.jasondavies.com/wordcloud/d3.layout.cloud.js"></script>
 
+    <!-- jQuery cookie -->
+    <script src="{{ STATIC_URL}}news_explorer/js/jquery.cookie.js"></script>
+
     <script>
         var locationid_map = new Object();
         $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
@@ -390,20 +393,38 @@
        function getInputParameters(fdate, pid, tabid)
        {
             var result = {};
+
+            var selection = "";
+
             if ($("#location").val() != "") {
                 result['location_id'] = $("#location").val();
             }
+
+            selection += $("#location option:selected").text() + ":" + $("#location").val() + ";";
+
 
             if ($("#organization").val() != "") {
                 result['organization_id'] = $("#organization").val();
             }
 
+            selection += $("#organization option:selected").text() + ":" + $("#organization").val() + ";";
+
             if ($("#person").val() != "") {
                 result['person_id'] = $("#person").val();
             }
 
+            selection += $("#person option:selected").text() + ":" + $("#person").val() + ";";
+
             if ($("#category").val() != "") {
                 result['category'] = $("#category").val();
+            }
+
+            selection += $("#category option:selected").text() + ":" + $("#category").val() + ";";
+
+            if ($.cookie('selection') == null) {
+                $.cookie('selection', selection);
+            } else {
+                $.cookie('selection', $.cookie('selection') + " ### " + selection);
             }
 
 			result['pid'] = pid;
