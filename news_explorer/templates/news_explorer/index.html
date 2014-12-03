@@ -141,7 +141,6 @@
 	  </div>
     </div> <!-- /container -->
 
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -182,7 +181,7 @@
             $("#news_articles_by_selection_tools").hide();
 
             $("#news_articles_by_selection_div").addClass("well form-search");
-            $("#news_articles_by_selection_div").append('<select class="chzn-select" style="width:200px;" id="location" data-placeholder="Choose a country..."></select>' +
+            $("#news_articles_by_selection_div").append('<div style="display:inline-block"><select class="chzn-select" style="width:200px;" id="location" data-placeholder="Choose a country..."></select>' +
 
               '<select class="chzn-select" style="width:200px;" id="organization" data-placeholder="Choose an organization..."></select>' +
 
@@ -190,7 +189,22 @@
 
               '<select class="chzn-select" style="width:200px;" id="category" data-placeholder="Choose a category..."></select>' +
 
-              '<button id="search_button" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button>');
+              '<button id="search_button" class="btn btn-default btn-info btn-xs active"><span class="glyphicon glyphicon-hand-right"></span> Search</button></div>' +
+
+              '<div class="dropdown" style="display:inline-block; float:right; padding-right:30px">' +
+
+                  '<button class="btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">' +
+
+                    'History' +
+
+                    '<span class="caret"></span>' +
+
+                  '</button>' +
+
+                  '<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">' +
+
+                  '</ul>' +
+              '</div>');
 
             $("#news_articles_by_selection_tools").append('<div class="btn-group" id="time-select">' +
 	            '<button type="button" class="time_selector btn btn-default btn-info btn-xs" id="time_button1" param=""> Any time </button>' +
@@ -220,6 +234,28 @@
 			    $(this).addClass('active').siblings().removeClass('active');
 			    displayResults();
 		    });
+
+            if ($.cookie('selection') != undefined) {
+                var selectionList = $.cookie('selection').split("###");
+                for (var i=0; i<selectionList.length; i++) {
+                    var selection = "";
+                    var val = "";
+
+                    var eachSelection = selectionList[i].split(";");
+                    for (var j=0; j<4; j++) {
+                        if(eachSelection[j] != ":" && eachSelection[j].split(":")[0].trim() != '---') {
+                            selection += eachSelection[j].split(":")[0] + " ";
+                        }
+                        val += eachSelection[j].split(":")[1] + ":";
+                    }
+
+                    if (selection.trim() == "") {
+                        continue;
+                    }
+
+                    $('.dropdown-menu').append('<li role="presentation"><a role="menuitem" tabindex="-1" onClick=loadHistory("' + val + '")>' + selection + '</a></li>');
+                }
+            }
         });
 
         function displayResults() {
@@ -261,6 +297,45 @@
                 getArticles($($(".time_selector.active")[0]).attr('param'), $($(".order_selector.active")[0]).attr('param'));
             }
         });
+
+        function loadHistory(val)
+        {
+            var eachVal = val.split(":");
+
+            if(eachVal[0] != "") {
+                $('#location option[value=' + eachVal[0] + ']').attr('selected','selected');
+                $("#location").trigger("chosen:updated");
+            } else {
+                $('#location option[value=""]').attr('selected','selected');
+                $("#location").trigger("chosen:updated");
+            }
+
+            if(eachVal[1] != "") {
+                $('#organization option[value=' + eachVal[1] + ']').attr('selected','selected');
+                $("#organization").trigger("chosen:updated");
+            } else {
+                $('#organization option[value=""]').attr('selected','selected');
+                $("#organization").trigger("chosen:updated");
+            }
+
+            if(eachVal[2] != "") {
+                $('#person option[value=' + eachVal[2] + ']').attr('selected','selected');
+                $("#person").trigger("chosen:updated");
+            } else {
+                $('#person option[value=""]').attr('selected','selected');
+                $("#person").trigger("chosen:updated");
+            }
+
+            if(eachVal[3] != "") {
+                $('#category option[value=' + eachVal[3] + ']').attr('selected','selected');
+                $("#category").trigger("chosen:updated");
+            } else {
+                $('#category option[value=""]').attr('selected','selected');
+                $("#category").trigger("chosen:updated");
+            }
+
+            $("#search_button").click();
+        }
 
         function showSelectOptions()
         {
@@ -424,7 +499,7 @@
             if ($.cookie('selection') == null) {
                 $.cookie('selection', selection);
             } else {
-                $.cookie('selection', $.cookie('selection') + " ### " + selection);
+                $.cookie('selection', selection + " ### " + $.cookie('selection'));
             }
 
 			result['pid'] = pid;
