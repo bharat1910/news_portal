@@ -2,8 +2,91 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b654a3d-8895-454b-a326-eb04f794a6e0" name="Default" comment="        function getInputParameters()&#10;        {&#10;            var result = {};&#10;            if ($(&quot;#location&quot;).val() != &quot;&quot;) {&#10;                result['location_id'] = $(&quot;#location&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#organization&quot;).val() != &quot;&quot;) {&#10;                result['organization_id'] = $(&quot;#organization&quot;).val();&#10;            }&#10;&#10;            if ($(&quot;#person&quot;).val() != &quot;&quot;) {&#10;                result['person_id'] = $(&quot;#person&quot;).val();&#10;            }&#10;&#10;            return result;&#10;        }">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/models.py" afterPath="$PROJECT_DIR$/news_explorer/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/views.py" afterPath="$PROJECT_DIR$/news_explorer/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/001.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/001.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/002.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/002.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/003.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/003.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/004.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/004.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/005.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/005.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/006.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/006.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/007.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/007.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/008.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/008.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/009.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/009.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/010.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/010.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/011.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/011.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/012.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/012.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/013.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/013.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/014.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/014.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/015.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/015.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/016.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/016.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/017.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/018.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/019.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/020.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/020.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/021.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/021.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/022.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/022.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/023.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/023.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/024.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/024.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/025.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/025.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/026.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/026.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/027.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/027.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/028.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/028.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Content/029.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/news_explorer/train/Labels/029.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/001.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/002.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/003.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/004.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/005.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/006.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/007.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/008.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/001.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/002.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/003.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/004.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/005.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/006.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/007.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/008.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/009.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/news_explorer/train/Terrorism/010.txt" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Natural Disasters/001.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/001.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Natural Disasters/002.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/002.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Natural Disasters/003.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/003.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Natural Disasters/004.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/004.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Natural Disasters/005.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/005.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Natural Disasters/006.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/006.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Natural Disasters/007.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/007.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Natural Disasters/008.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/008.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/009.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/017.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/010.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/019.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/news_explorer/train/Politics/011.txt" afterPath="$PROJECT_DIR$/news_explorer/train/Content/018.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/news_explorer/Classification.py" afterPath="$PROJECT_DIR$/news_explorer/Classification.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="news_portal.iws" />
@@ -27,22 +110,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
+      <file leaf-file-name="Classification.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/news_explorer/Classification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="43" selection-start="11643" selection-end="11643" vertical-scroll-proportion="0.0" vertical-offset="2103" max-vertical-offset="3030">
+            <state line="81" column="26" selection-start="2563" selection-end="2563" vertical-scroll-proportion="0.912" vertical-offset="285" max-vertical-offset="1020">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="97" selection-start="560" selection-end="560" vertical-scroll-proportion="0.25597268" vertical-offset="0" max-vertical-offset="5160">
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -72,10 +144,40 @@
         <option value="$PROJECT_DIR$/news_explorer/Parser.py" />
         <option value="$PROJECT_DIR$/news_explorer/urls.py" />
         <option value="$PROJECT_DIR$/news_explorer/static/news_explorer/js/jquery.cookie.js" />
-        <option value="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
-        <option value="$PROJECT_DIR$/news_explorer/Classification.py" />
         <option value="$PROJECT_DIR$/news_explorer/models.py" />
         <option value="$PROJECT_DIR$/news_explorer/views.py" />
+        <option value="$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html" />
+        <option value="$PROJECT_DIR$/news_explorer/Classfication2.py" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/001.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/005.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/006.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/007.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/008.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/010.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/011.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/012.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/013.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/014.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/016.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/015.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/017.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/018.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/019.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/020.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/024.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/025.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/026.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/029.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/009.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/002.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/003.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/004.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/028.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/027.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/023.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/022.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/train/Labels/021.txt" />
+        <option value="$PROJECT_DIR$/news_explorer/Classification.py" />
       </list>
     </option>
   </component>
@@ -111,6 +213,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -171,65 +274,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_portal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news_explorer" />
+              <option name="myItemId" value="train" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -242,6 +292,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/news_explorer/train/Content" />
+      <recent name="$PROJECT_DIR$/news_explorer/train/Labels" />
       <recent name="$PROJECT_DIR$/news_explorer/static/news_explorer" />
       <recent name="$PROJECT_DIR$/news_explorer/templates/news_explorer/lib" />
       <recent name="$PROJECT_DIR$/news_explorer/templates/news_explorer" />
@@ -402,13 +454,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="22" width="1260" height="722" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32539684" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32539684" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -443,352 +495,360 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/001.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/002.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/002.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/003.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/003.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="27" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/004.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="27" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/004.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/005.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="17" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/006.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="17" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/007.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="17" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/008.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="17" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/009.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="17" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/010.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="0" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/029.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/029.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="9" selection-start="9" selection-end="9" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/028.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/028.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/027.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/027.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/026.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/026.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="9" selection-start="9" selection-end="9" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/025.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/024.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/024.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="9" selection-start="9" selection-end="9" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/023.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/023.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/022.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/022.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/021.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/021.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/020.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/020.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="9" selection-start="0" selection-end="9" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/011.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/011.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/012.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/012.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/013.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/013.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/014.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/014.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/015.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/015.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/016.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/016.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/017.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/017.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/018.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/018.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Content/019.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/news_explorer/train/Labels/019.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/news_explorer/Classification.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="27" selection-start="2216" selection-end="2229" vertical-scroll-proportion="0.0" vertical-offset="574" max-vertical-offset="1230" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="37" selection-start="377" selection-end="383" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8760">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/IndexDocumentsForSolr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="83" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="554" column="14" selection-start="20796" selection-end="20796" vertical-scroll-proportion="0.0" vertical-offset="7897" max-vertical-offset="8460">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="523" column="33" selection-start="19056" selection-end="19056" vertical-scroll-proportion="0.0" vertical-offset="7462" max-vertical-offset="8025">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="33" selection-start="9456" selection-end="9456" vertical-scroll-proportion="0.0" vertical-offset="2775" max-vertical-offset="3885" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="50" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="497" column="53" selection-start="18477" selection-end="18477" vertical-scroll-proportion="0.0" vertical-offset="7000" max-vertical-offset="7665">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/map.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="133" selection-start="735" selection-end="864" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1200" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="444" column="14" selection-start="16416" selection-end="16416" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7365">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/map.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="731" selection-end="865" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1200" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="406" column="60" selection-start="15336" selection-end="15336" vertical-scroll-proportion="0.0" vertical-offset="5767" max-vertical-offset="6330">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="379" column="29" selection-start="14360" selection-end="14360" vertical-scroll-proportion="0.0" vertical-offset="5302" max-vertical-offset="5865">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="311" column="13" selection-start="13030" selection-end="13030" vertical-scroll-proportion="0.0" vertical-offset="3997" max-vertical-offset="4815">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="37" selection-start="8151" selection-end="8151" vertical-scroll-proportion="0.0" vertical-offset="2662" max-vertical-offset="3975">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="16" selection-start="5734" selection-end="5734" vertical-scroll-proportion="0.0" vertical-offset="2737" max-vertical-offset="3300">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="48" selection-start="5722" selection-end="5722" vertical-scroll-proportion="0.0" vertical-offset="2362" max-vertical-offset="3060">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1392" selection-end="1392" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="2055" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="109" selection-start="5263" selection-end="5263" vertical-scroll-proportion="0.0" vertical-offset="1796" max-vertical-offset="2445">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="44" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="1155" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/navbar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="1" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="195" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="86865" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="35" selection-start="470" selection-end="493" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1425">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/Parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="81" selection-start="7014" selection-end="7014" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2595" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/Mysql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="29" selection-start="856" selection-end="856" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="660" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="44" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="600" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/Parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="16" selection-start="3344" selection-end="3344" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="43" selection-start="640" selection-end="640" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="480" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/lib/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="86865" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="86865" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/css/navbar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="1" selection-start="89" selection-end="89" vertical-scroll-proportion="0.16773163" vertical-offset="0" max-vertical-offset="626" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/map.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="133" selection-start="735" selection-end="864" vertical-scroll-proportion="0.58573854" vertical-offset="105" max-vertical-offset="1200" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solr-4.1.0/xml/docs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5250" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/test/001.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="773" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/train/Terrorism/001.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/IndexDocumentsForSolr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="4" selection-start="75" selection-end="130" vertical-scroll-proportion="0.07188498" vertical-offset="0" max-vertical-offset="626" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/InsertParentLocation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="24" selection-start="1900" selection-end="1900" vertical-scroll-proportion="1.2939297" vertical-offset="0" max-vertical-offset="1095" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="42" selection-start="261" selection-end="273" vertical-scroll-proportion="0.07188498" vertical-offset="0" max-vertical-offset="626" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/news_articles_by_selection.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="351" column="1" selection-start="9790" selection-end="9790" vertical-scroll-proportion="-146.25" vertical-offset="1755" max-vertical-offset="5505" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/js/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/Mysql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="29" selection-start="934" selection-end="934" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="675">
+        <state line="81" column="26" selection-start="2563" selection-end="2563" vertical-scroll-proportion="0.912" vertical-offset="285" max-vertical-offset="1020">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/static/news_explorer/js/jquery.cookie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="4" selection-start="3127" selection-end="3127" vertical-scroll-proportion="0.0" vertical-offset="1740" max-vertical-offset="1830">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/templates/news_explorer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="95" selection-start="7075" selection-end="7075" vertical-scroll-proportion="-2.54" vertical-offset="2768" max-vertical-offset="14040">
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/HttpResponse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1080">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/Classification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="1951" selection-end="1951" vertical-scroll-proportion="1.5448505" vertical-offset="0" max-vertical-offset="1230">
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/NewsJsonAPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/Parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="36" selection-start="5779" selection-end="5886" vertical-scroll-proportion="0.7124183" vertical-offset="1379" max-vertical-offset="2985">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_portal/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1395">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="43" selection-start="11643" selection-end="11643" vertical-scroll-proportion="0.0" vertical-offset="2103" max-vertical-offset="3030">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_explorer/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="97" selection-start="560" selection-end="560" vertical-scroll-proportion="0.25597268" vertical-offset="0" max-vertical-offset="5160">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -14,26 +14,38 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.svm import LinearSVC
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn import preprocessing
 
 from news_explorer.models import Article
 from news_explorer.models import ArticleByCategory
 
 def classifyDocs():
+    target_names = ['Natural Disasters', 'Politics', 'Terrorism']
+
     # Load the training set
     print("Loading newsgroups training set... ")
-    news_train = load_files('news_explorer/train')
-    print("%d documents" % len(news_train.filenames))
-    print("%d categories" % len(news_train.target_names))
-    print()
+    news_content = 'news_explorer/train/Content'
+    news_labels = 'news_explorer/train/Labels'
+    X_train = (open(news_content + "/" + f).read() for f in os.listdir(news_content))
+    y_crude = (open(news_labels + "/" + f).read() for f in os.listdir(news_labels))
+    y_train = []
 
-    print("Extracting features from the dataset using a sparse vectorizer")
-    vectorizer = TfidfVectorizer(encoding='latin1')
-    X_train = vectorizer.fit_transform((open(f).read()
-                                        for f in news_train.filenames))
-    print("n_samples: %d, n_features: %d" % X_train.shape)
-    print()
-    assert sp.issparse(X_train)
-    y_train = news_train.target
+    print(X_train)
+
+    for y in y_crude:
+        temp = y.split(",")
+        arr = []
+        for t in temp:
+            arr.append(target_names.index(t.strip()))
+        y_train.append(arr)
+
+    print(X_train)
+    print(y_train)
 
     print("Loading newsgroups test set... ")
     A = Article.objects.values('id', 'headline', 'content')
@@ -44,33 +56,31 @@ def classifyDocs():
         ids.append(a['id'])
         content.append(a['content'])
 
-    X_test = vectorizer.transform(content)
+    X_test = content
 
-    print("n_samples: %d, n_features: %d" % X_test.shape)
-    print()
+    print(len(X_test))
+
+    lb = preprocessing.LabelBinarizer()
 
     ###############################################################################
     # Benchmark classifiers
-    def benchmark(clf_class, params, name):
-        t0 = time()
-        clf = clf_class(**params).fit(X_train, y_train)
+    def benchmark():
+        classifier = Pipeline([
+            ('vectorizer', CountVectorizer()),
+            ('tfidf', TfidfTransformer()),
+            ('clf', OneVsRestClassifier(LinearSVC()))])
+        classifier.fit(X_train, lb.fit_transform(y_train))
+        predicted = classifier.predict(X_test)
+        all_labels = lb.inverse_transform(predicted)
 
-        print("Predicting the outcomes of the testing set")
-        t0 = time()
-        pred = clf.predict(X_test)
+        print(len(all_labels))
+        print(len(X_test))
 
-        for i in range(len(pred)):
-            abc = ArticleByCategory(article_id = ids[i], category = news_train.target_names[pred[i]])
-            abc.save()
+        for i in range(len(all_labels)):
+            for label in all_labels[i]:
+                abc = ArticleByCategory(article_id = ids[i], category = target_names[label])
+                abc.save()
 
-    parameters = {
-        'loss': 'hinge',
-        'penalty': 'l2',
-        'n_iter': 50,
-        'alpha': 0.00001,
-        'fit_intercept': True,
-    }
-
-    benchmark(SGDClassifier, parameters, 'SGD')
+    benchmark()
 
     pl.show()
