@@ -253,7 +253,7 @@
                         continue;
                     }
 
-                    $('.dropdown-menu').append('<li role="presentation"><a role="menuitem" tabindex="-1" onClick=loadHistory("' + val + '")>' + selection + '</a></li>');
+                    $('.dropdown-menu').append('<li role="presentation"><a role="menuitem" tabindex="-1" onClick="loadHistory(\'' + val + '\')">' + selection + '</a></li>');
                 }
             }
         });
@@ -300,6 +300,7 @@
 
         function loadHistory(val)
         {
+
             var eachVal = val.split(":");
 
             if(eachVal[0] != "") {
@@ -327,7 +328,7 @@
             }
 
             if(eachVal[3] != "") {
-                $('#category option[value=' + eachVal[3] + ']').attr('selected','selected');
+                $('#category option[value="' + eachVal[3] + '"]').attr('selected','selected');
                 $("#category").trigger("chosen:updated");
             } else {
                 $('#category option[value=""]').attr('selected','selected');
