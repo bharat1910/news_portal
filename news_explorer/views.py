@@ -144,16 +144,38 @@ def getJson(request):
             if 'content' in request.GET:
                 response = HttpResponse(Json.dumps(convertToList(a,"true"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
             elif 'map' in request.GET:
-                a = a.values('articlebylocation__location__parentlocation_id')
-                b = ParentLocation.objects.filter(id__in = a).values('id', 'name')
-                a = a.values('articlebylocation__location__parentlocation_id').annotate(Count('id'))
-                response = HttpResponse(Json.dumps(combineSets(a, b), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
+                a = filterNone(a.values('articlebylocation__location__parentlocation_id'))
+                ids = [eacha['articlebylocation__location__parentlocation_id'] for eacha in a]
+                b = ParentLocation.objects.filter(id__in = ids).values('id', 'name')
+
+                map = {}
+                for each in b:
+                    map[each['id']] = each['name']
+
+                for each in a:
+                    each['parentlocation_name'] = map[each['articlebylocation__location__parentlocation_id']]
+
+                response = HttpResponse(Json.dumps(a, default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
             else:
                 response = HttpResponse(Json.dumps(convertToList(a,"false"), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
 
             return HttpResponse(response)
     except:
         print "Error"
+
+def filterNone(a):
+    filteredA = []
+    map = {}
+    for eacha in a:
+        if eacha['articlebylocation__location__parentlocation_id'] != None:
+            if map.has_key(eacha['articlebylocation__location__parentlocation_id']) == False:
+                map[eacha['articlebylocation__location__parentlocation_id']] = 0
+            map[eacha['articlebylocation__location__parentlocation_id']] =  map[eacha['articlebylocation__location__parentlocation_id']] + 1
+
+    for each in map:
+        filteredA.append({'articlebylocation__location__parentlocation_id' : each, 'article_count' : map[each]})
+
+    return filteredA
 
 def click_article(request):
     if request.method == 'GET':
