@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import requests
+import json
 from datetime import datetime, timedelta
 from datetime import date
 from django.http import HttpResponse, HttpRequest
@@ -187,8 +188,8 @@ def count_by_parentlocation(request):
 
 def search_results(request):
     url = 'http://localhost:8983/solr/cs410/clustering?&q=' + request.GET['q'] + '&wt=json'
-    r = requests.get(url, auth=('user', 'pass'))
-    r = convert(r.json())['response']['docs']
+    r = requests.get(url)
+    r = convert(json.loads(r.text))['response']['docs']
     idList = [res['id'] for res in r]
     a = getSelection(idList, request)
     response = HttpResponse(Json.dumps(convertSearchListToMap(a), default=jdefault, indent=4), content_type="application/json", mimetype="application/json").content
